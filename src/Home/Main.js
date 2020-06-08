@@ -11,7 +11,7 @@ class Main extends Component{
         return(
             <div>
                 <Header/>
-                    <ReactPlayer url='https://youtu.be/ep16_YDfNUU' playing control/>
+                    <ReactPlayer url='https://youtu.be/ep16_YDfNUU' playing muted control/>
                 <Footer/>
             </div>
         )
