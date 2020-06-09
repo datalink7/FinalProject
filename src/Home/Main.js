@@ -1,7 +1,8 @@
 import React,{Component} from 'react';
 import Footer from './Footer';
 import Header from './Header';
-import ReactPlayer from 'react-player/youtube';
+
+import MainVideo from '../image/mainVideo.mp4';
 
 import '../Css/Style.css'
 
@@ -9,16 +10,15 @@ class Main extends Component{
 
     render(){
         return(
-            <div className='Main'>
+            <div>
                 <div className='Header'>
                     <Header/>
                 </div>
-                    <ReactPlayer className='react-player' url='https://youtu.be/U8jVpEz9xwk' playing muted
-                        width='100%'
-                        height='600px'/>
-                        {/* <iframe type="text/html" width="640" height="360"
-                            src="https://youtu.be/U8jVpEz9xwk?autoplay=1"
-                            frameborder="0"></iframe> */}
+                <div className="video">
+                    <video className='videoTag' autoPlay loop muted>
+                        <source src={MainVideo} type='video/mp4'/>
+                    </video>
+                </div>
                 <Footer/>
             </div>
         )

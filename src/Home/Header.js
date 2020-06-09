@@ -4,31 +4,36 @@ import logo from '../image/logo.png';
 
 const Header = () => (
         
-        <div className="Menu">
+        <div>
             <img src={logo} className="logo" />
             <div>
             <ul className="Menu1">
                 <li>
-                    <br/>
                     <a href="#none">Match</a>
                 </li>
                 <li>
-                    <br/>
                     <a href="#none">League</a>
                 </li>
                 <li>
-                    <br/>
                     <a href="#none">Team</a>
                 </li>
                 <li>
-                    <br/>
                     <a href="#none">Proxy</a>
                 </li>
                 <li>
-                    <br/>
                     <a href="#none">Q & A</a>
                 </li>
             </ul>
+            </div>
+            <div className="Menu2">
+                <ul>
+                    <li>
+                        <a href="#none">MyPage</a>
+                    </li>
+                    <li>
+                        <a href="#none">Login</a>
+                    </li>
+                </ul>
             </div>
         </div>
 )
