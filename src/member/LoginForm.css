@@ -1,0 +1,41 @@
+.Login-Modal{
+    text-align: center;
+    font-family: NanumBarunGothic; 
+    margin-left:10px;
+    margin-right: 10px;
+}
+
+.a,.b{
+    color:#666;
+}
+
+.Id{
+    display: block;
+    width: 100%;
+    height: 40px;
+    margin-left:10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+} 
+
+.SaveId{
+    font-family: NanumBarunGothicBold;
+    margin-left: 10px;
+    
+}
+
+.Password{
+    display: block;
+    width: 100%;
+    height: 40px;
+    margin-left:10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.btn.btn-primary{
+   background-color: #503396; 
+   margin-left:10px;
+   margin-right: 10px;
+   width: 100%;
+}
