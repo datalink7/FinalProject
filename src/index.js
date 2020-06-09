@@ -1,12 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Main from './Home/Main';
+// import LoginForm from './member/LoginForm';
+import JoinForm from './member/JoinForm';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Main />
+    {/* <LoginForm /> */}
+    <JoinForm/>
   </React.StrictMode>,
   document.getElementById('root')
 );
