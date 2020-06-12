@@ -8,14 +8,18 @@
     "@testing-library/user-event": "^7.1.2",
     "axios": "^0.19.2",
     "bootstrap": "^4.5.0",
+    "faster-react-tabs": "^1.0.4",
     "i": "^0.3.6",
     "query-string": "^6.13.0",
     "react": "^16.13.1",
     "react-bootstrap": "^1.0.1",
     "react-dom": "^16.13.1",
+    "react-modal": "^3.11.2",
     "react-player": "^2.2.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.1"
+    "react-scripts": "3.4.1",
+    "react-tabs": "^3.1.1",
+    "react-tiny-tabs": "^0.1.2"
   },
   "scripts": {
     "start": "react-scripts start",

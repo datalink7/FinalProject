@@ -1,0 +1,33 @@
+.table.table-bordered{
+    font-family: NanumBarunGothic;
+    width:60%;
+    margin-top: 1%;
+    margin-left: 10%;
+}
+
+
+.head{
+    width: 20px;
+    height: 10px;
+    font-size: 10pt;
+}
+
+.body{
+    height: 10px;
+    font-size: 10pt;
+}
+
+.btn.btn-dark{
+    background-color: #503396;
+    border-color: #ffffff;
+    color: white;
+    margin-top: 8%;;
+    margin-left:56.4%;
+}
+
+.page-link{
+   background-color:#503396;
+   color:white;
+   
+}
+
