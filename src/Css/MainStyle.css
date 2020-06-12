@@ -1,0 +1,220 @@
+*{
+    font-family: NanumBarunGothic;
+}
+
+
+/* .Match1{
+    position: absolute;
+    top : 300px;
+    width: 800px;
+    height: 500px;
+    background-color: white;
+} */
+
+.GujangList{
+    flex: 1;
+    flex-direction: column;
+}
+
+.picker{
+    text-align: center;
+    margin: 0,auto;
+    display: flex;
+}
+
+.MatchList button{
+    background-color:#503396;
+    border:1px solid #503396;
+    border-radius:3px;
+    color:white;
+    outline:none;
+    width: 50px;
+    margin-left: 5px;
+}
+
+/* ********************************************************* */
+
+.MatchDiv{
+    margin: 0,auto;
+    display: flex;
+}
+
+.Match1 .MatchButton {
+    border-color: #503396;
+    background-color: white;
+    border-radius: 10%;
+}
+
+.Match1 .MatchButton:hover {
+    background-color: #503396;
+    border-color: #503396;
+    outline: none;
+}
+
+/* .Match1 .MatchButton {
+    border: none;
+} */
+
+.User{
+    width: 300px;
+}
+
+.Users{
+    width: 350px;
+}
+
+/* ********************************************************* */
+
+
+.Menu5 a {
+    color: white;
+    text-decoration: none;
+}
+
+.Menu5 a.hover{
+    color: #503396;
+}
+
+div.slider{
+    height: 100px;
+}
+
+.slide.current {
+    height: 100px;
+}
+
+.Banner a.nextButton{
+    position: absolute;
+    top: 40%;
+    color: white;
+}
+
+.Banner a.previousButton{
+    position: absolute;
+    top: 40%;
+    color: white;
+}
+
+.Banner{
+    position: absolute;
+    top:0;
+    width: 100%;
+    height: 10%;
+    text-align: center;
+    color: white;
+    background-color: #503396;
+    
+    slider: 'slider';
+    previousButton: 'previousButton';
+    nextButton: 'nextButton';
+    buttonDisabled: 'enabled';
+    track: 'track';
+    slide: 'slide';
+    hidden: 'hidden';
+    previous: 'previous';
+    current: 'current';
+    next: 'next';
+    animateIn: 'animateIn';
+    animateOut: 'animateOut';
+}
+
+.track{
+    position: absolute;
+    width: 100%;
+    height: 90px;
+    margin-top: 15px;
+    /* border: 5px solid red; */
+}
+
+.logo2{
+    position: absolute;
+    top : 90px;
+    left: 30px;
+    width: 150px;
+    background-color: black;
+}
+
+.Menu5{
+    width:100%;
+    height: 220px;
+    background-color: black;
+}
+
+.Menu1 li{
+    position: relative;
+    top : 130px;
+    left : 180px;
+    display: inline-block;
+    list-style: none;
+    text-align: center;
+    width: 8%;
+    font-size: 18pt;
+    color: white; 
+    background-color: black;
+    font-family: NanumBarunGothic;
+    /* border: 1px solid gray; */
+
+}
+
+
+.Menu2 li{
+    position: relative;
+    top : 97px;
+    right: 100px;
+    width: 8%;
+    display: inline-block;
+    list-style: none;
+    text-align: center;
+    float: right;
+    /* width: 8%; */
+    font-size: 18pt;
+    color: white; 
+    font-family: NanumBarunGothic;
+    background-color: black;
+    /* border: 1px solid gray; */
+
+}
+
+.Main{
+    position: absolute;
+    top:230px;
+    width: 100%;
+    height: 500px;
+}
+
+/* video{
+    position: absolute;
+    top:10px;
+    width: 100%;
+    overflow: hidden;
+    clip-path: inset(20% 0 20% 0);
+    background-color: black;
+} */
+
+/* video.videoTag{
+    position: absolute;
+    top: -100px;
+    width: 1720px;
+    height: 500px;
+    overflow: hidden;
+    clip-path: inset(20% 0 20% 0);
+} */
+
+video{
+    position: absolute;
+    top:-200px;
+    width: 100%;
+    overflow: hidden;
+    clip-path: inset(20% 0 20% 0);
+}
+
+.Footer{
+    position: absolute;
+    top: 800px;
+    width: 100%;
+    height: 55px;
+    text-align: center;
+    font-family: NanumBarunGothic;
+    color:lightslategray;
+    background-color: black;
+}

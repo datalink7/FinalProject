@@ -2,10 +2,23 @@ import React from 'react';
 import Slider from 'react-animated-slider';
 import CarouselSlider from "react-carousel-slider"
 import 'react-animated-slider/build/horizontal.css';
-import {BrowserRouter as Router, Link } from 'react-router-dom';
+import {BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import logo2 from '../image/logo2.png';
+import Header from './Header';
 
 import Match from '../Match/Match';
+
+const RouterLink=()=>(
+    <Router>
+        <div>
+            <Header2/>
+            <div>
+                <Route path='/Match' component={Match}/>
+            </div>
+        </div>
+        
+    </Router>
+)
 
 const slides = [
     { title: 'First item', description: 'Lorem ipsum1'},
@@ -13,7 +26,7 @@ const slides = [
     { title: 'Third item', description: 'Lorem ipsum3'}
   ];
 
-const Header = () => (
+const Header2 = () => (
         <div>
             <div className="slider">
                 <Slider autoplay={1500}>

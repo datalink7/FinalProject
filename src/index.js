@@ -3,12 +3,14 @@ import ReactDOM from 'react-dom';
 import './index.css';
 // import LoginForm from './member/LoginForm';
 import JoinForm from './member/JoinForm';
+import Root from './Root';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
+    <Root/>
     {/* <LoginForm /> */}
-    <JoinForm/>
+    {/* <JoinForm/> */}
   </React.StrictMode>,
   document.getElementById('root')
 );
