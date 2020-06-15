@@ -1,3 +1,5 @@
+
+
 .table.table-bordered{
     font-family: NanumBarunGothic;
     width:60%;
@@ -17,6 +19,17 @@
     font-size: 10pt;
 }
 
+.page-link{
+    border:none;
+    color:black;
+}
+
+.page-link:hover{
+    color:#503396;
+}
+
+
+
 .btn.btn-dark{
     background-color: #503396;
     border-color: #ffffff;
@@ -25,9 +38,23 @@
     margin-left:56.4%;
 }
 
-.page-link{
-   background-color:#503396;
-   color:white;
-   
+.btnsearch{
+    border:none;
 }
 
+.icon{
+    background:"#00ff0000";
+    border:none;
+    width:37px;
+    
+}
+
+.icon:hover{
+    image:
+}
+
+
+.search{
+    border:none;
+    background-color: white;
+}
