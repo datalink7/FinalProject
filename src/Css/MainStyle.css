@@ -4,11 +4,33 @@
 /* ********************************************************* */
 
 .ReButton button{
-    margin-left: 10px;
+    background-color:#503396;
+    border:1px solid #503396;
+    border-radius:3px;
+    color:white;
+    outline:none;
+    width: 70px;
+    height: 30px;
+    margin-left: 5px;
+    margin-top: 10px;
+}
+
+.ReButton .disbtn{
+    background-color:#6c757d;
+    border:1px solid #6c757d;
+    cursor: not-allowed;
+    border-radius:3px;
+    color:white;
+    outline:none;
+    width: 70px;
+    height: 30px;
+    margin-left: 5px;
+    margin-top: 10px;
 }
 
 .txt1{
     font-size: 30pt;
+    color:#503396;
 }
 
 .txt2{
@@ -25,6 +47,7 @@
 
 .txt5{
     font-size: 25pt;
+    color:#503396;
 }
 
 .txt6{
@@ -32,7 +55,13 @@
 }
 
 .txt7{
-    font-size: 10pt;
+    font-size: 15pt;
+    margin-left: 10px;
+}
+
+.txt8{
+    font-size: 12pt;
+    margin-left: 10px;
 }
 
 /* ********************************************************* */
