@@ -21,7 +21,7 @@ const Menu=()=>{
                         <NavLink exact to="/Team" style={{ textDecoration: 'none' }}>Team</NavLink>
                     </li>
                     <li>
-                        <NavLink to="/Proxy" style={{ textDecoration: 'none' }}>Proxy</NavLink>
+                        <NavLink to="/QnA" style={{ textDecoration: 'none' }}>QnA</NavLink>
                     </li>
                 </ul>
             </div>

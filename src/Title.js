@@ -1,6 +1,6 @@
 import React from "react";
 import { Route } from "react-router-dom";
-import { Home,Match, League, Team, Proxy, Gujang, Reservation } from "./pages"; //index.js 호출
+import { Home,Match, League, Team, QnA, Gujang, Reservation, JoinFinal, JoinForm, LoginForm } from "./pages"; //index.js 호출
 import Root from "./Root";
 import './Css/MainStyle.css';
 import Menu from "./MainComponents/Menu";
@@ -23,11 +23,17 @@ const Title = () => {
 
       <Route exact path="/Team" component={Team} />
 
-      <Route exact path="/Proxy" component={Proxy}/>
+      <Route exact path="/QnA" component={QnA}/>
 
       <Route exact path="/Match/Gujang" component={Gujang}/>
 
       <Route exact path="/Match/Gujang/Reservation" component={Reservation}/>
+
+      <Route exact path="/Login" component={LoginForm}/>
+
+      <Route exact path="/Login/JoinForm" component={JoinForm}/>
+
+      <Route exact path="/Login/JoinForm/JoinFinal" component={JoinFinal}/>
       <Footer/>
     </div>
   );

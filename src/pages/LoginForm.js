@@ -2,12 +2,11 @@ import React, { useState } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import Modal from 'react-modal';
-import './LoginForm.css';
+import '../Css/LoginForm.css';
 import JoinForm from './JoinForm.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import img from './x-img.png';
+import img from '../image/x-img.png';
 import {NavLink,Route} from 'react-router-dom';
-import Title from '../Title';
 
 
 
@@ -97,7 +96,7 @@ function LoginForm() {
               {idx===1?Find:''}
 
               
-              <NavLink className="link" to="/JoinForm">회원가입</NavLink>
+              <NavLink className="link" exact to="/Login/JoinForm">회원가입</NavLink>
               
             </form>
             

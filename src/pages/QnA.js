@@ -1,9 +1,9 @@
 import React,{Component} from 'react';
 
-const Proxy=()=>(
+const QnA=()=>(
     <div>
         <b>Proxy Page</b>
     </div>
 )
 
-export default Proxy
+export default QnA
