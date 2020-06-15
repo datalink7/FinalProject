@@ -1,6 +1,6 @@
 import React from "react";
 import { Route } from "react-router-dom";
-import { Home,Match, League, Team, Proxy, Gujang } from "./pages"; //index.js 호출
+import { Home,Match, League, Team, Proxy, Gujang, Reservation } from "./pages"; //index.js 호출
 import Root from "./Root";
 import './Css/MainStyle.css';
 import Menu from "./MainComponents/Menu";
@@ -19,18 +19,15 @@ const Title = () => {
       <Route exact path="/Match" component={Match} />
       {/* <Route path="/about" component={About} /> */}
 
-      {/* 파라미터로 읽기-반듯이 넣어야함
-      <Route path="/about/:name" component={About} /> */}
-
-      {/*선택적 파라미터로 읽기*/}
       <Route exact path="/League" component={League} />
 
-      {/*선택적 파라미터로 읽기*/}
       <Route exact path="/Team" component={Team} />
 
-      <Route path="/Proxy" component={Proxy}/>
+      <Route exact path="/Proxy" component={Proxy}/>
 
-      <Route path="/Match/Gujang" component={Gujang}/>
+      <Route exact path="/Match/Gujang" component={Gujang}/>
+
+      <Route exact path="/Match/Gujang/Reservation" component={Reservation}/>
       <Footer/>
     </div>
   );

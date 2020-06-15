@@ -4,3 +4,4 @@ export {default as League} from './League';
 export {default as Team} from './Team';
 export {default as Proxy} from './Proxy';
 export {default as Gujang} from './Match_Gujang';
+export {default as Reservation} from './Reservation';
