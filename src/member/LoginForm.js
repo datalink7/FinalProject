@@ -6,7 +6,7 @@ import './LoginForm.css';
 import JoinForm from './JoinForm.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import img from './x-img.png';
-import {NavLink,Route} from 'react-router-dom';
+import {NavLink,Route}  from 'react-router-dom';
 import Title from './Title.js';
 
 
