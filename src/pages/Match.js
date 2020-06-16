@@ -2,7 +2,6 @@ import React from 'react';
 import Banner from '../MainComponents/Banner'
 import {NavLink,Route } from "react-router-dom";
 import Gujang from "./Match_Gujang";
-import Footer from '../MainComponents/Footer'
 import logo2 from '../image/logo2.png';
 import '../Css/MainStyle.css';
 import User from '../image/user.png'
@@ -17,7 +16,7 @@ const Match=()=>(
         <Banner/>
         <img src={logo2} className="logo2" alt="" />
         <div className="Match1" style={{align:'center',margin:'0 auto'}}>
-            <table style={{align:"center", width:'1200px',marginTop:'50px'}}>
+            <table style={{align:"center", width:'1200px',marginTop:'120px'}}>
                 <tbody>
                     <tr>
                         <td style={{width:'400px',align:'center', textAlign:'center'}}>
@@ -40,7 +39,6 @@ const Match=()=>(
                 </tbody>
             </table>
         </div>
-        <Footer/>
     </div>
 )
 

@@ -1,18 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import './index.css';
-// import LoginForm from './member/LoginForm';
-// import JoinForm from './member/JoinForm';
-// import Root from './Root';
-import Write from './Board/Write';
+
+//  import Root from './Root';
+
+// import Write from './pages/Write';
+import List from './pages/List';
+
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Write/>
+    {/* <Write/> */}
+    <List/>
     {/* <Root/> */}
-    {/* <LoginForm /> */}
-    {/* <JoinForm/> */}
   </React.StrictMode>,
   document.getElementById('root')
 );

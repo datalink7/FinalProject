@@ -1,6 +1,7 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
 import '../Css/MainStyle.css';
+import LoginForm from '../pages/LoginForm';
 
 const Menu=()=>{
 
@@ -21,7 +22,7 @@ const Menu=()=>{
                         <NavLink exact to="/Team" style={{ textDecoration: 'none' }}>Team</NavLink>
                     </li>
                     <li>
-                        <NavLink to="/Proxy" style={{ textDecoration: 'none' }}>Proxy</NavLink>
+                        <NavLink to="/QnA" style={{ textDecoration: 'none' }}>QnA</NavLink>
                     </li>
                 </ul>
             </div>
@@ -31,7 +32,8 @@ const Menu=()=>{
                         <NavLink exact to="/MyPage" style={{ textDecoration: 'none' }}>MyPage</NavLink>
                     </li>
                     <li>
-                        <NavLink exact to="/Login" style={{ textDecoration: 'none' }}>Login</NavLink>
+                        {/* <NavLink exact to="/Login" style={{ textDecoration: 'none' }}>Login</NavLink> */}
+                        <LoginForm> </LoginForm>
                     </li>
                 </ul>
             </div>
