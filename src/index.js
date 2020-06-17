@@ -1,18 +1,20 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-// import LoginForm from './member/LoginForm';
-import JoinForm from './member/JoinForm';
-import Root from './Root';
-import * as serviceWorker from './serviceWorker';
+import React from "react";
+import ReactDOM from "react-dom";
+
+import Root from "./Root";
+
+// import Write from './pages/Write';
+import List from "./pages/List";
+
+import * as serviceWorker from "./serviceWorker";
 
 ReactDOM.render(
   <React.StrictMode>
-    <Root/>
-    {/* <LoginForm /> */}
-    {/* <JoinForm/> */}
+    {/* <Write /> */}
+    {/* <List /> */}
+    <Root />
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 
 // If you want your app to work offline and load faster, you can change
