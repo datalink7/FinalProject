@@ -8,3 +8,5 @@ export {default as Reservation} from './Reservation';
 export {default as JoinFinal} from './JoinFinal';
 export {default as JoinForm } from './JoinForm';
 export {default as LoginForm} from './LoginForm';
+export {default as Payment} from './Payment';
+export {default as TeamHome} from './TeamHome';
