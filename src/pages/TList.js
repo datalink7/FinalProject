@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import '../Css/List.css'
+import '../Css/TList.css'
 import icon from '../image/search-icon.png';
 import lock from '../image/lock.png';
 class List extends Component{
@@ -10,14 +10,12 @@ class List extends Component{
     render(){
         return(
             <div >
-                <b>Customer Center</b>
+                
                 <div className="cscenter">
-                    <b className="cc">customer center</b>
+                    <b className="cc">TEAM BOARD</b>
                     <hr/>
                     <br/>
-                    <h2>070-7619-3519</h2>
-                    <b>open Am 10:30/Close PM17:30</b><br/>
-                    <b className="holiday">토,일요일,공휴일</b><b>은 휴무입니다.</b>
+                    
                 </div>
                 <form>
                     <button type="button" class="btn btn-dark">문의하기</button>

@@ -1,0 +1,61 @@
+.logo{
+    width:130px;
+
+    margin-bottom:30px;
+}
+
+.emogi{
+    width:45px;
+    
+}
+
+.roleguide{
+    text-align: center;
+}
+
+.schedule{
+    text-align:center;
+    border: 1px solid rgb(224,224,224)
+}
+
+.refund{
+    margin-top:10px;
+    text-align:center;
+    border: 1px solid rgb(224,224,224);
+}
+
+.leagueagree{
+    margin-top:10px;
+    text-align:center;
+    border: 1px solid rgb(224,224,224);
+    font-size: 15px;
+}
+
+.agbtn{
+    margin-top:10px;
+    border:none;
+    background-color: #503396;
+    color:white;
+    border-radius: 5px;
+    width:80px;
+    height:25px;
+}
+
+.information{
+    border:1px solid rgb(224,224,224); 
+    margin-left:15%;
+    margin-top:30px;
+    width:80%;
+    height:100px;
+}
+
+.leaguejoin{
+    border:none;
+    background-color: #503396;
+    color:white;
+    border-radius: 5px;
+    width:100px;
+    height:30px;
+    margin-right:3px;
+    margin-bottom:3px;
+}
