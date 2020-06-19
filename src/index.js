@@ -5,13 +5,14 @@ import ReactDOM from 'react-dom';
 //  import Root from './Root';
 
 
-import TList from './pages/TList';
+import TWrite from './pages/Content';
+
 
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
-    <TList/>
+    <TWrite/>
     {/* <Root/> */}
   </React.StrictMode>,
   document.getElementById('root')

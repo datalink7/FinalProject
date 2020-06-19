@@ -51,6 +51,11 @@ class Content extends Component{
                       </td>
                     </tr>
                   </table>
+                  <div className="btn-cont">
+                  <button type="button" className="cont-btn">수정</button>
+                  <button type="button" className="cont-btn">삭제</button>
+                  <button type="button" className="cont-btn">목록으로</button>
+                  </div>
                 </form>
                 </div> 
         )
