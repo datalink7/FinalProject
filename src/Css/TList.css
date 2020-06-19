@@ -1,100 +1,54 @@
+.eye{
+    width:33px;
+}
 
-
-.table.table-bordered{
+.form_T{
     font-family: NanumBarunGothic;
-    width:60%;
-    margin-top: 1%;
-    margin-left: 10%;
+    margin-left:10px;
+    margin-top:10px;
 }
 
-.lock{
-    width:12px;
-}
-
-.cstitle{
-    margin-left:28%;
-    font-size: 50px;
-    color:#503396;
-}
-
-.head{
-    width: 20px;
-    height: 10px;
-    font-size: 10pt;
-}
-
-.body{
-    height: 10px;
-    font-size: 10pt;
-}
-
-.page-link{
-    border:none;
-    color:black;
-}
-
-.page-link:hover{
-    color:#503396;
-}
-
-
-
-.btn.btn-dark{
-    background-color: #503396;
-    border-color: #ffffff;
-    color: white;
-    margin-top: 3%;;
-    margin-left:56.4%;
-}
-
-.btnsearch{
-    border:none;
-}
-
-.icon{
-    background:"#00ff0000";
-    border:none;
-    width:37px;
-    
-}
-
-.icon:hover{
-    image:
-}
-
-
-.search{
-    border:none;
-    background-color: white;
-}
-
-.cc{
-    font-size: 10pt;
-}
-
-.notice{
-    background-color: rgba(215,204,238,0.5);
-}
-
-.cscenter{
-    width:300px;
-    height:150px;
+.table_T{
+    width:70%;
+    height:20px;
+    border:1px solid RGB(224,224,224);
+    border-radius: 1px;
     text-align:center;
-    border:1px solid dimgray;
-    margin-left: 30%;
-    margin-top:5%;
 
 }
-
-.holiday{
-    color:Red;
-}
-
-.pagination{
-    margin-left:30%;
+.head_T{
+    border-bottom: 5px;
+    background-color:#000000;
+    color:white;
     
 }
 
-.board_search{
-    margin-left: 30%;
+.no_T{
+    
+    width:5%;
+    font-size: 14px;
+}
+
+.type_T{
+    width:15%;
+    font-size: 14px;
+}
+
+.title_T{
+    width:45%;
+    font-size: 14px;
+}
+
+.date_T{
+    width:20%;
+    font-size: 14px;
+}
+
+.member_T{
+    width:10%;
+    font-size: 14px;
+}
+
+.count.T{
+    width:5%;
 }
