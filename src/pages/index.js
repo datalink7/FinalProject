@@ -10,3 +10,6 @@ export {default as JoinForm } from './JoinForm';
 export {default as LoginForm} from './LoginForm';
 export {default as Payment} from './Payment';
 export {default as TeamHome} from './TeamHome';
+export {default as TeamMember} from './TeamMember';
+export {default as MatchHistory} from './MatchHistory';
+export {default as TeamBoard} from './TeamBoard';

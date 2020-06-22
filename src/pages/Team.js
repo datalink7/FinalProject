@@ -86,34 +86,34 @@ class Team extends React.Component {
                     </table>
                     <br/>
                     <div align="center" className="TeamTable">
-                    <table style={{width:'350px'}}>
+                    <table style={{width:'350px',height:'120px'}}>
                         <tbody>
                             <b>팀 전적</b>
                             <tr style={{border:'1px solid gray'}}>
-                                <td align="center" style={{width:'60px'}}>
+                                <td align="center" style={{width:'60px',border:'1px solid rgba(0,0,0,.1)'}}>
                                     <b>승</b>
                                 </td >
-                                <td align="center" style={{width:'60px'}}>
+                                <td align="center" style={{width:'60px',border:'1px solid rgba(0,0,0,.1)'}}>
                                     <b>패</b>
                                 </td>
-                                <td align="center" style={{width:'60px'}}>
+                                <td align="center" style={{width:'60px',border:'1px solid rgba(0,0,0,.1)'}}>
                                     <b>무</b>
                                 </td>
-                                <td align="center" style={{width:'70px'}}>
+                                <td align="center" style={{width:'70px',border:'1px solid rgba(0,0,0,.1)'}}>
                                     <b>승률</b>
                                 </td>
                             </tr>
                             <tr>
-                                <td align="center">
+                                <td align="center" style={{border:'1px solid rgba(0,0,0,.1)'}}>
                                     <b>5</b>
                                 </td>
-                                <td align="center">
+                                <td align="center" style={{border:'1px solid rgba(0,0,0,.1)'}}>
                                     <b>1</b>
                                 </td>
-                                <td align="center">
+                                <td align="center" style={{border:'1px solid rgba(0,0,0,.1)'}}>
                                     <b>1</b>
                                 </td>
-                                <td align="center">
+                                <td align="center" style={{border:'1px solid rgba(0,0,0,.1)'}}>
                                     <b>83%</b>
                                 </td>
                             </tr>
@@ -121,7 +121,7 @@ class Team extends React.Component {
                     </table>
                     <br/>
                         <NavLink to="/Team/TeamHome" style={{ textDecoration: 'none' }}>
-                            <button>팀 페이지 바로가기</button>
+                            <button style={{fontSize:'13pt',height:'35px'}}>팀 페이지 바로가기</button>
                         </NavLink>
                     </div>
                 </div>
@@ -130,9 +130,9 @@ class Team extends React.Component {
                     <br/>
                     <b style={{fontSize:'17pt',marginTop:'-30px'}}>팀 검색</b>
                     <input type="text" style={{width:'300px',height:'35px',marginLeft:'30px'}}/>
-                    <button type="button" style={{height:'35px',marginLeft:'30px'}}>검색하기</button>
+                    <button type="button" style={{height:'35px',marginLeft:'30px',width:'100px',fontSize:'13pt'}}>검색하기</button>
                     <br/><br/>
-                    <table className="" style={{height:'500px'}}>
+                    <table className="team1" style={{height:'500px',border:'1px solid rgba(0,0,0,.1)',fontSize:'13pt'}}>
                         <thead textAlign='center' verticalAlign='middle' style={{backgroundColor:'#503396',color:'white',fontSize:'13pt',border:'1px solid white'}}>
                             <tr align="center">
                                 <td style={{height:'100px',border:'1px solid white'}} rowSpan="2" width="350px">팀 명</td>
@@ -435,7 +435,7 @@ class Team extends React.Component {
                     <br/>
                         <React.Fragment>
                             <nav aria-label="Page navigation" style={{position:'absolute', left:'550px'}}>
-                                    <ul className="pagination">
+                                    <ul className="pagination" style={{fontSize:'13pt'}}>
                                     <li title="이전 페이지보기" className="page-item">
                                         <a className="page-link" href="#" style={{color:'black'}}>◀</a></li>
                                     <li className="page-item">
