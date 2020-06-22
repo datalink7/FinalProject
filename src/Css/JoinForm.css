@@ -1,18 +1,28 @@
 .Join{
+    width:70%;
+    margin-left: 160px;
     text-align: left;
     font-family: NanumBarunGothic; 
     color:#696969;
-    margin-left:20px;
+    
     margin-right: 10px;
 }
 
+b, strong {
+    font-weight: bolder;
+    font-size: 13px;
+    margin-left: 10px;
+    
+}
+
 .addr{
+    margin-left: 160px;
     border:none;
     border-bottom: 1px solid #ced4da;
     display: block;
     margin-bottom: 1px;
     height: 35px;
-    width : 350px;
+    width : 70%;
     padding: 10px 12px;
     opacity: 1 !important;
     font-size: 12px;
@@ -24,16 +34,18 @@
 }
 
 .addr:focus{
+    margin-left: 160px;
     outline: none;
     background-color: rgba(0,0,0,0.1);
 }
 .Input{
+    margin-left: 160px;
     border:none;
     border-bottom: 1px solid #ced4da;
     display : block;
     margin-bottom: 5px;
     height: 35px;
-    width : 350px;
+    width : 70%;
     padding: 10px 12px;
     opacity: 1 !important;
     font-size: 12px;
@@ -45,6 +57,7 @@
 }
 
 .gender{
+    margin-left: 160px;
     display: block;
     margin-bottom:5px;
 }
@@ -55,6 +68,7 @@
 }
 
  .Context{
+    margin-left: 160px;
     color: #666;
     display: table;
     font-size: 12px;
@@ -75,13 +89,15 @@
 }
 
 .Agree {
+    margin-left: 200px;
     border: 1px solid #cac9c9;
-    width:360px;
+    width:600px;
     padding: 20px 20px 20px 20px;
     font-size: 12px;
 }
 
 .AgreeContent{
+    
     text-align: center;
     font-size:15px;
 }
@@ -120,4 +136,8 @@
     width:160px;
     color:white;
     outline: none;
+}
+
+.joinbtn{
+    margin-left:500px;
 }

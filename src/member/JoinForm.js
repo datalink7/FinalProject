@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
 import {NavLink,Route} from 'react-router-dom';
-import css from './JoinForm.css';
+import css from '../css/JoinForm.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Title from './Title.js';
 class joinForm extends Component{
@@ -19,10 +19,10 @@ class joinForm extends Component{
                         <h5 className='Title'>가입 정보 입력</h5>
                         <span className="Context">로그인 정보 및 가입 정보를 입력하세요.</span>
                         <hr/>
-                        <strong>·아이디</strong><br/>
+                        <strong class="lititle">·아이디</strong><br/>
                          <input type="text" className="Input" placeholder="아이디 입력"/><br/>
 
-                        <strong>·비밀번호</strong><br/>
+                        <strong >·비밀번호</strong><br/>
                          <input type="password" className="Input" placeholder="특수문자를 포함한 8 ~ 15 입력"/><br/>
 
                         <strong>·비밀번호 확인</strong><br/>
@@ -84,9 +84,10 @@ class joinForm extends Component{
                         <br/><br/>
                     </table>
                 
-                   
+                    <div className="joinbtn">
                     <NavLink to="/JoinFinal"  ><button className="joinbtn">회원가입</button></NavLink>
                     <button type="submit" className="backbtn">뒤로가기</button>
+                    </div>
                 </form>
             </div>
         )

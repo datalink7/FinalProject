@@ -1,13 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import Root from './Root'
-import * as serviceWorker from './serviceWorker';
 
+//  import Root from './Root';
+
+// import Write from './pages/Write';
+import List from './pages/List';
+
+import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Root/>
+    {/* <Write/> */}
+    <List/>
+    {/* <Root/> */}
   </React.StrictMode>,
   document.getElementById('root')
 );

@@ -12,9 +12,11 @@ import {NavLink,Route} from 'react-router-dom';
 
 
 
+
 Modal.setAppElement('#root')
 function LoginForm() {
     const [modalIsOpen, setModalIsOpen ] =useState(false)
+    
     const [idx,setIdx]=useState(0);
         
     const Find = (
@@ -69,7 +71,11 @@ function LoginForm() {
             
 
             <div className="Login-Modal">
-                <button onClick={() => setModalIsOpen(true)}>Login</button>
+                <button class="loginbtn" onClick={() => {
+                    setModalIsOpen(true);
+                    setIdx(0);
+                }
+                }>Login</button>
             <Modal isOpen={modalIsOpen} >           
             <div>
             <h3 className="Head">로그인</h3>
@@ -93,13 +99,13 @@ function LoginForm() {
                  setIdx(1)
               }} style={{cursor:'pointer'}}>ID/PW찾기<b>   |</b></div>
 
-              {idx===1?Find:''}
+              {idx===1?Find:LoginForm}
 
               
-              <NavLink className="link" exact to="/Login/JoinForm">회원가입</NavLink>
-              
+             
+             
             </form>
-            
+            <NavLink onClick={() => setModalIsOpen(false)} class="link" exact to="/Login/JoinForm">회원가입</NavLink>
             </Modal>
         </div>
         )

@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import Modal from 'react-modal';
-import './LoginForm.css';
+import '../css/LoginForm.css';
 import JoinForm from './JoinForm.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import img from './x-img.png';
-import {NavLink,Route} from 'react-router-dom';
-import Title from '../Title';
+import {NavLink,Route}  from 'react-router-dom';
+import Title from './Title.js';
 
 
 

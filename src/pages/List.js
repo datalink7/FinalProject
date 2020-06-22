@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import css from './List.css'
-import icon from './search-icon.png';
+import css from '../Css/List.css'
+import icon from '../image/search-icon.png';
 class List extends Component{
 
     
