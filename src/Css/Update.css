@@ -1,0 +1,50 @@
+.userUp_btn{
+    border:none;
+    background-color: #503396;
+    color:white;
+    margin-left:10px;
+    border-radius: 3px;
+    margin-top:3px;
+    margin-bottom: 10px;
+    width:120px;
+    height:50px;
+
+}
+.table.table-hover{
+    width:450px;
+    margin-left:27%;
+}
+.table.table-bordered{
+    width:600px;
+}
+
+.user_upd{
+    font-size: 20px;
+}
+
+
+.user_info{
+    margin-left:10px;
+    margin-top:10px;
+    font-size:26px;
+}
+
+.user_ti{
+    width:200px;
+}
+
+.user_png{
+    width:120px;
+    margin-left:390px;
+}
+
+  
+
+.upd_tit{
+    text-align:center;
+}
+
+.btn_upd_user{
+   margin-left:35%;
+   margin-top: 5%;;
+   }
