@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import css from '../Css/Write.css';
+import keys from '../image/keys.png';
 import qnaim from '../image/qnaim.png';
 
 class Write extends Component{
@@ -9,7 +10,7 @@ class Write extends Component{
         return(
             <div className="write">
                 <form>
-               {/* <form onSubmit={this.handlesubmit.bind(this)}> */}
+               
                   <b className="question">문의<img className="qnaimg" src={qnaim}/><br/></b>
                   <br/>
                    <div className="explain">
@@ -37,6 +38,15 @@ class Write extends Component{
                         <tr>
                             <td className="writer"><b>작성자</b></td>
                             <td>{this.props.name}</td>
+                        </tr>
+                        <tr>
+                            <td className="secure"><b>비밀글</b></td>
+                            <td>
+                            
+                            <input type="text" className="secureip" placeholder="※비밀글로 설정시에만 작성해주세요."></input>
+                            &nbsp;&nbsp;&nbsp;
+                            <img src={keys} className="key"/>
+                            </td>
                         </tr>
                         <tr>
                             <td className="Subject"><b>제목</b></td>

@@ -7,6 +7,15 @@
     margin-left: 10%;
 }
 
+.lock{
+    width:12px;
+}
+
+.cstitle{
+    margin-left:28%;
+    font-size: 50px;
+    color:#503396;
+}
 
 .head{
     width: 20px;
@@ -34,7 +43,7 @@
     background-color: #503396;
     border-color: #ffffff;
     color: white;
-    margin-top: 8%;;
+    margin-top: 3%;;
     margin-left:56.4%;
 }
 
@@ -49,12 +58,39 @@
     
 }
 
-.icon:hover{
-    image:
-}
-
 
 .search{
     border:none;
     background-color: white;
+}
+
+.cc{
+    font-size: 10pt;
+}
+
+.notice{
+    background-color: rgba(215,204,238,0.5);
+}
+
+.cscenter{
+    width:300px;
+    height:150px;
+    text-align:center;
+    border:1px solid dimgray;
+    margin-left: 30%;
+    margin-top:5%;
+
+}
+
+.holiday{
+    color:Red;
+}
+
+.pagination{
+    margin-left:30%;
+    
+}
+
+.board_search{
+    margin-left: 30%;
 }

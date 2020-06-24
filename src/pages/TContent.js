@@ -2,7 +2,7 @@ import React,{Component} from 'react';
 import  '../Css/Content.css';
 
 
-class Content extends Component{
+class TContent extends Component{
 
     render(){
         return(
@@ -61,5 +61,5 @@ class Content extends Component{
         )
         }
       }
-export default Content
+export default TContent
 

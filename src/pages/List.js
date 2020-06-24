@@ -1,7 +1,8 @@
 import React,{Component} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import css from '../Css/List.css'
+import '../Css/List.css'
 import icon from '../image/search-icon.png';
+import lock from '../image/lock.png';
 class List extends Component{
 
     
@@ -9,6 +10,15 @@ class List extends Component{
     render(){
         return(
             <div >
+                <b>Customer Center</b>
+                <div className="cscenter">
+                    <b className="cc">customer center</b>
+                    <hr/>
+                    <br/>
+                    <h2>070-7619-3519</h2>
+                    <b>open Am 10:30/Close PM17:30</b><br/>
+                    <b className="holiday">토,일요일,공휴일</b><b>은 휴무입니다.</b>
+                </div>
                 <form>
                     <button type="button" class="btn btn-dark">문의하기</button>
                     <table className="table table-bordered" style={{textAlign:'center'}}>
@@ -24,12 +34,62 @@ class List extends Component{
                         </thead>
 
                         <tbody className="body">
-                            <td>1</td>
-                            <td>공지사항</td>
-                            <td>test</td>
-                            <td>관리자</td>
-                            <td>2020-05-11</td>
-                            
+                            <tr className="notice"> 
+                                <td>1</td>
+                                <td>공지사항</td>
+                                <td>test</td>
+                                <td>관리자</td>
+                                <td>2020-05-11</td>
+                            </tr>
+                            <tr className="notice">
+                                <td>2</td>
+                                <td>공지사항</td>
+                                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↳test2</td>
+                                <td>관리자</td>
+                                <td>2020-06-16</td>    
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>예약관련문의</td>
+                                <td>예약시 전화번호관련문의&nbsp;&nbsp;<img className="lock" src={lock}/></td>
+                                <td>뮹뮹</td>
+                                <td>2020-06-14</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>예약관련문의</td>
+                                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↳매치플레이입니다. 답변드립니다.^_^&nbsp;&nbsp;<img className="lock" src={lock}/></td>
+                                <td>관리자</td>
+                                <td>2020-06-14</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>매니저관련문의</td>
+                                <td>매니저는 ??</td>
+                                <td>묭묭</td>
+                                <td>2020-06-15</td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>매니저관련문의</td>
+                                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↳매치플레이입니다. 답변드립니다. ʕʘ̅͜ʘ̅̅ʔ </td>
+                                <td>관리자</td>
+                                <td>2020-06-16</td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>매니저관련문의</td>
+                                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↳&nbsp;↳아니이해가안되요</td>
+                                <td>묭묭</td>
+                                <td>2020-06-16</td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td>매니저관련문의</td>
+                                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↳&nbsp;↳&nbsp;↳매치플레이입니다. 답변드립니다. ƪ( ˘ ⌣˘ )ʃ </td>
+                                <td>관리자</td>
+                                <td>2020-06-16</td>
+                            </tr>
                         </tbody>
                        
                     </table>
