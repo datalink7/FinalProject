@@ -5,24 +5,24 @@ class TWrite extends Component{
 
     render(){
         return(
-            <div className="TWR">
-                 <img src={typing} className="typing"/>
+            <div className="TWR" align="center">
+                 <img src={typing} className="typing" alt=""/>
                  <form >
                      <div className="twtable">
                      <table class="table table-bordered" >
                          <tr>
                              <td className="twnick">
-                                 NICKNAME
+                                 <b style={{fontSize:'13pt'}}>닉네임</b>
                              </td>
                              <td>
-                                <select className="twsel">
+                                <select className="twsel" style={{fontSize:'13pt'}}>
                                     <option value="all">전체공개</option>
                                     <option value="member">멤버공개</option>    
                                 </select> 
                              </td>
                          </tr>
                          <tr>
-                             <td colSpan="2">
+                             <td colSpan="2" style={{fontSize:'13pt'}}>
                                  글제목&nbsp;&nbsp;&nbsp;&nbsp;
                                  <input type="Text" className="twtitle"></input>
                              </td>

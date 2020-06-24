@@ -13,3 +13,8 @@ export {default as TeamHome} from './TeamHome';
 export {default as TeamMember} from './TeamMember';
 export {default as MatchHistory} from './MatchHistory';
 export {default as TeamBoard} from './TeamBoard';
+export {default as TWrite} from './TWrite';
+export {default as Mypage} from './Mypage';
+export {default as MyMatchHistory} from './MyMatchHistory';
+export {default as Account} from './Account';
+export {default as PointHistory} from './PointHistory';

@@ -1,6 +1,6 @@
 import React from "react";
 import { Route } from "react-router-dom";
-import { Home,Match, League, Team, QnA, Gujang, Reservation, JoinFinal, JoinForm, LoginForm, Payment, TeamHome, TeamMember, MatchHistory, TeamBoard } from "./pages"; //index.js 호출
+import { Home,Match, League, Team, QnA, Gujang, Reservation, JoinFinal, JoinForm, LoginForm, Payment, TeamHome, TeamMember, MatchHistory, TeamBoard, TWrite, Mypage, MyMatchHistory, Account, PointHistory } from "./pages"; //index.js 호출
 import Root from "./Root";
 import './Css/MainStyle.css';
 import Menu from "./MainComponents/Menu";
@@ -44,6 +44,16 @@ const Title = () => {
       <Route exact path="/Team/TeamHome/MatchHistory" component={MatchHistory}/>
 
       <Route exact path="/Team/TeamHome/TeamBoard" component={TeamBoard}/>
+
+      <Route exact path="/Team/TeamHome/TeamBoard/TWrite" component={TWrite}/>
+
+      <Route exact path="/Mypage" component={Mypage}/>
+
+      <Route exact path="/Mypage/MyMatchHistory" component={MyMatchHistory}/>
+
+      <Route exact path="/Mypage/Account" component={Account}/>
+
+      <Route exact path="/Mypage/PointHistory" component={PointHistory}/>
       <Footer/>
     </div>
   );

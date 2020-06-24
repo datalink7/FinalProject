@@ -2,7 +2,7 @@ import React,{Component} from 'react';
 
 const QnA=()=>(
     <div>
-        <b>Proxy Page</b>
+        <b>QnA Page</b>
     </div>
 )
 

@@ -8,7 +8,6 @@ import ReactDOM from 'react-dom';
 
 const TeamHome=()=>(
     <div>
-        <Scrollbars className="scroll2" style={{width:'1750px', height:'680px', border:'5px solid yellow'}}>
         <div style={{position:'absolute',width:'230px',height:'683px',backgroundColor:'#503396',border:'3px'}}>
             <table style={{width:'300px',height:'550px',fontSize:'20pt',border:'2px',marginTop:'62px',marginLeft:'20px'}} className="TemaMenu">
                 <tbody>
@@ -47,8 +46,9 @@ const TeamHome=()=>(
                     </tr>
                 </tbody>
             </table>
-        </div>
-        <div style={{position:"absolute",left:'350px', top:'0px',backgroundColor:'#503396',width:'1280px'}}>
+        </div>  
+        <Scrollbars className="scroll2" style={{width:'1210px', height:'680px', border:'5px solid yellow',left:'500px'}}>
+            <div style={{position:"absolute", top:'0px',backgroundColor:'#503396',width:'1200px'}}>
             <img src={Empty} alt="" style={{width:'250px'}}/>
             <div style={{position:"absolute",left:'280px', top:'20px',backgroundColor:'#503396',width:''}}>
                 <b style={{fontSize:'25pt',color:'white',marginLeft:'0'}}>토트넘 홋스퍼 FC</b><br/>

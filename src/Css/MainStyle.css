@@ -2,6 +2,19 @@
     font-family: NanumBarunGothic;
 }
 
+.MyMatch td{
+    border: 1px solid rgba(0,0,0,.1);
+}
+
+.MyMatch tr{
+    height: 40px;
+}
+
+/* ********************************************************* */
+
+b, strong {
+    margin-left: 0;
+}
 /* ********************************************************* */
 
 .Record b{
@@ -360,7 +373,7 @@ div.slider{
 
 video{
     position: absolute;
-    top:-200px;
+    top:-205px;
     width: 100%;
     overflow: hidden;
     clip-path: inset(20% 0 15% 0);
@@ -375,6 +388,7 @@ video{
     font-family: NanumBarunGothic;
     color:lightslategray;
     background-color: black;
+    font-size: 13pt;
 }
 
 .Footer1{

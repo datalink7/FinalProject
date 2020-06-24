@@ -1,7 +1,8 @@
 .TWR{
     font-family: NanmBarunGothic;
-    margin-top: 10px;
-    margin-left: 10px;
+    margin-top: 50px;
+    /* margin-top: 10px;
+    margin-left: 10px; */
 }
 
 .twtable{
@@ -12,12 +13,13 @@
 
 .typing{
     width:150px;
-    margin-left:19.2%;
+    /* margin-left:19.2%; */
 }
 
 .twtext{
     width:99%;
-    height:140px;
+    height:250px;
+    font-size: 13pt;
 }
 
 .twsel{
@@ -26,6 +28,7 @@
 
 .twnick{
     width:50%;
+    font-size: 13pt;
 }
 
 .twtitle{
@@ -38,10 +41,11 @@
     background-color: #503396;
     color:white;
     width:120px;
-    height:25px;
+    height:40px;
     border-radius: 3px;
+    font-size: 13pt;
 }
 
-.twsavebtn{
+/* .twsavebtn{
     margin-left: 14.5%;
-}
+} */

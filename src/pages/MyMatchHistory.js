@@ -1,142 +1,56 @@
 import React,{Component} from 'react';
-import {NavLink} from 'react-router-dom';
 import '../Css/MainStyle.css'
+import {NavLink} from 'react-router-dom';
 import { Scrollbars } from 'react-custom-scrollbars';
 import Tot from '../image/tottenham.png'
 import City from '../image/mancity.png'
 import Ever from '../image/everton.png'
 import Manu from '../image/manu.png'
 import Liver from '../image/liverpool.png'
+import Img from '../image/img.png'
 
-
-const MatchHistory=()=>(
+const MyMatchHistory=()=>(
     <div>
         <div style={{position:'absolute',width:'230px',height:'683px',backgroundColor:'#503396',border:'3px'}}>
             <table style={{width:'300px',height:'550px',fontSize:'20pt',border:'2px',marginTop:'62px',marginLeft:'20px'}} className="TemaMenu">
                 <tbody>
                     <tr>
                         <td align="center" width="200px">
-                            <NavLink exact to="/Team/TeamHome" 
+                            <NavLink exact to="/Mypage" 
                             style={{ textDecoration: 'none',color:'white'}}>
                                 <button type="button" name="Hover" className="button-container-2"
-                                style={{width:'250px', height:'80px',backgroundColor:'black', border:'2px solid white',borderRadius:'20px',boxShadow:'3px 3px 3px 0px gray'}}>Team Main</button>
+                                style={{width:'250px', height:'80px',backgroundColor:'black', border:'2px solid white',borderRadius:'20px',boxShadow:'3px 3px 3px 0px gray'}}>MyPage Main</button>
                             </NavLink>
                         </td>
                     </tr>
                     <tr>
                         <td align="center">
-                            <NavLink exact to="/Team/TeamHome/TeamMember" style={{ textDecoration: 'none',color:'white'}}>
+                            <NavLink exact to="/Mypage/Account" style={{ textDecoration: 'none',color:'white'}}>
                             <button type="button" 
-                                style={{width:'250px', height:'80px',backgroundColor:'black', border:'2px solid white',borderRadius:'20px',boxShadow:'3px 3px 3px 0px gray'}}>TeamMember</button>
+                                style={{width:'250px', height:'80px',backgroundColor:'black', border:'2px solid white',borderRadius:'20px',boxShadow:'3px 3px 3px 0px gray'}}>Account</button>
                             </NavLink>
                         </td>
                     </tr>
                     <tr>
                         <td align="center">
-                            <NavLink exact to="/Team/TeamHome/MatchHistory" style={{ textDecoration: 'none',color:'white'}}>
+                            <NavLink exact to="/Mypage/MyMatchHistory" style={{ textDecoration: 'none',color:'white'}}>
                             <button type="button" 
-                                style={{width:'250px', height:'80px',backgroundColor:'black', border:'2px solid white',borderRadius:'20px',boxShadow:'3px 3px 3px 0px gray'}}>MatchHistory</button>
+                                style={{width:'250px', height:'80px',backgroundColor:'black', border:'2px solid white',borderRadius:'20px',boxShadow:'3px 3px 3px 0px gray'}}>Match History</button>
                             </NavLink>
                         </td>
                     </tr>
                     <tr>
                         <td align="center">
-                            <NavLink exact to="/Team/TeamHome/TeamBoard" style={{ textDecoration: 'none',color:'white'}}>
+                            <NavLink exact to="/Mypage/PointHistory" style={{ textDecoration: 'none',color:'white'}}>
                             <button type="button" 
-                                style={{width:'250px', height:'80px',backgroundColor:'black', border:'2px solid white',borderRadius:'20px',boxShadow:'3px 3px 3px 0px gray'}}>TeamBoard</button>
+                                style={{width:'250px', height:'80px',backgroundColor:'black', border:'2px solid white',borderRadius:'20px',boxShadow:'3px 3px 3px 0px gray'}}>Point History</button>
                             </NavLink>
                         </td>
                     </tr>
                 </tbody>
             </table>
         </div>
-        <div style={{position:'absolute',left:'550px',top:'210px'}}>
-            <b style={{fontSize:'18pt',color:'#503396'}}>일반 경기 전적</b><br/>
-            <table className="Record">
-                <thead>
-                    <tr>
-                        <td align="center" style={{width:'60px'}}>
-                            <b>총</b>
-                        </td >
-                        <td align="center" style={{width:'60px'}}>
-                            <b>승</b>
-                        </td >
-                        <td align="center" style={{width:'60px'}}>
-                            <b>패</b>
-                        </td>
-                        <td align="center" style={{width:'60px'}}>
-                            <b>무</b>
-                        </td>
-                        <td align="center" style={{width:'70px'}}>
-                            <b>승률</b>
-                        </td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td align="center">
-                            <b>29</b>
-                        </td>
-                        <td align="center">
-                            <b>11</b>
-                        </td>
-                        <td align="center">
-                            <b>8</b>
-                        </td>
-                        <td align="center">
-                            <b>10</b>
-                        </td>
-                        <td align="center">
-                            <b>83%</b>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div style={{position:'absolute',left:'1150px',top:'210px'}}>
-            <b style={{fontSize:'18pt',color:'#503396'}}>리그 전적</b><br/>
-            <table className="Record">
-                <thead>
-                    <tr>
-                        <td align="center" style={{width:'60px'}}>
-                            <b>총</b>
-                        </td >
-                        <td align="center" style={{width:'60px'}}>
-                            <b>승</b>
-                        </td >
-                        <td align="center" style={{width:'60px'}}>
-                            <b>패</b>
-                        </td>
-                        <td align="center" style={{width:'60px'}}>
-                            <b>무</b>
-                        </td>
-                        <td align="center" style={{width:'70px'}}>
-                            <b>승률</b>
-                        </td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td align="center">
-                            <b>29</b>
-                        </td>
-                        <td align="center">
-                            <b>11</b>
-                        </td>
-                        <td align="center">
-                            <b>8</b>
-                        </td>
-                        <td align="center">
-                            <b>10</b>
-                        </td>
-                        <td align="center">
-                            <b>83%</b>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div style={{position:'absolute',left:'500px',top:'340px',width:'1200px',height:'100px'}} align="center">
+        <div style={{position:'absolute',left:'500px',top:'250px',width:'1200px',height:'100px'}} align="center">
             <table style={{fontSize:'13pt'}}>
                 <tbody>
                     <tr>
@@ -174,16 +88,48 @@ const MatchHistory=()=>(
                 </tbody>
             </table>
         </div>
-        <Scrollbars className="ReScroll" style={{width:'1200px', height:'493px',position:'absolute',top:'390px',left:'500px'}}>
+        <Scrollbars className="ReScroll" style={{width:'1200px', height:'551px',position:'absolute',top:'330px',left:'500px'}}>
         <div style={{boder:'3px solid yellow'}}>
             <table style={{border:'2px solid rgba(0,0,0,.1)'}}>
                 <tbody>
                     <tr style={{borderBottom:'1px solid rgba(0,0,0,.1)',height:'40px',backgroundColor:'#b3e5fc'}}>
                         <td align="center" style={{border:'1px solid gray'}}>
-                            <b style={{fontSize:'15pt'}}>20.06.02(금)</b>
+                            <b style={{fontSize:'15pt'}}>20.06.01(목)</b>
                         </td>
                         <td align="center" style={{border:'1px solid gray',width:'400px'}}>
                             <b style={{fontSize:'15pt'}}>Friendly Match</b>
+                        </td>
+                        <td align="center" style={{border:'1px solid gray'}}>
+                            <b style={{fontSize:'15pt'}}>상대팀 : (개인전)</b>
+                        </td>
+                        <td style={{border:'1px solid gray'}}>
+                            <b style={{fontSize:'15pt',float:'left',color:'blue',float:'right',marginRight:'50px'}}>승리</b>
+                        </td>
+                    </tr>
+                    <tr style={{borderBottom:'1px solid rgba(0,0,0,.1)',backgroundColor:'LightSkyBlue'}}>
+                        <td align="center" style={{border:'1px solid gray', width:'200px'}}>
+                            <img src={Img} alt="" style={{width:'100px',paddingTop:'10px',paddingBottom:'10px',border:'1px'}}/>
+                        </td>
+                        <td align="center" style={{width:'300px',border:'1px solid gray'}}>
+                            <b style={{fontSize:'60pt'}}>2 : 0</b>
+                        </td>
+                        <td style={{border:'1px solid gray', width:'200px'}} align="center">
+                            <img src={Img} alt="" style={{width:'100px',marginLeft:'0px',paddingTop:'10px',paddingBottom:'10px',border:'1px'}}/>
+                        </td>
+                        <td width="400px" style={{border:'1px solid gray'}}>
+                            <b style={{fontSize:'15pt',marginLeft:'50px'}}>경기 장소 :</b>
+                            <b style={{fontSize:'15pt'}}>도봉 루다 풋살장 A</b>
+                            <br/>
+                            <b style={{fontSize:'15pt',marginLeft:'50px'}}>주소 :</b>
+                            <b style={{fontSize:'15pt'}}>서울 도봉구 방학동 271-2</b>    
+                        </td>
+                    </tr>
+                    <tr style={{borderBottom:'1px solid rgba(0,0,0,.1)',height:'40px',backgroundColor:'#b3e5fc'}}>
+                        <td align="center" style={{border:'1px solid gray'}}>
+                            <b style={{fontSize:'15pt'}}>20.06.02(금)</b>
+                        </td>
+                        <td align="center" style={{border:'1px solid gray',width:'400px'}}>
+                            <b style={{fontSize:'15pt'}}>League Match</b>
                         </td>
                         <td align="center" style={{border:'1px solid gray'}}>
                             <b style={{fontSize:'15pt'}}>상대팀 : 맨시티</b>
@@ -325,4 +271,4 @@ const MatchHistory=()=>(
     </div>
 )
 
-export default MatchHistory
+export default MyMatchHistory

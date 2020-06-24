@@ -10,8 +10,8 @@ import '../Css/MainStyle.css';
 const Home=()=>{
     return(
         <div className="Menu5">
-            <Banner/>
-            <Menu/>
+            {/* <Banner/>
+            <Menu/> */}
             <img src={logo2} className="logo2" alt="" />
             <Main/>
             <Footer/>
