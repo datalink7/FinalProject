@@ -3,9 +3,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../Css/List.css'
 import icon from '../image/search-icon.png';
 import lock from '../image/lock.png';
-class List extends Component{
 
-    
+class List extends Component{
 
     render(){
         return(
@@ -20,7 +19,8 @@ class List extends Component{
                     <b className="holiday">토,일요일,공휴일</b><b>은 휴무입니다.</b>
                 </div>
                 <form>
-                    <button type="button" class="btn btn-dark">문의하기</button>
+                    {/* <NavLink exact to="/QnA/Write" style={{ textDecoration: 'none',color:'white'}}> */}
+                        <button type="button" class="btn btn-dark">문의하기</button>
                     <table className="table table-bordered" style={{textAlign:'center'}}>
                         <thead className="head" >
                             <tr> 
@@ -51,14 +51,14 @@ class List extends Component{
                             <tr>
                                 <td>3</td>
                                 <td>예약관련문의</td>
-                                <td>예약시 전화번호관련문의&nbsp;&nbsp;<img className="lock" src={lock}/></td>
+                                <td>예약시 전화번호관련문의&nbsp;&nbsp;<img className="lock" src={lock} alt=""/></td>
                                 <td>뮹뮹</td>
                                 <td>2020-06-14</td>
                             </tr>
                             <tr>
                                 <td>4</td>
                                 <td>예약관련문의</td>
-                                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↳매치플레이입니다. 답변드립니다.^_^&nbsp;&nbsp;<img className="lock" src={lock}/></td>
+                                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↳매치플레이입니다. 답변드립니다.^_^&nbsp;&nbsp;<img className="lock" src={lock} alt=""/></td>
                                 <td>관리자</td>
                                 <td>2020-06-14</td>
                             </tr>

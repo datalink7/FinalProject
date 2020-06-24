@@ -2,6 +2,7 @@ import React,{Component} from 'react';
 import '../Css/MainStyle.css'
 import {NavLink} from 'react-router-dom';
 import { Scrollbars } from 'react-custom-scrollbars';
+import UserDelUpd from '../User/UserDelUpd';
 
 const Account=()=>(
     <div>
@@ -43,6 +44,15 @@ const Account=()=>(
                     </tr>
                 </tbody>
             </table>
+        </div>
+        <div style={{border:'3px solid red', position:'absolute',left:'400px'}}>
+            <NavLink exact to="/Mypage/Account" style={{ textDecoration: 'none',color:'white'}}>
+                <button type="button">회원정보수정/탈퇴</button>
+            </NavLink>
+            <NavLink exact to="/Mypage/Account/PwUpdate" style={{ textDecoration: 'none',color:'white'}}>
+                <button type="button">비밀번호 변경</button>
+            </NavLink>
+            <UserDelUpd/>
         </div>
     </div>
 )

@@ -197,7 +197,7 @@ class UserDelUpd extends Component{
                 </tr>
                 </table>
                 <button className="userUp_btn" onClick={this.handleToggleEdit}>수정</button>
-                <button className="userUp_btn" onClick={Drop}>탈퇴</button>
+                {/* <button className="userUp_btn" onClick={Drop}>탈퇴</button> */}
             </form>
             </div>
         );

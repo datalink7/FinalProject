@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import css from '../Css/Write.css';
 import keys from '../image/keys.png';
 import qnaim from '../image/qnaim.png';
+import {NavLink} from 'react-router-dom';
 
 class Write extends Component{
 

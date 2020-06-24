@@ -18,3 +18,4 @@ export {default as Mypage} from './Mypage';
 export {default as MyMatchHistory} from './MyMatchHistory';
 export {default as Account} from './Account';
 export {default as PointHistory} from './PointHistory';
+export {default as Write} from './Write';
