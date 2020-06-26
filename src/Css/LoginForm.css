@@ -1,176 +1,165 @@
-.Login-Modal1{
-    text-align: center;
-    font-family: NanumBarunGothic; 
-     /* margin-left:80px;  */
-    margin-right: 10px;
-    vertical-align: middle; 
-    
+.Login-Modal1 {
+  text-align: center;
+  font-family: NanumBarunGothic;
+  /* margin-left:80px;  */
+  margin-right: 10px;
+  vertical-align: middle;
+  align-self: center;
 }
-.ReactModal__Content{
-    margin-left: 450px;
-    margin-top: 100px;
+.ReactModal__Content {
+  margin-left: 450px;
+  margin-top: 100px;
 }
-.x{
-    float: right;
-    width: 40px;
-    margin: -35px 0px 41px 0px;
-    border: none;
-    background-color: white;
-}
-
-.ReactModal__Content{width: 440px;
-    height: 350px;
-    }
-
- .ReactModal__Content{width: 440px;
-        height: 550px;}
-.ab{
-    color:#666;
-    position: absolute;
-    top:300px;
-    right:155px;
+.x {
+  float: right;
+  width: 40px;
+  margin: -35px 0px 41px 0px;
+  border: none;
+  background-color: white;
 }
 
-.loginbtn{
-    background-color: black;
-    border:none;
+.ReactModal__Content {
+  width: 440px;
+  height: 350px;
 }
 
- .a{
-     color: #666;
- }
-.Id{
-    display: block;
-    width: 100%;
-    height: 40px;
-    margin-left:10px;
-    margin-right: 10px;
-    margin-bottom: 10px;
-    margin-top:90px;
-} 
-
-.SaveId{
-    font-family: NanumBarunGothicBold;
-    margin-left: 10px;
-    margin-top:20px;
-    
+.ReactModal__Content {
+  width: 440px;
+  height: 550px;
+}
+.ab {
+  color: #666;
+  position: absolute;
+  top: 300px;
+  right: 155px;
 }
 
-.Password{
-    display: block;
-    width: 100%;
-    height: 40px;
-    margin-left:10px;
-    margin-right: 10px;
-    margin-bottom: 10px;
-    margin-top:18px;
+.loginbtn {
+  background-color: black;
+  border: none;
 }
 
-.btn.btn-dark{
-    background-color: #503396;
-    border-color: #ffffff;
-    color: white;
-    position: absolute;
-    left:10px;
-    bottom:170px;
-    width:90%;
+.a {
+  color: #666;
+}
+.Id {
+  display: block;
+  width: 100%;
+  height: 40px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  margin-top: 90px;
+}
 
-    
+.SaveId {
+  font-family: NanumBarunGothicBold;
+  margin-left: 10px;
+  margin-top: 20px;
+}
+
+.Password {
+  display: block;
+  width: 100%;
+  height: 40px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  margin-top: 18px;
+}
+
+.btn.btn-dark {
+  background-color: #503396;
+  border-color: #ffffff;
+  color: white;
+  position: absolute;
+  left: 10px;
+  bottom: 170px;
+  width: 90%;
 }
 
 .Find {
-    font-family: NanumBarunGothicLight;
-    margin-left:300px;
-    margin-right: 10px;
-    
+  font-family: NanumBarunGothicLight;
+  margin-left: 300px;
+  margin-right: 10px;
 }
 
-
-
-.form{
-    margin-left:15px;
+.form {
+  margin-left: 15px;
 }
 
-.Title{
-    margin-top: 20px;
-    margin-bottom: 30px;
-    margin-left: 20px;
-    
+.Title {
+  margin-top: 20px;
+  margin-bottom: 30px;
+  margin-left: 20px;
 }
 
-.Input1{
-    border:none;
-    border-bottom: 1px solid #ced4da;
-    display : block;
-    margin-bottom: 5px;
-    height: 35px;
-    width : 350px;
-    padding: 10px 12px;
-    opacity: 1 !important;
-    font-size: 12px;
-    box-sizing: border-box;
-    transition: border-color 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-    border-color: #ced4da;
-    background-color: #fff;
-
+.Input1 {
+  border: none;
+  border-bottom: 1px solid #ced4da;
+  display: block;
+  margin-bottom: 5px;
+  height: 35px;
+  width: 350px;
+  padding: 10px 12px;
+  opacity: 1 !important;
+  font-size: 12px;
+  box-sizing: border-box;
+  transition: border-color 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  border-color: #ced4da;
+  background-color: #fff;
 }
 
-.btn.btn-Info{
-    background-color: #503396; 
-    margin-top: 20px;
-    margin-right: 20px;
-    width:160px;
-    border-color:#ffffff;
-    color:white;
-    
- }
+.btn.btn-Info {
+  background-color: #503396;
+  margin-top: 20px;
+  margin-right: 20px;
+  width: 160px;
+  border-color: #ffffff;
+  color: white;
+}
 
- .btn.btn-Info:hover{
-     background-color:black;
-     
- }
+.btn.btn-Info:hover {
+  background-color: black;
+}
 
- 
- 
- .FindDiv:hover{
-    text-decoration: underline;
- }
+.FindDiv:hover {
+  text-decoration: underline;
+}
 
- .FindDiv{
-     color:dimgray;
-    position: absolute;
-    width:160px;
-    top:400px;
-    left:135px;
- }
+.FindDiv {
+  color: dimgray;
+  position: absolute;
+  width: 160px;
+  top: 400px;
+  left: 135px;
+}
 
- .joina{
-    position: absolute;
-    right: 180px;
-    top: 401px;
-    color: dimgray;
-    text-decoration-line: blink;
+.joina {
+  position: absolute;
+  right: 180px;
+  top: 401px;
+  color: dimgray;
+  text-decoration-line: blink;
+}
 
- }
+.joina:hover {
+  color: dimgray;
+}
 
- .joina:hover{
-     color:dimgray;
+.img {
+  background-color: none;
+  border-color: white;
+}
 
- }
+.link {
+  color: dimgray;
+  position: absolute;
+  top: 401px;
+  left: 230px;
+}
 
- .img{
-     background-color: none;
-     border-color: white;
- }
-
- .link{
-     color:dimgray;
-     position: absolute;
-     top: 401px;
-     left: 230px;
-     
- }
-
- .link:hover{
-     color:dimgray;
- }
+.link:hover {
+  color: dimgray;
+}

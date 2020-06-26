@@ -1,17 +1,29 @@
 import React from "react";
 import { Route } from "react-router-dom";
-import { Home,Match, League, Team, QnA, Gujang, Reservation, JoinFinal, JoinForm, LoginForm } from "./pages"; //index.js 호출
-import Root from "./Root";
-import './Css/MainStyle.css';
+import {
+  Home,
+  Team,
+  QnA,
+  Gujang,
+  Reservation,
+  JoinFinal,
+  JoinForm,
+  LoginForm,
+} from "./pages"; //index.js 호출
+import "./Css/MainStyle.css";
 import Menu from "./MainComponents/Menu";
 import Footer from "./MainComponents/Footer";
-import Banner from './MainComponents/Banner'
-import logo2 from './image/logo2.png';
+import Banner from "./MainComponents/Banner";
+import logo2 from "./image/logo2.png";
+import Match from "./Match/SelectTeam";
+import ReservationMain from "./Match/ReservationMain";
+import League from "./League/LeagueMain";
+import MyRes from "./pages/MyRes";
 
 const Title = () => {
   return (
     <div>
-      <Banner/>
+      <Banner />
       <Menu />
       <img src={logo2} className="logo2" alt="" />
       <Route exact path="/" component={Home} />
@@ -20,21 +32,24 @@ const Title = () => {
       {/* <Route path="/about" component={About} /> */}
 
       <Route exact path="/League" component={League} />
+      <ReservationMain></ReservationMain>
+
+      <Route exact path="/Myres" component={MyRes} />
 
       <Route exact path="/Team" component={Team} />
 
-      <Route exact path="/QnA" component={QnA}/>
+      <Route exact path="/QnA" component={QnA} />
 
-      <Route exact path="/Match/Gujang" component={Gujang}/>
+      <Route exact path="/Match/Gujang" component={Gujang} />
 
-      <Route exact path="/Match/Gujang/Reservation" component={Reservation}/>
+      <Route exact path="/Match/Gujang/Reservation" component={Reservation} />
 
-      <Route exact path="/Login" component={LoginForm}/>
+      <Route exact path="/Login" component={LoginForm} />
 
-      <Route exact path="/Login/JoinForm" component={JoinForm}/>
+      <Route exact path="/Login/JoinForm" component={JoinForm} />
 
-      <Route exact path="/Login/JoinForm/JoinFinal" component={JoinFinal}/>
-      <Footer/>
+      <Route exact path="/Login/JoinForm/JoinFinal" component={JoinFinal} />
+      <Footer />
     </div>
   );
 };

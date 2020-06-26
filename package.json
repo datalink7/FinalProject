@@ -21,6 +21,7 @@
     "react-carousel-slider": "^2.0.13",
     "react-custom-scrollbars": "^4.2.1",
     "react-dom": "^16.13.1",
+    "react-full-page": "^0.1.9",
     "react-modal": "^3.11.2",
     "react-player": "^2.3.1",
     "react-router": "^5.2.0",
@@ -30,7 +31,9 @@
     "react-scrollbar": "^0.5.6",
     "react-scrollbar-js": "^1.0.1",
     "react-tabs": "^3.1.1",
-    "react-weekly-day-picker": "^1.0.3"
+    "react-weekly-day-picker": "^1.0.3",
+    "core-js": "^2.6.5",
+    "nuxt": "2.6.3"
   },
   "scripts": {
     "start": "react-scripts start",

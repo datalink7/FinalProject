@@ -15,6 +15,7 @@ const Gujang = () => (
       startDay={new Date()} // First day as Date Object or 22 June 2016
       selectedDays={["10 June 2020", new Date()]} // Selected days list
       multipleDaySelect={false} //enables multiple day selection
+      selectDay={(e) => alert("asd")}
     />
     <div
       className="GujangList"
