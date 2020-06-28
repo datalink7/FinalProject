@@ -30,22 +30,26 @@ class SelectDetail extends Component {
       selectTime: "",
       selectTeam: "",
       textMap: "보기",
-      selectType: this.props.location.state.type,
+      selectType: "",
       memberData: [],
+      home_member_id: "",
+      away_member_id: "",
     };
   }
 
   getMemberData = () => {
     // const url = "http://192.168.0.108:9000/matchplay/memberdata?id=";
-    const url = "http://localhost:9000/matchplay/memberdataid=";
+    const url = "http://localhost:9000/matchplay/memberdata?id=";
 
     axios
       .get(url + window.sessionStorage.getItem("id"))
       .then((res) => {
-        this.setState({
-          memberData: res.data,
-        });
-        console.log(this.state.memberData);
+        this.setState(
+          {
+            memberData: res.data,
+          },
+          () => console.log(this.state.memberData)
+        );
       })
       .catch((err) => {
         console.log(err);
@@ -61,12 +65,14 @@ class SelectDetail extends Component {
     axios
       .get(url + id)
       .then((res) => {
-        this.setState({
-          dData: res.data,
-          etc: res.data.place_etc.split("/"),
-          pics: res.data.place_pic.split("/"),
-        });
-        console.log(this.state.dData);
+        this.setState(
+          {
+            dData: res.data,
+            etc: res.data.place_etc.split("/"),
+            pics: res.data.place_pic.split("/"),
+          },
+          () => console.log(this.state.dData)
+        );
       })
       .catch((err) => {
         console.log(err);
@@ -94,34 +100,84 @@ class SelectDetail extends Component {
         console.log(err);
       });
   };
+
   checkMax = (e) => {
-    let checkTeam = this.state.selectTeam;
-    let checkCon;
-    const checkDate = this.state.res_date;
-    if (checkTeam === "1팀") {
-      checkTeam = this.state.team1;
-    } else {
-      checkTeam = this.state.team2;
-    }
-    if (this.state.selectType === "0") {
-      checkCon = checkTeam >= this.state.dData.place_max / 2;
-    } else {
-      checkCon = checkTeam >= 1;
-    }
-    // alert(checkDate);
-    if (checkCon) {
-      alert("남아있는 자리가 없습니다.\n다시 선택하세요.");
+    if (
+      (this.state.home_member_id != null &&
+        this.state.home_member_id.includes(
+          window.sessionStorage.getItem("id")
+        )) ||
+      (this.state.away_member_id != null &&
+        this.state.away_member_id.includes(window.sessionStorage.getItem("id")))
+    ) {
+      alert("이미 예약한 경기 입니다.");
       e.preventDefault();
-    } else if (checkDate === undefined || checkDate == null) {
-      // alert(checkDate);
-      this.addRes();
     } else {
-      // alert("update");
-      this.updateRes();
+      let checkTeam = this.state.selectTeam;
+      let checkCon;
+      const checkDate = this.state.res_date;
+      if (checkTeam === "1팀") {
+        checkTeam = this.state.team1;
+      } else {
+        checkTeam = this.state.team2;
+      }
+      if (this.state.selectType === "0") {
+        checkCon = checkTeam >= this.state.dData.place_max / 2;
+      } else {
+        checkCon = checkTeam >= 1;
+      }
+      // alert(
+      //   this.state.selectType === "0"
+      //     ? this.state.dData.place_price / this.state.dData.place_max
+      //     : this.state.dData.place_price / 2
+      // );
+      // alert(checkDate);
+      if (
+        this.state.memberData.point <
+        (this.state.selectType === "0"
+          ? this.state.dData.place_price / this.state.dData.place_max
+          : this.state.dData.place_price / 2)
+      ) {
+        alert("포인트가 부족합니다.\n충전 후에 다시 예약해주세요.");
+        e.preventDefault();
+      } else {
+        if (checkCon) {
+          alert("남아있는 자리가 없습니다.\n다시 선택하세요.");
+          e.preventDefault();
+        } else if (checkDate == undefined || checkDate == null) {
+          this.addRes();
+        } else {
+          this.updateRes();
+        }
+      }
     }
   };
+  usePoint = () => {
+    const url =
+      "http://localhost:9000/matchplay/usepoint?id=" +
+      window.sessionStorage.getItem("id") +
+      "&usingPoint=" +
+      (this.state.selectType === "0"
+        ? this.state.dData.place_price / this.state.dData.place_max
+        : this.state.dData.place_price / 2);
+    // const url = "http://192.168.0.108:9000/matchplay/usepoint";
+    // alert("userid=" + window.sessionStorage.getItem("id"));
+    // alert(
+    //   "usingPoint=" +
+    //     (this.state.selectType === "0"
+    //       ? this.state.dData.place_price / this.state.dData.place_max
+    //       : this.state.dData.place_price / 2)
+    // );
+    // alert(url);
+    axios
+      .get(url)
+      .then((e) => {})
+      .catch((err) => {
+        alert(err);
+      });
+  };
   addRes = (e) => {
-    // e.preventDefault();
+    // alert("addRes");
     const {
       member_id,
       place_id,
@@ -133,6 +189,7 @@ class SelectDetail extends Component {
     // let url = "";
     // if (this.state.res_date === undefined || this.state.res_date === null) {
     // url = "http://192.168.0.108:9000/matchplay/placelist/addRes";
+
     const url = "http://localhost:9000/matchplay/placelist/addRes";
     // const url = "http://192.168.0.108:9000/matchplay/placelist/addRes";
 
@@ -142,7 +199,10 @@ class SelectDetail extends Component {
     // }
     axios
       .post(url, {
-        member_id: member_id.value,
+        member_id:
+          res_type.value == 0
+            ? member_id.value
+            : this.state.memberData.team_int,
         place_id: place_id.value,
         res_type: res_type.value,
         res_time: res_time.value,
@@ -150,13 +210,15 @@ class SelectDetail extends Component {
         selectTeam: selectTeam.value,
       })
       .then(() => {
+        this.usePoint();
         this.props.history.push("/ResultRes");
       })
       .catch((err) => {
-        console.log(err);
+        alert(err);
       });
   };
   updateRes = (e) => {
+    // alert("update");
     const {
       member_id,
       place_id,
@@ -170,7 +232,10 @@ class SelectDetail extends Component {
     // alert(selectTeam.value + "+" + url);
     axios
       .post(url, {
-        member_id: member_id.value,
+        member_id:
+          res_type.value == 0
+            ? member_id.value
+            : this.state.memberData.team_int,
         place_id: place_id.value,
         res_type: res_type.value,
         res_time: res_time.value,
@@ -178,10 +243,11 @@ class SelectDetail extends Component {
         selectTeam: selectTeam.value,
       })
       .then((e) => {
+        this.usePoint();
         this.props.history.push("/ResultRes");
       })
       .catch((err) => {
-        console.log(err);
+        alert(err);
       });
   };
 
@@ -201,13 +267,23 @@ class SelectDetail extends Component {
     }
   };
 
-  selectTime = (time, team1, team2, res_date) => {
+  selectTime = (
+    time,
+    team1,
+    team2,
+    res_date,
+    home_member_id,
+    away_member_id
+  ) => {
     this.setState(
       {
         selectTime: time,
         team1: team1,
         team2: team2,
         res_date: res_date,
+        home_member_id: home_member_id,
+        away_member_id,
+        away_member_id,
       },
       () => console.log(this.state.res_date)
     );
@@ -241,9 +317,13 @@ class SelectDetail extends Component {
     this.getMemberData();
     this.detailData();
     this.getTime();
-    this.setState({
-      mapShow: "none",
-    });
+    this.setState(
+      {
+        mapShow: "none",
+        selectType: this.props.location.state.type,
+      },
+      () => console.log(this.state.selectType)
+    );
   }
 
   render() {
@@ -257,16 +337,21 @@ class SelectDetail extends Component {
     };
     const place_pics = [];
     for (let i = 0; i < this.state.pics.length; i++) {
-      place_pics.push(
-        <img
-          src={"http://localhost:9000/matchplay/image/" + this.state.pics[i]}
-          alt=""
-          style={{ border: "2px" }}
-        />
-      );
+      if (this.state.pics[i] !== "") {
+        place_pics.push(
+          <img
+            src={"http://localhost:9000/matchplay/image/" + this.state.pics[i]}
+            // src={
+            //   "http://192.168.0.108:9000/matchplay/image/" + this.state.pics[i]
+            // }
+            alt=""
+            style={{ border: "2px" }}
+          />
+        );
+      }
     }
     return (
-      <div className="txt8">
+      <div className="txt8" style={{ marginLeft: "0px" }}>
         <Scrollbars
           className="ReScroll"
           style={{ width: "100%", height: "710px" }}
@@ -298,14 +383,23 @@ class SelectDetail extends Component {
           >
             <b className="txt1">{this.state.dData.place_name}</b>
             <br></br>
-            <b className="txt2">{this.state.dData.place_addr + " //"}</b>
-            <b
+            <b className="txt2">{this.state.dData.place_addr + " "}</b>
+            <button
               className="txt3"
-              style={{ cursor: "pointer" }}
+              style={{
+                width: "100px",
+                height: "35px",
+                backgroundColor: "#503396",
+                color: "white",
+                fontSize: "13pt",
+                border: "#503396",
+                outline: "none",
+                borderRadius: "10px",
+              }}
               onClick={this.showMap.bind(this)}
             >
               지도{this.state.textMap}
-            </b>
+            </button>
             <br></br>
             <br></br>
             <b className="txt4">참가비</b>
@@ -398,6 +492,7 @@ class SelectDetail extends Component {
                     max={this.state.dData.place_max}
                     type="select"
                     selectType={this.props.location.state.type}
+                    res_date={this.props.location.state.date}
                   />
                 ))}
               </div>

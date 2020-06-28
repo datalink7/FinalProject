@@ -36,10 +36,16 @@ class Banner extends Component {
   };
 
   list = (e) => {
-    let url =
-      // "http://192.168.0.108:9000/matchplay/forbanner" +
-      "http://localhost:9000/matchplay/forbanner";
-    Axios.get(url)
+    // let url = "http://192.168.0.108:9000/matchplay/forbanner";
+    const date = new Date().toLocaleDateString().replace(/ /gi, "");
+    const time =
+      new Date().toTimeString().substring(0, 2) +
+      ((new Date().toTimeString().substring(0, 2) - 0 + 2 + "").length > 1
+        ? new Date().toTimeString().substring(0, 2) - 0 + 2 + ""
+        : 0 + (new Date().toTimeString().substring(0, 2) - 0 + 2 + ""));
+
+    let url = "http://localhost:9000/matchplay/forbanner";
+    Axios.get(url + "?date=" + date + "&time=" + time)
       .then((responseData) => {
         this.setState({
           banners: responseData.data,
@@ -61,7 +67,7 @@ class Banner extends Component {
   render() {
     return (
       <div className="Banner">
-        <Slider autoplay={1500}>
+        <Slider autoplay={1500} infinite={true}>
           {this.state.banners.map((slide, index) =>
             window.sessionStorage.getItem("id") == null ||
             (slide.res_type === "1" && this.state.memberData.team_int === 0) ? (

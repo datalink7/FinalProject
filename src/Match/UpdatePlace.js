@@ -6,7 +6,7 @@ let placeaddr = "";
 let placelat = "";
 let placelng = "";
 
-class AddPlace extends Component {
+class UpdatePlace extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -16,8 +16,37 @@ class AddPlace extends Component {
       place_etc: [],
       place_max: 0,
       place_price: "",
+      dData: [],
+      isChecked: true,
     };
   }
+  detailData = () => {
+    let id = this.props.location.state.place_id;
+    console.log(id);
+    // const url = "http://192.168.0.108:9000/matchplay/placelist/detail?id=";
+    const url = "http://localhost:9000/matchplay/placelist/detail?id=";
+
+    Axios.get(url + id)
+      .then((res) => {
+        this.setState(
+          {
+            dData: res.data,
+            place_name: res.data.place_name,
+            place_etc: res.data.place_etc.split("/"),
+            place_pic: res.data.place_pic,
+            place_max: res.data.place_max,
+            place_price: res.data.place_price,
+            place_addr: res.data.place_addr,
+            place_lat: res.data.place_lat,
+            place_lng: res.data.place_lng,
+          },
+          () => console.log(this.state.place_etc)
+        );
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   //이미지 업로드 함수
   onImageUpload = (e) => {
@@ -48,7 +77,7 @@ class AddPlace extends Component {
       .then((res) => {
         this.setState(
           {
-            place_pic: filename,
+            place_pic: this.state.place_pic + "/" + filename,
           },
           () => console.log("업로드한 파일명:" + res.data)
         );
@@ -57,32 +86,46 @@ class AddPlace extends Component {
         console.log("업로드 오류:" + err);
       });
   };
+  removeImage = (e) => {
+    let a = e.currentTarget.getAttribute("value");
+    let placepic = this.state.place_pic.replace(a, "");
+    if (placepic.indexOf("/") == 0) {
+      placepic = placepic.replace("/", "");
+    }
+    this.setState({
+      place_pic: placepic,
+    });
+  };
 
   onKeyChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value,
     });
   };
-  handleInputChange(event) {
-    const target = event.target;
-    let value = target.value;
 
-    if (target.checked) {
-      this.state.place_etc[value] = value;
+  toggleChange = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value,
+    });
+    if (!e.target.checked) {
+      const idx = this.state.place_etc.indexOf(e.target.value);
+      if (idx > -1) this.state.place_etc.splice(idx, 1);
     } else {
-      this.state.place_etc.splice(value, 1);
+      this.state.place_etc.push(e.target.value);
     }
-  }
+    console.log(this.state.place_etc.toString());
+  };
 
-  addPlace = (e) => {
-    let url = "http://localhost:9000/matchplay/insertplace";
-    // let url = "http://192.168.0.108:9000/matchplay/insertplace";
+  updatePlace = (e) => {
+    let url = "http://localhost:9000/matchplay/updateplace";
+    // let url = "http://192.168.0.108:9000/matchplay/updateplace";
     Axios.post(url, {
+      place_id: this.props.location.state.place_id,
       place_name: this.state.place_name,
       place_etc: this.state.place_etc.toString(),
-      place_addr: placeaddr,
-      place_lat: placelat,
-      place_lng: placelng,
+      place_addr: placeaddr == "" ? this.state.place_addr : placeaddr,
+      place_lat: placelat == "" ? this.state.place_lat : placelat,
+      place_lng: placelng == "" ? this.state.place_lng : placelng,
       place_pic: this.state.place_pic,
       place_max: this.state.place_max,
       place_price: this.state.place_price,
@@ -96,6 +139,7 @@ class AddPlace extends Component {
       });
   };
   componentDidMount() {
+    this.detailData();
     let lat = 37.49873322288245;
     let lng = 127.0317097937344;
     let mapContainer = document.getElementById("map"), // 지도를 표시할 div
@@ -189,12 +233,14 @@ class AddPlace extends Component {
   render() {
     return (
       <div align="center">
-        <form onSubmit={this.addPlace.bind(this)}>
+        {this.state.place_pic}
+        {this.state.place_etc.toString()}
+        <form onSubmit={this.updatePlace.bind(this)}>
           <table style={{ width: "40%" }}>
             <hr />
-            <h5 className="Title">구장 등록</h5>
+            <h5 className="Title">구장 수정</h5>
             <span className="Context">
-              등록하고자 하는 구장 정보를 입력하세요.
+              수정하고자 하는 구장 정보를 입력하세요.
             </span>
             <hr />
             <strong>· 구장명</strong>
@@ -223,20 +269,23 @@ class AddPlace extends Component {
                     <div>
                       <img
                         style={{ width: "100px" }}
+                        value={item}
                         src={"http://localhost:9000/matchplay/image/" + item}
                         alt=""
+                        onClick={this.removeImage.bind(this)}
                       ></img>
                       <br></br>
                     </div>
                   ) : (
                     <img
                       style={{ width: "100px" }}
+                      value={item}
                       src={"http://localhost:9000/matchplay/image/" + item}
                       alt=""
+                      onClick={this.removeImage.bind(this)}
                     ></img>
                   )
                 )}
-                {/* 형 안되요 돌아와요 어디 가신건가요 대체??? 수업이 끝났구만 돌아와요 형!!! */}
               </div>
             </div>
             <br></br>
@@ -254,41 +303,47 @@ class AddPlace extends Component {
               <input
                 type="checkbox"
                 style={{ marginRight: "10px" }}
-                name="place_etc"
-                value="0"
-                onChange={this.handleInputChange.bind(this)}
+                name="place_etc1"
+                value="주차"
+                // onChange={this.handleInputChange.bind(this)}
+                onChange={this.toggleChange}
+                checked={this.state.place_etc.includes("주차") ? true : false}
               ></input>
               <span style={{ marginRight: "15px" }}>주차</span>
               <input
                 type="checkbox"
                 style={{ marginRight: "10px" }}
-                name="place_etc"
-                value="1"
-                onChange={this.handleInputChange.bind(this)}
+                name="place_etc2"
+                value="공"
+                onChange={this.toggleChange}
+                checked={this.state.place_etc.includes("공") ? true : false}
               ></input>
               <span style={{ marginRight: "15px" }}>공 대여</span>
               <input
                 type="checkbox"
                 style={{ marginRight: "10px" }}
-                name="place_etc"
-                value="2"
-                onChange={this.handleInputChange.bind(this)}
+                name="place_etc3"
+                value="샤워"
+                onChange={this.toggleChange}
+                checked={this.state.place_etc.includes("샤워") ? true : false}
               ></input>
               <span style={{ marginRight: "15px" }}>샤워 시설</span>
               <input
                 type="checkbox"
                 style={{ marginRight: "10px" }}
-                name="place_etc"
-                value="3"
-                onChange={this.handleInputChange.bind(this)}
+                name="place_etc4"
+                value="풋살화"
+                onClick={this.toggleChange}
+                checked={this.state.place_etc.includes("풋살화") ? true : false}
               ></input>
               <span style={{ marginRight: "15px" }}>풋살화 대여</span>
               <input
                 type="checkbox"
                 style={{ marginRight: "10px" }}
-                name="place_etc"
-                value="4"
-                onChange={this.handleInputChange.bind(this)}
+                name="place_etc5"
+                value="유니폼"
+                onChange={this.toggleChange}
+                checked={this.state.place_etc.includes("유니폼") ? true : false}
               ></input>
               <span style={{ marginRight: "15px" }}>유니폼 대여</span>
             </div>
@@ -319,19 +374,21 @@ class AddPlace extends Component {
             <strong>· 주소</strong>
             <br />
             <input
-              type="hidden"
+              type="text"
               id="maplat"
               className="Input"
               placeholder="위도"
               name="place_lat"
+              value={this.state.place_lat}
               onChange={this.onKeyChange.bind(this)}
             ></input>
             <input
-              type="hidden"
+              type="text"
               id="maplng"
               className="Input"
               placeholder="경도"
               name="place_lng"
+              value={this.state.place_lng}
               onChange={this.onKeyChange.bind(this)}
             ></input>
             <input
@@ -370,7 +427,7 @@ class AddPlace extends Component {
               id="submit_btn"
               style={{ margin: "0px" }}
             >
-              구장등록
+              구장수정
             </button>
             <button
               type="button"
@@ -393,4 +450,4 @@ class AddPlace extends Component {
   }
 }
 
-export default AddPlace;
+export default UpdatePlace;

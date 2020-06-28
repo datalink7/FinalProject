@@ -34,8 +34,25 @@ class SelectPlace extends Component {
       pageNum: 3,
       openSeoul: "none",
       textMap: "보기",
+      memberData: [],
     };
   }
+  getMemberData = () => {
+    // const url = "http://192.168.0.108:9000/matchplay/memberdata?id=";
+    const url = "http://localhost:9000/matchplay/memberdata?id=";
+
+    axios
+      .get(url + window.sessionStorage.getItem("id"))
+      .then((res) => {
+        this.setState({
+          memberData: res.data,
+        });
+        console.log(this.state.memberData);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   list = (e) => {
     const type = this.state.selectType;
@@ -125,6 +142,7 @@ class SelectPlace extends Component {
     for (var i = 0; i < li.length; i++) {
       li[i].addEventListener("click", this.onClick.bind(this));
     }
+    this.getMemberData();
     this.list();
     document.addEventListener("scroll", () => {
       let tmp = window.innerHeight + window.pageYOffset;
@@ -287,13 +305,6 @@ class SelectPlace extends Component {
                   >
                     구장 검색
                   </td>
-                  {/* <td>
-                      <input
-                        type="text"
-                        className="form-control"
-                        style={{ width: "200px", fontSize: "13pt" }}
-                      ></input>
-                    </td> */}
                   <td style={{ width: "330px" }}>
                     <div>
                       <form onSubmit={this.searchPlace.bind(this)}>
@@ -333,34 +344,36 @@ class SelectPlace extends Component {
               </tbody>
             </table>
 
-            <div
-              style={{
-                position: "relative",
-                left: "30%",
-                bottom: "39px",
-                width: "100px",
-              }}
-            >
-              <NavLink
-                to={{ pathname: "/AddPlace" }}
-                style={{ textDecoration: "none" }}
+            {this.state.memberData.grade !== 0 && (
+              <div
+                style={{
+                  position: "relative",
+                  left: "30%",
+                  bottom: "39px",
+                  width: "100px",
+                }}
               >
-                <button
-                  style={{
-                    backgroundColor: "#503396",
-                    width: "100px",
-                    border: "1px solid #503396",
-                    borderRadius: "5px",
-                    color: "white",
-                    outline: "none",
-                    marginLeft: "10px",
-                    height: "29px",
-                  }}
+                <NavLink
+                  to={{ pathname: "/AddPlace" }}
+                  style={{ textDecoration: "none" }}
                 >
-                  구장 생성
-                </button>
-              </NavLink>
-            </div>
+                  <button
+                    style={{
+                      backgroundColor: "#aa3f68",
+                      width: "100px",
+                      border: "1px solid gray",
+                      borderRadius: "5px",
+                      color: "white",
+                      outline: "none",
+                      marginLeft: "10px",
+                      height: "29px",
+                    }}
+                  >
+                    구장 생성
+                  </button>
+                </NavLink>
+              </div>
+            )}
             {/* </div> */}
             {/* <div style={{ display: "inline-block" }}>
               {this.state.searchPlace}
@@ -392,6 +405,7 @@ class SelectPlace extends Component {
               placeName={this.state.placeName}
               type={this.state.selectType}
               date={this.state.selectDate}
+              memberData={this.state.memberData}
             />
           ))}
         </div>

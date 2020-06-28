@@ -50,19 +50,43 @@ class Calendar extends Component {
   list = (e) => {
     this.props.list(e);
   };
+  reload = () => {
+    window.location.reload();
+  };
 
   render() {
     return (
       <div>
-        <span
-          style={{
-            color: "rgb(80, 51, 150)",
-            fontSize: "20pt",
-            fontWeight: "bold",
-          }}
-        >
-          {this.state.date.toLocaleString().substring(6, 7) + "월"}
-        </span>
+        <div>
+          <span
+            style={{
+              color: "rgb(80, 51, 150)",
+              fontSize: "20pt",
+              fontWeight: "bold",
+            }}
+          >
+            {this.state.date.toLocaleString().substring(6, 7) + "월"}{" "}
+          </span>{" "}
+          <div>
+            <button
+              style={{
+                // float: "right",
+                position: "absolute",
+                right: "25%",
+                top: "25%",
+                border: "none",
+                backgroundColor: "#503396",
+                color: "white",
+                fontSize: "11pt",
+                borderRadius: "5px",
+                height: "30px",
+              }}
+              onClick={this.reload.bind(this)}
+            >
+              오늘
+            </button>
+          </div>
+        </div>
         <Weekly
           date={this.state.date}
           info={this.state.week}

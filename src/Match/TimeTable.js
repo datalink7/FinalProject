@@ -14,7 +14,14 @@ class TimeTable extends Component {
       let res_date = this.props.item.res_time;
       let ckClass = e.currentTarget.getAttribute("class").indexOf("enable");
       if (ckClass === -1) {
-        this.props.selectTime(time, team1, team2, res_date);
+        this.props.selectTime(
+          time,
+          team1,
+          team2,
+          res_date,
+          e.currentTarget.getAttribute("home_member_id"),
+          e.currentTarget.getAttribute("away_member_id")
+        );
       }
       this.setState(
         {
@@ -50,6 +57,18 @@ class TimeTable extends Component {
   };
 
   render() {
+    let today = new Date();
+    let now = new Date().toTimeString().substring(0, 2);
+    // alert(now < this.props.item.time_val.substring(0, 2));
+    let todaystr =
+      today.getFullYear() +
+      ((today.getMonth() + 1 + "").length === 1
+        ? "0" + (today.getMonth() + 1 + "")
+        : today.getMonth() + 1 + "") +
+      ((today.getDate() + "").length === 1
+        ? "0" + (today.getDate() + "")
+        : today.getDate() + "");
+
     return (
       <div
         // style={normal}
@@ -63,13 +82,17 @@ class TimeTable extends Component {
           (this.props.item.res_type !== null &&
             this.props.item.res_type !== this.props.selectType) ||
           (this.props.item.res_type === "1" &&
-            2 - this.props.item.res_team1 - this.props.item.res_team2 === 0)
+            2 - this.props.item.res_team1 - this.props.item.res_team2 === 0) ||
+          (now >= this.props.item.time_val.substring(0, 2) &&
+            this.props.res_date == todaystr)
             ? "timeTable enable"
             : "timeTable able"
         }
         onClick={this.selectTime.bind(this)}
         team1={this.props.item.res_team1}
         team2={this.props.item.res_team2}
+        home_member_id={this.props.item.home_member_id}
+        away_member_id={this.props.item.away_member_id}
       >
         {this.props.item.time_val.replace(/(.{2})/, "$1~")}
       </div>

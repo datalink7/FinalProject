@@ -94,6 +94,37 @@ class PlaceItem extends Component {
               <span style={{ fontSize: "15pt", padding: "35px" }}>
                 {"주소 : " + this.props.row.place_addr}
               </span>
+              {this.props.memberData.grade !== 0 && (
+                <div style={{ float: "right", marginRight: "45px" }}>
+                  <Link
+                    to={{
+                      pathname: "/Updateplace",
+                      state: {
+                        place_id: this.props.row.place_id,
+                        type: this.props.type,
+                        date: this.props.date,
+                      },
+                    }}
+                    // style={{ float: "right" }}
+                  >
+                    <button
+                      style={{
+                        border: "1px solid gray",
+                        backgroundColor: "#aa3f68",
+                        color: "white",
+                        borderRadius: "5px",
+                        width: "100px",
+                        height: "30px",
+                        cursor: "pointer",
+                        lineHeight: "25px",
+                        fontSize: "12pt",
+                      }}
+                    >
+                      구장 수정
+                    </button>
+                  </Link>
+                </div>
+              )}
             </div>
             <hr style={{ width: "1040px" }}></hr>
             <div>
@@ -107,6 +138,7 @@ class PlaceItem extends Component {
                     key={idx}
                     max={this.props.row.place_max}
                     selectType={this.props.type}
+                    res_date={this.props.date}
                   />
                 ))}
               </div>

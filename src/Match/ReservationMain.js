@@ -5,6 +5,7 @@ import SelectDetail from "./SelectDetail";
 import SelectTeam from "./SelectTeam";
 import ResultRes from "./ResultRes";
 import AddPlace from "./AddPlace";
+import Updateplace from "./UpdatePlace";
 
 class ReservationMain extends Component {
   render() {
@@ -16,6 +17,7 @@ class ReservationMain extends Component {
           <Route path="/SelectDetail/" component={SelectDetail} />
           <Route path="/ResultRes/" component={ResultRes} />
           <Route path="/AddPlace/" component={AddPlace} />
+          <Route path="/Updateplace/" component={Updateplace} />
         </Switch>
       </div>
     );

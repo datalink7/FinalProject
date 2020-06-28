@@ -39,15 +39,15 @@ function LeagueJoin() {
   const chk = (e) => {
     if (chkVal === "off") {
       alert("리그 참여 신청에는 동의가 필요합니다.");
-      e.preventDefault();
+      return;
     }
     joinLeague();
   };
 
   const joinLeague = () => {
     alert("join");
-    const url = "http://192.168.0.108:9000/matchplay/joinLeague";
-    // const url = "http://localhost:9000/matchplay/joinLeague";
+    // const url = "http://192.168.0.108:9000/matchplay/joinLeague";
+    const url = "http://localhost:9000/matchplay/joinLeague";
 
     Axios.post(url)
       .then(() => {

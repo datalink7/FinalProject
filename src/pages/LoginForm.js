@@ -55,7 +55,7 @@ function LoginForm() {
 
   const checkId = (e) => {
     let url = "http://localhost:9000/matchplay/login/selId?id=" + id;
-    // let url ="http://192.168.0.108:9000/matchplay/login/selId?id=" + id;
+    // let url = "http://192.168.0.108:9000/matchplay/login/selId?id=" + id;
 
     axios
       .get(url)
@@ -78,7 +78,7 @@ function LoginForm() {
 
   const checkName = (e) => {
     let url = "http://localhost:9000/matchplay/member/selName?name=" + name;
-    // let url ="http://192.168.0.108:9000/matchplay/member/selName?name=" + name;
+    // let url = "http://192.168.0.108:9000/matchplay/member/selName?name=" + name;
 
     axios
       .get(url)
@@ -177,7 +177,8 @@ function LoginForm() {
 
   const findId = (e) => {
     let url = "http://localhost:9000/matchplay/member/findId?email=" + email;
-    // let url ="http://192.168.0.108:9000/matchplay/member/findId?email=" + email;
+    // let url =
+    //   "http://192.168.0.108:9000/matchplay/member/findId?email=" + email;
 
     axios
       .get(url)

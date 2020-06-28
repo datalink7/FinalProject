@@ -109,12 +109,21 @@ class Weekly extends Component {
   }
   render() {
     const e = [];
+    let t = new Date();
     let tmp = this.state.weather2.today + "";
     let today = new Date(
       tmp.substring(0, 4),
       tmp.substring(4, 6) - 1,
       tmp.substring(6)
     );
+    let todaystr =
+      t.getFullYear() +
+      ((t.getMonth() + 1 + "").length === 1
+        ? "0" + (t.getMonth() + 1 + "")
+        : t.getMonth() + 1 + "") +
+      ((t.getDate() + "").length === 1
+        ? "0" + (t.getDate() + "")
+        : t.getDate() + "");
     let today3 = new Date(
       today.getFullYear(),
       today.getMonth(),
@@ -181,8 +190,14 @@ class Weekly extends Component {
       let weather2SKY = "";
       e.push(
         <div
-          className="weekly"
-          onClick={this.list.bind(this)}
+          className={
+            val == todaystr
+              ? "weekly selected"
+              : val < todaystr
+              ? "weekly disabled"
+              : "weekly"
+          }
+          onClick={val < todaystr ? "" : this.list.bind(this)}
           key={i}
           val={val}
           style={{

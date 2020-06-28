@@ -6,7 +6,6 @@ import MainVideo from "../image/mainVideo.mp4";
 import img3 from "../3.jpg";
 import neymar from "../image/NeymarJr.mp4";
 import Video2 from "../image/videoplayback.mp4";
-import Video3 from "../image/videoplayback2.mp4";
 
 import "../Css/MainStyle.css";
 
@@ -38,17 +37,6 @@ const Main = () => {
         <div align="center" style={{ verticalAlign: "middle" }}>
           <video
             src={neymar + "#t=60"}
-            autoPlay
-            loop
-            muted
-            style={{ position: "relative", top: "-80px" }}
-          ></video>
-        </div>
-      </Slide>
-      <Slide style={{ overflowY: "hidden", backgroundColor: "black" }}>
-        <div align="center" style={{ verticalAlign: "middle" }}>
-          <video
-            src={Video3 + "#t=22"}
             autoPlay
             loop
             muted
