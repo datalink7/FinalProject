@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Axios from "axios";
 import MyResItem from "./MyResItem";
 import pageNext from "../image/pageNext.png";
+import { NavLink } from "react-router-dom";
 
 class MyRes extends Component {
   state = {
@@ -163,189 +164,333 @@ class MyRes extends Component {
       );
     }
     return (
-      <div align="center" style={{ paddingTop: "20px" }}>
+      <div>
         <div
           style={{
-            fontSize: "15pt",
-            width: "1000px",
+            position: "absolute",
+            width: "230px",
+            height: "683px",
             backgroundColor: "#503396",
-            color: "white",
-            paddingLeft: "30px",
-            height: "40px",
-            lineHeight: "40px",
-            borderTopLeftRadius: "10px",
-            borderTopRightRadius: "10px",
+            border: "3px",
           }}
-          align="left"
         >
-          <b style={{ fontSize: "20pt" }}>
-            {window.sessionStorage.getItem("id")}
-          </b>
-          님의 경기 내역
-          <select
-            onChange={this.onChange.bind(this)}
-            name="searchType"
+          <table
             style={{
-              backgroundColor: "#503396",
-              fontSize: "11pt",
-              marginLeft: "50px",
-              border: "none",
-              cursor: "pointer",
-            }}
-          >
-            <option value="">전체</option>
-            <option value="0">개인</option>
-            <option value="1">팀</option>
-            <option value="2">리그</option>
-          </select>
-          <input
-            type="date"
-            name="fromDate"
-            onChange={this.onChange.bind(this)}
-            style={{
-              backgroundColor: "#503396",
-              fontSize: "11pt",
+              width: "300px",
+              height: "550px",
+              fontSize: "20pt",
+              border: "2px",
+              marginTop: "62px",
               marginLeft: "20px",
-              height: "25px",
-              width: "150px",
-              outline: "none",
-              textAlign: "right",
-              border: "none",
-              borderBottom: "1px solid white",
             }}
-          ></input>
-          ~
-          <input
-            type="date"
-            name="untilDate"
-            onChange={this.onChange.bind(this)}
+            className="TemaMenu"
+          >
+            <tbody>
+              <tr>
+                <td align="center" width="200px">
+                  <NavLink
+                    exact
+                    to="/Mypage"
+                    style={{ textDecoration: "none", color: "white" }}
+                  >
+                    <button
+                      type="button"
+                      name="Hover"
+                      className="button-container-2"
+                      style={{
+                        width: "250px",
+                        height: "80px",
+                        backgroundColor: "black",
+                        border: "2px solid white",
+                        borderRadius: "20px",
+                        boxShadow: "3px 3px 3px 0px gray",
+                      }}
+                    >
+                      MyPage Main
+                    </button>
+                  </NavLink>
+                </td>
+              </tr>
+              <tr>
+                <td align="center">
+                  <NavLink
+                    exact
+                    to="/Mypage/Account"
+                    style={{ textDecoration: "none", color: "white" }}
+                  >
+                    <button
+                      type="button"
+                      style={{
+                        width: "250px",
+                        height: "80px",
+                        backgroundColor: "black",
+                        border: "2px solid white",
+                        borderRadius: "20px",
+                        boxShadow: "3px 3px 3px 0px gray",
+                      }}
+                    >
+                      Account
+                    </button>
+                  </NavLink>
+                </td>
+              </tr>
+              <tr>
+                <td align="center">
+                  <NavLink
+                    exact
+                    to="/Mypage/ReservationHistory"
+                    style={{ textDecoration: "none", color: "white" }}
+                  >
+                    <button
+                      type="button"
+                      style={{
+                        width: "250px",
+                        height: "80px",
+                        backgroundColor: "black",
+                        border: "2px solid white",
+                        borderRadius: "20px",
+                        boxShadow: "3px 3px 3px 0px gray",
+                      }}
+                    >
+                      Reservation
+                    </button>
+                  </NavLink>
+                </td>
+              </tr>
+              <tr>
+                <td align="center">
+                  <NavLink
+                    exact
+                    to="/Mypage/MyMatchHistory"
+                    style={{ textDecoration: "none", color: "white" }}
+                  >
+                    <button
+                      type="button"
+                      style={{
+                        width: "250px",
+                        height: "80px",
+                        backgroundColor: "black",
+                        border: "2px solid white",
+                        borderRadius: "20px",
+                        boxShadow: "3px 3px 3px 0px gray",
+                      }}
+                    >
+                      Match
+                    </button>
+                  </NavLink>
+                </td>
+              </tr>
+              <tr>
+                <td align="center">
+                  <NavLink
+                    exact
+                    to="/Mypage/PointHistory"
+                    style={{ textDecoration: "none", color: "white" }}
+                  >
+                    <button
+                      type="button"
+                      style={{
+                        width: "250px",
+                        height: "80px",
+                        backgroundColor: "black",
+                        border: "2px solid white",
+                        borderRadius: "20px",
+                        boxShadow: "3px 3px 3px 0px gray",
+                      }}
+                    >
+                      Point
+                    </button>
+                  </NavLink>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div align="center" style={{ paddingTop: "20px" }}>
+          <div
             style={{
-              backgroundColor: "#503396",
-              fontSize: "11pt",
-              height: "25px",
-              width: "150px",
-              outline: "none",
-              textAlign: "right",
-              border: "none",
-              borderBottom: "1px solid white",
-            }}
-          ></input>
-          <button
-            style={{
-              // float: "right",
-              position: "absolute",
-              right: "33%",
-              top: "24%",
-              border: "none",
+              fontSize: "15pt",
+              width: "1000px",
               backgroundColor: "#503396",
               color: "white",
-              fontSize: "11pt",
-              borderRadius: "5px",
-              height: "30px",
-              lineHeight: "30px",
+              paddingLeft: "30px",
+              height: "40px",
+              lineHeight: "40px",
+              borderTopLeftRadius: "10px",
+              borderTopRightRadius: "10px",
             }}
-            onClick={this.reload.bind(this)}
+            align="left"
           >
-            전체일정
-          </button>
-        </div>
-        <table style={{ width: "1000px" }}>
-          <thead>
-            <tr
-              align="center"
+            <b style={{ fontSize: "20pt" }}>
+              {window.sessionStorage.getItem("id")}
+            </b>
+            님의 경기 내역
+            <select
+              onChange={this.onChange.bind(this)}
+              name="searchType"
               style={{
                 backgroundColor: "#503396",
-                color: "white",
-                height: "50px",
-                // fontWeight: "bold",
-                fontSize: "13pt",
+                fontSize: "11pt",
+                marginLeft: "50px",
+                border: "none",
+                cursor: "pointer",
               }}
             >
-              <th style={{ width: "100px" }}>경기종류</th>
-              <th style={{ width: "100px" }}>분류</th>
-              <th style={{ width: "100px" }}>날짜</th>
-              <th style={{ width: "100px" }}>예약 시간</th>
-              <th style={{ width: "150px" }}>구장</th>
-              <th>위치</th>
-              <th style={{ width: "100px" }}>예약 현황</th>
-              <th style={{ width: "100px" }}>경기 결과</th>
-            </tr>
-          </thead>
-          <tbody
-            align="center"
-            style={{
-              color: "gray",
-              height: "50px",
-              // fontWeight: "bold",
-              fontSize: "11pt",
-            }}
-          >
-            {this.state.myRes.map((row, idx) => (
-              <MyResItem row={row}></MyResItem>
-            ))}
-            <tr>
-              <td colSpan="8">
-                <div
-                  style={{
-                    paddingTop: "15px",
-                    paddingBottom: "15px",
-                    backgroundColor: "#503396",
-                    width: "1000px",
-                    borderBottomRightRadius: "15px",
-                    borderBottomLeftRadius: "15px",
-                  }}
-                >
+              <option value="">전체</option>
+              <option value="0">개인</option>
+              <option value="1">팀</option>
+              <option value="2">리그</option>
+            </select>
+            <input
+              type="date"
+              name="fromDate"
+              onChange={this.onChange.bind(this)}
+              style={{
+                backgroundColor: "#503396",
+                fontSize: "11pt",
+                marginLeft: "20px",
+                height: "25px",
+                width: "150px",
+                outline: "none",
+                textAlign: "right",
+                border: "none",
+                borderBottom: "1px solid white",
+              }}
+            ></input>
+            ~
+            <input
+              type="date"
+              name="untilDate"
+              onChange={this.onChange.bind(this)}
+              style={{
+                backgroundColor: "#503396",
+                fontSize: "11pt",
+                height: "25px",
+                width: "150px",
+                outline: "none",
+                textAlign: "right",
+                border: "none",
+                borderBottom: "1px solid white",
+              }}
+            ></input>
+            <button
+              style={{
+                // float: "right",
+                position: "absolute",
+                right: "33%",
+                top: "24%",
+                border: "none",
+                backgroundColor: "#503396",
+                color: "white",
+                fontSize: "11pt",
+                borderRadius: "5px",
+                height: "30px",
+                lineHeight: "30px",
+              }}
+              onClick={this.reload.bind(this)}
+            >
+              전체일정
+            </button>
+          </div>
+          <table style={{ width: "1000px" }}>
+            <thead>
+              <tr
+                align="center"
+                style={{
+                  backgroundColor: "#503396",
+                  color: "white",
+                  height: "50px",
+                  // fontWeight: "bold",
+                  fontSize: "13pt",
+                }}
+              >
+                <th style={{ width: "100px" }}>경기종류</th>
+                <th style={{ width: "100px" }}>분류</th>
+                <th style={{ width: "100px" }}>날짜</th>
+                <th style={{ width: "100px" }}>예약 시간</th>
+                <th style={{ width: "150px" }}>구장</th>
+                <th>위치</th>
+                <th style={{ width: "100px" }}>예약 현황</th>
+                <th style={{ width: "100px" }}>경기 결과</th>
+              </tr>
+            </thead>
+            <tbody
+              align="center"
+              style={{
+                color: "gray",
+                height: "50px",
+                // fontWeight: "bold",
+                fontSize: "11pt",
+              }}
+            >
+              {this.state.myRes.map((row, idx) => (
+                <MyResItem row={row}></MyResItem>
+              ))}
+              <tr>
+                <td colSpan="8">
                   <div
                     style={{
-                      display: "inline-block",
-                      height: "30px",
-                      width: "30px",
-                      lineHeight: "30px",
-                      border: "1px solid #503396",
-                      verticalAlign: "top",
-                      cursor: "pointer",
+                      paddingTop: "15px",
+                      paddingBottom: "15px",
+                      backgroundColor: "#503396",
+                      width: "1000px",
+                      borderBottomRightRadius: "15px",
+                      borderBottomLeftRadius: "15px",
                     }}
-                    onClick={this.nextPage.bind(this)}
                   >
-                    <img
-                      src={pageNext}
+                    <div
                       style={{
-                        height: "15px",
-                        transform: "rotate(180deg)",
-                        filter: "invert(100%)",
-                        marginBottom: "5px",
+                        display: "inline-block",
+                        height: "30px",
+                        width: "30px",
+                        lineHeight: "30px",
+                        border: "1px solid #503396",
+                        verticalAlign: "top",
+                        cursor: "pointer",
                       }}
-                      alt=""
-                    ></img>
-                  </div>
-                  {page}
-                  <div
-                    style={{
-                      display: "inline-block",
-                      height: "30px",
-                      width: "30px",
-                      lineHeight: "30px",
-                      border: "1px solid #503396",
-                      verticalAlign: "top",
-                      cursor: "pointer",
-                    }}
-                    onClick={this.nextPage.bind(this)}
-                  >
-                    <img
-                      src={pageNext}
+                      onClick={this.nextPage.bind(this)}
+                    >
+                      <img
+                        src={pageNext}
+                        style={{
+                          height: "15px",
+                          transform: "rotate(180deg)",
+                          filter: "invert(100%)",
+                          marginBottom: "5px",
+                        }}
+                        alt=""
+                      ></img>
+                    </div>
+                    {page}
+                    <div
                       style={{
-                        height: "15px",
-                        filter: "invert(100%)",
-                        marginBottom: "5px",
+                        display: "inline-block",
+                        height: "30px",
+                        width: "30px",
+                        lineHeight: "30px",
+                        border: "1px solid #503396",
+                        verticalAlign: "top",
+                        cursor: "pointer",
                       }}
-                      alt=""
-                    ></img>
+                      onClick={this.nextPage.bind(this)}
+                    >
+                      <img
+                        src={pageNext}
+                        style={{
+                          height: "15px",
+                          filter: "invert(100%)",
+                          marginBottom: "5px",
+                        }}
+                        alt=""
+                      ></img>
+                    </div>
                   </div>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     );
   }

@@ -12,12 +12,12 @@ class ReservationMain extends Component {
     return (
       <div align="center">
         <Switch>
-          <Route path="/Reservation" component={SelectTeam} />
-          <Route path="/SelectPlace/:type" component={SelectPlace} />
-          <Route path="/SelectDetail/" component={SelectDetail} />
-          <Route path="/ResultRes/" component={ResultRes} />
-          <Route path="/AddPlace/" component={AddPlace} />
-          <Route path="/Updateplace/" component={Updateplace} />
+          <Route exact path="/Reservation" component={SelectTeam} />
+          <Route exact path="/SelectPlace/:type" component={SelectPlace} />
+          <Route exact path="/SelectDetail/" component={SelectDetail} />
+          <Route exact path="/ResultRes/" component={ResultRes} />
+          <Route exact path="/AddPlace/" component={AddPlace} />
+          <Route exact path="/Updateplace/" component={Updateplace} />
         </Switch>
       </div>
     );
