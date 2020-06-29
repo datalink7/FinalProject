@@ -1,6 +1,9 @@
 import React from "react";
 import { Route } from "react-router-dom";
-import { Home,Match, League, Team, QnA, Gujang, Reservation, JoinFinal, JoinForm, LoginForm, Payment, TeamHome, TeamMember, MatchHistory, TeamBoard, TWrite, Mypage, MyMatchHistory, Account, PointHistory, Write } from "./pages"; //index.js 호출
+import { Home, Team, QnA, Gujang, Reservation, JoinFinal, JoinForm, LoginForm, Payment, TeamHome, TeamMember, MatchHistory, TeamBoard, TWrite, Mypage, MyMatchHistory, Account, PointHistory, Write,CreateTeam,PwdCheck,TCSuccess,ReservationHistory,PointCharge } from "./pages"; //index.js 호출
+import { Drop,UpdPass } from './User'
+import League from "./League/LeagueMain"
+import Match from "./Match/SelectTeam";
 import Root from "./Root";
 import './Css/MainStyle.css';
 import Menu from "./MainComponents/Menu";
@@ -56,6 +59,20 @@ const Title = () => {
       <Route exact path="/Mypage/PointHistory" component={PointHistory}/>
 
       <Route exact path="/QnA/Write" component={Write}/>
+
+      <Route exact path="/Account/UserInfo/UserDrop" component={Drop}/>
+
+      <Route exact path="/Team/CreateTeam" component={CreateTeam}/>
+
+      <Route exact path="/Mypage/Account/PwdCheck" component={PwdCheck}/>
+
+      <Route exact path="/Mypage/Account/PwdCheck/PwdChange" component={UpdPass}/>
+
+      <Route exact path="/Team/CreateTeam/Success" component={TCSuccess}/>
+
+      <Route exact path="/Mypage/ReservationHistory" component={ReservationHistory}/>
+
+      <Route exact path="/Mypage/PointCharge" component={PointCharge}/>
       <Footer/>
     </div>
   );

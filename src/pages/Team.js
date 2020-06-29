@@ -69,8 +69,8 @@ class Team extends React.Component {
         //   </Modal>
         // </div>
             <div>
-                <div style={{width:'450px',height:'683px',border:'1px solid gray'}}>
-                    <table  style={{width:'450px',border:'1px solid red'}}>
+                <div style={{width:'450px',height:'683px',border:'1px solid #503396'}}>
+                    <table  style={{width:'450px',border:'1px'}}>
                         <tbody>
                             <tr>
                                 <td align="center">
@@ -131,6 +131,11 @@ class Team extends React.Component {
                     <b style={{fontSize:'17pt',marginTop:'-30px'}}>팀 검색</b>
                     <input type="text" style={{width:'300px',height:'35px',marginLeft:'30px'}}/>
                     <button type="button" style={{height:'35px',marginLeft:'30px',width:'100px',fontSize:'13pt'}}>검색하기</button>
+                    <div style={{position:'absolute',left:'50px', top:'17px',border:'3px'}}>
+                    <NavLink to="/Team/CreateTeam" style={{ textDecoration: 'none'}}>
+                        <button style={{fontSize:'13pt',height:'35px',width:'200px'}}>팀 생성하기</button>
+                    </NavLink>
+                    </div>
                     <br/><br/>
                     <table className="team1" style={{height:'500px',border:'1px solid rgba(0,0,0,.1)',fontSize:'13pt'}}>
                         <thead textAlign='center' verticalAlign='middle' style={{backgroundColor:'#503396',color:'white',fontSize:'13pt',border:'1px solid white'}}>
@@ -155,7 +160,7 @@ class Team extends React.Component {
                                 <td>27</td>
                                 <td>1</td>
                                 <td>1</td>
-                                <td>강남구</td>
+                                <td>강원</td>
                                 <td>20대</td>
                                 <td>
                                     <button onClick={this.handleOpenModal}>가입신청</button>    
@@ -184,7 +189,7 @@ class Team extends React.Component {
                                 <td>18</td>
                                 <td>3</td>
                                 <td>7</td>
-                                <td>동작구</td>
+                                <td>경남</td>
                                 <td>30대</td>
                                 <td>
                                     <button onClick={this.handleOpenModal}>가입신청</button>    
@@ -212,7 +217,7 @@ class Team extends React.Component {
                                 <td>16</td>
                                 <td>5</td>
                                 <td>8</td>
-                                <td>송파구</td>
+                                <td>전남</td>
                                 <td>20대</td>
                                 <td>
                                     <button onClick={this.handleOpenModal}>가입신청</button>    
@@ -240,7 +245,7 @@ class Team extends React.Component {
                                 <td>14</td>
                                 <td>6</td>
                                 <td>9</td>
-                                <td>도봉구</td>
+                                <td>울산</td>
                                 <td>40대</td>
                                 <td>
                                     <button onClick={this.handleOpenModal}>가입신청</button>    
@@ -352,7 +357,7 @@ class Team extends React.Component {
                                 <td>11</td>
                                 <td>8</td>
                                 <td>10</td>
-                                <td>관악구</td>
+                                <td>서울</td>
                                 <td>20대</td>
                                 <td>
                                     <button onClick={this.handleOpenModal}>가입신청</button>    
@@ -434,7 +439,7 @@ class Team extends React.Component {
                     </table>
                     <br/>
                         <React.Fragment>
-                            <nav aria-label="Page navigation" style={{position:'absolute', left:'550px'}}>
+                            <nav aria-label="Page navigation" style={{position:'absolute', left:'500px'}}>
                                     <ul className="pagination" style={{fontSize:'13pt'}}>
                                     <li title="이전 페이지보기" className="page-item">
                                         <a className="page-link" href="#" style={{color:'black'}}>◀</a></li>

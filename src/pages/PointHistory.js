@@ -1,10 +1,40 @@
 import React,{Component} from 'react';
 import '../Css/MainStyle.css'
 import {NavLink} from 'react-router-dom';
+import axios from "axios";
 import { Scrollbars } from 'react-custom-scrollbars';
 
-const PointHistory=()=>(
-    <div>
+class PointHistory extends React.Component{
+    constructor(){
+        this.state={
+            id:'admin',
+            getDatas:[]            
+        }
+    }
+
+    componentWillMount()
+    {
+      console.log("componentWillMount");
+      this.getDatas();
+    }
+
+    getDatas=()=>{
+        console.log("GetDatas 호출");
+        var url="http://localhost:9000/matchplay/PointHistory/All";
+        axios.get(url)
+        .then((responseData)=>{
+            this.setState({
+                getDatas:responseData.data            
+            })
+        }).catch(err=>{
+            console.log(err)
+        });
+}
+  
+
+    render(){
+        return(
+            <div>
         <div style={{position:'absolute',width:'230px',height:'683px',backgroundColor:'#503396',border:'3px'}}>
             <table style={{width:'300px',height:'550px',fontSize:'20pt',border:'2px',marginTop:'62px',marginLeft:'20px'}} className="TemaMenu">
                 <tbody>
@@ -27,9 +57,17 @@ const PointHistory=()=>(
                     </tr>
                     <tr>
                         <td align="center">
+                            <NavLink exact to="/Mypage/ReservationHistory" style={{ textDecoration: 'none',color:'white'}}>
+                            <button type="button" 
+                                style={{width:'250px', height:'80px',backgroundColor:'black', border:'2px solid white',borderRadius:'20px',boxShadow:'3px 3px 3px 0px gray'}}>Reservation</button>
+                            </NavLink>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center">
                             <NavLink exact to="/Mypage/MyMatchHistory" style={{ textDecoration: 'none',color:'white'}}>
                             <button type="button" 
-                                style={{width:'250px', height:'80px',backgroundColor:'black', border:'2px solid white',borderRadius:'20px',boxShadow:'3px 3px 3px 0px gray'}}>Match History</button>
+                                style={{width:'250px', height:'80px',backgroundColor:'black', border:'2px solid white',borderRadius:'20px',boxShadow:'3px 3px 3px 0px gray'}}>Match</button>
                             </NavLink>
                         </td>
                     </tr>
@@ -37,7 +75,7 @@ const PointHistory=()=>(
                         <td align="center">
                             <NavLink exact to="/Mypage/PointHistory" style={{ textDecoration: 'none',color:'white'}}>
                             <button type="button" 
-                                style={{width:'250px', height:'80px',backgroundColor:'black', border:'2px solid white',borderRadius:'20px',boxShadow:'3px 3px 3px 0px gray'}}>Point History</button>
+                                style={{width:'250px', height:'80px',backgroundColor:'black', border:'2px solid white',borderRadius:'20px',boxShadow:'3px 3px 3px 0px gray'}}>Point</button>
                             </NavLink>
                         </td>
                     </tr>
@@ -75,20 +113,17 @@ const PointHistory=()=>(
             </table>
         </div>
         <div style={{position:'absolute',left:'500px',top:'300px',width:'1200px',height:'580px',border:'1px solid gray'}} align="center">
-            <table>
-                <thead>
+            <table className="point_tb">
+                <thead align="center">
                     <tr>
-                        <td>
+                        <td width="250px">
                             날짜
                         </td>
-                        <td>
+                        <td width="150px">
                             분류
                         </td>
-                        <td>
-                            금액
-                        </td>
-                        <td>
-                            잔액
+                        <td width="300px">
+                            금액 내역
                         </td>
                     </tr>
                 </thead>
@@ -115,6 +150,8 @@ const PointHistory=()=>(
                         </React.Fragment>
         </div>
     </div>
-)
+        )
+    }
+}
 
 export default PointHistory

@@ -1,6 +1,6 @@
 export {default as Home} from './Home';
 export {default as Match} from './Match';
-export {default as League} from './League';
+// export {default as LeagueMain} from '../League/LeagueMain';
 export {default as Team} from './Team';
 export {default as QnA} from './QnA';
 export {default as Gujang} from './Match_Gujang';
@@ -19,3 +19,9 @@ export {default as MyMatchHistory} from './MyMatchHistory';
 export {default as Account} from './Account';
 export {default as PointHistory} from './PointHistory';
 export {default as Write} from './Write';
+export {default as CreateTeam} from './CreateTeam';
+export {default as PwdCheck} from './PwdCheck';
+export {default as PwdChange} from './PwdChange';
+export {default as TCSuccess} from './TCSuccess';
+export {default as ReservationHistory} from './ReservationHistory';
+export {default as PointCharge} from './PointCharge';

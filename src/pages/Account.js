@@ -2,7 +2,7 @@ import React,{Component} from 'react';
 import '../Css/MainStyle.css'
 import {NavLink} from 'react-router-dom';
 import { Scrollbars } from 'react-custom-scrollbars';
-import UserDelUpd from '../User/UserDelUpd';
+import UserInfo from '../User/UserInfo';
 
 const Account=()=>(
     <div>
@@ -28,9 +28,17 @@ const Account=()=>(
                     </tr>
                     <tr>
                         <td align="center">
+                            <NavLink exact to="/Mypage/ReservationHistory" style={{ textDecoration: 'none',color:'white'}}>
+                            <button type="button" 
+                                style={{width:'250px', height:'80px',backgroundColor:'black', border:'2px solid white',borderRadius:'20px',boxShadow:'3px 3px 3px 0px gray'}}>Reservation</button>
+                            </NavLink>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center">
                             <NavLink exact to="/Mypage/MyMatchHistory" style={{ textDecoration: 'none',color:'white'}}>
                             <button type="button" 
-                                style={{width:'250px', height:'80px',backgroundColor:'black', border:'2px solid white',borderRadius:'20px',boxShadow:'3px 3px 3px 0px gray'}}>Match History</button>
+                                style={{width:'250px', height:'80px',backgroundColor:'black', border:'2px solid white',borderRadius:'20px',boxShadow:'3px 3px 3px 0px gray'}}>Match</button>
                             </NavLink>
                         </td>
                     </tr>
@@ -38,7 +46,7 @@ const Account=()=>(
                         <td align="center">
                             <NavLink exact to="/Mypage/PointHistory" style={{ textDecoration: 'none',color:'white'}}>
                             <button type="button" 
-                                style={{width:'250px', height:'80px',backgroundColor:'black', border:'2px solid white',borderRadius:'20px',boxShadow:'3px 3px 3px 0px gray'}}>Point History</button>
+                                style={{width:'250px', height:'80px',backgroundColor:'black', border:'2px solid white',borderRadius:'20px',boxShadow:'3px 3px 3px 0px gray'}}>Point</button>
                             </NavLink>
                         </td>
                     </tr>
@@ -49,10 +57,10 @@ const Account=()=>(
             <NavLink exact to="/Mypage/Account" style={{ textDecoration: 'none',color:'white'}}>
                 <button type="button">회원정보수정/탈퇴</button>
             </NavLink>
-            <NavLink exact to="/Mypage/Account/PwUpdate" style={{ textDecoration: 'none',color:'white'}}>
+            <NavLink exact to="/Mypage/Account/PwdCheck" style={{ textDecoration: 'none',color:'white'}}>
                 <button type="button">비밀번호 변경</button>
             </NavLink>
-            <UserDelUpd/>
+            <UserInfo/>
         </div>
     </div>
 )

@@ -5,8 +5,8 @@ import Modal from 'react-modal';
 
 const customStyles = {
     content : {
-      top                   : '50%',
-      left                  : '50%',
+      top                   : '30%',
+      left                  : '30%',
       right                 : 'auto',
       bottom                : 'auto',
       marginRight           : '-50%',
@@ -17,24 +17,49 @@ const customStyles = {
     }
   };
 
+//   const customStyles1 = {
+//     content : {
+//       top                   : '50%',
+//       left                  : '50%',
+//       right                 : 'auto',
+//       bottom                : 'auto',
+//       marginRight           : '-50%',
+//       transform             : 'translate(-50%, -50%)',
+//       height                : '380px',
+//       textAlign             : 'center',
+//       border                : '2px solid #503396'
+//     }
+//   };
+
 class TeamMember extends React.Component {
     constructor () {
       super();
       this.state = {
-        showModal: false
+        showModal: false,
+        showModal1:false
       };
       
       this.handleOpenModal = this.handleOpenModal.bind(this);
+      this.handleOpenModal1 = this.handleOpenModal1.bind(this);
       this.handleCloseModal = this.handleCloseModal.bind(this);
+      this.handleCloseModal1 = this.handleCloseModal1.bind(this);
     }
     
     handleOpenModal () {
       this.setState({ showModal: true });
     }
+
+    handleOpenModal1 () {
+        this.setState({ showModal1: true });
+      }
     
     handleCloseModal () {
       this.setState({ showModal: false });
     }
+
+    handleCloseModal1 () {
+        this.setState({ showModal1: false });
+      }
 
     render () {
         return (
@@ -101,32 +126,85 @@ class TeamMember extends React.Component {
                         <td width="150px">
                             <button type="button" style={{width:'100px',backgroundColor:'#503396',color:'white'}}>검색하기</button>
                         </td>
-                        <td style={{float:'right', width:'200px'}}>
+                        <td style={{width:'150px'}}>
+                            <button onClick={this.handleOpenModal1} style={{backgroundColor:'black',color:'white',width:'126.08px'}}>가입승인</button>    
+                                <Modal
+                                    // className="modal"
+                                    isOpen={this.state.showModal1}
+                                    style={customStyles}
+                                    contentLabel="onRequestClose Example"
+                                    onRequestClose={this.handleCloseModal1}
+                                    shouldCloseOnOverlayClick={true}
+                                    >
+                                    <table className="GaipList" width="395px">
+                                        <thead align="center" style={{color:'white',backgroundColor:'black'}}>
+                                            <tr height="50px">
+                                                <td>아이디</td>
+                                                <td>나이</td>
+                                                <td>연고</td>
+                                                <td>승인요청</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr height="45px">
+                                                <td>손흥민동생</td>
+                                                <td>23</td>
+                                                <td>서울</td>
+                                                <td>
+                                                    <button type="button" style={{width:'85px', height:'30px',backgroundColor:'#503396',color:'white',outline:'none',borderRadius:'10px',fontSize:'13pt'}}>승인</button>
+                                                </td>
+                                            </tr>
+                                            <tr height="45px">
+                                                <td>이승우친형</td>
+                                                <td>29</td>
+                                                <td>경기</td>
+                                                <td>
+                                                    <button type="button" style={{width:'85px', height:'30px',backgroundColor:'#503396',color:'white',outline:'none',borderRadius:'10px',fontSize:'13pt'}}>승인</button>
+                                                </td>
+                                            </tr>
+                                            <tr height="45px">
+                                                <td>박지성친구</td>
+                                                <td>35</td>
+                                                <td>인천</td>
+                                                <td>
+                                                    <button type="button" style={{width:'85px', height:'30px',backgroundColor:'#503396',color:'white',outline:'none',borderRadius:'10px',fontSize:'13pt'}}>승인</button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <br/><br/>
+                                    <button type="button" onClick={this.handleCloseModal1} 
+                                    style={{width:'100px', height:'40px',backgroundColor:'black',border:'1px solid #503396',color:'white',outline:'none',borderRadius:'10px',fontSize:'13pt'}}>
+                                        닫기
+                                    </button>
+                                </Modal>    
+                        </td>
+                        <td style={{width:'150px'}}>
                             <button onClick={this.handleOpenModal} style={{backgroundColor:'black',color:'white'}}>팀원 초대하기</button>    
-                                    <Modal
-                                        // className="modal"
-                                        isOpen={this.state.showModal}
-                                        style={customStyles}
-                                        contentLabel="onRequestClose Example"
-                                        onRequestClose={this.handleCloseModal}
-                                        shouldCloseOnOverlayClick={true}
-                                        >
-                                        <br/>
-                                        <b style={{fontSize:'20pt',color:'#503396'}}>팀원 초대하기</b><br/><br/>
-                                        <hr></hr><br/><br/>
-                                        <b style={{fontSize:'13pt'}}>아이디를 입력해주세요.</b><br/><br/>
-                                        <input type="text" style={{width:'200px',height:'30px'}}/>
-                                        <br/><br/><br/>
-                                        <button type="button" onClick={this.handleCloseModal} 
-                                        style={{width:'100px', height:'40px',backgroundColor:'#503396',border:'1px solid #503396',color:'white',outline:'none',borderRadius:'10px',fontSize:'13pt'}}>
-                                            초대하기
-                                        </button>
-                                        &nbsp;&nbsp;&nbsp;&nbsp;
-                                        <button type="button" onClick={this.handleCloseModal} 
-                                        style={{width:'100px', height:'40px',backgroundColor:'black',border:'1px solid #503396',color:'white',outline:'none',borderRadius:'10px',fontSize:'13pt'}}>
-                                            닫기
-                                        </button>
-                                    </Modal>    
+                                <Modal
+                                    // className="modal"
+                                    isOpen={this.state.showModal}
+                                    style={customStyles}
+                                    contentLabel="onRequestClose Example"
+                                    onRequestClose={this.handleCloseModal}
+                                    shouldCloseOnOverlayClick={true}
+                                    >
+                                    <br/>
+                                    <b style={{fontSize:'20pt',color:'#503396'}}>팀원 초대하기</b><br/><br/>
+                                    <hr></hr><br/><br/>
+                                    <b style={{fontSize:'13pt'}}>아이디를 입력해주세요.</b><br/><br/>
+                                    <input type="text" style={{width:'200px',height:'30px'}}/>
+                                    <br/><br/><br/>
+                                    <button type="button" onClick={this.handleCloseModal} 
+                                    style={{width:'100px', height:'40px',backgroundColor:'#503396',border:'1px solid #503396',color:'white',outline:'none',borderRadius:'10px',fontSize:'13pt'}}>
+                                        초대하기
+                                    </button>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                                    <button type="button" onClick={this.handleCloseModal} 
+                                    style={{width:'100px', height:'40px',backgroundColor:'black',border:'1px solid #503396',color:'white',outline:'none',borderRadius:'10px',fontSize:'13pt'}}>
+                                        닫기
+                                    </button>
+                                </Modal>    
                         </td>
                     </tr>
                 </tbody>
@@ -347,7 +425,7 @@ class TeamMember extends React.Component {
         </div>
         <div>
             <React.Fragment>
-                <nav aria-label="Page navigation" style={{position:'absolute', left:'950px',top:'770px'}}>
+                <nav aria-label="Page navigation" style={{position:'absolute', left:'900px',top:'770px'}}>
                         <ul className="pagination" style={{fontSize:'13pt'}}>
                         <li title="이전 페이지보기" className="page-item">
                             <a className="page-link" href="#" style={{color:'black'}}>◀</a></li>

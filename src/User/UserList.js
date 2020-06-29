@@ -12,7 +12,7 @@ class UserList extends Component{
         const list = data.map(
             info => (
                 <UserDelUpd
-                key={info.name}
+                key={info.id}
                 info={info}
                 onRemove={onRemove}
                 onUpdate={onUpdate}
