@@ -113,8 +113,8 @@ class AddPlace extends Component {
 
     // 지도에 클릭 이벤트를 등록합니다
     // 지도를 클릭하면 마지막 파라미터로 넘어온 함수를 호출합니다
-    kakao.maps.event.addListener(map, "click", function(mouseEvent) {
-      searchDetailAddrFromCoords(mouseEvent.latLng, function(result, status) {
+    kakao.maps.event.addListener(map, "click", function (mouseEvent) {
+      searchDetailAddrFromCoords(mouseEvent.latLng, function (result, status) {
         if (status === kakao.maps.services.Status.OK) {
           let latlng = mouseEvent.latLng;
 
@@ -156,7 +156,7 @@ class AddPlace extends Component {
         }
       });
     });
-    kakao.maps.event.addListener(map, "idle", function() {
+    kakao.maps.event.addListener(map, "idle", function () {
       searchAddrFromCoords(map.getCenter(), displayCenterInfo);
     });
 
@@ -236,7 +236,6 @@ class AddPlace extends Component {
                     ></img>
                   )
                 )}
-                {/* 형 안되요 돌아와요 어디 가신건가요 대체??? 수업이 끝났구만 돌아와요 형!!! */}
               </div>
             </div>
             <br></br>

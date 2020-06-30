@@ -36,6 +36,7 @@ import Banner from "./MainComponents/Banner";
 import logo2 from "./image/logo2.png";
 import ReservationMain from "./Match/ReservationMain";
 import MyRes from "./pages/MyRes";
+import MngRes from "./Manage/MngRes";
 
 const Title = () => {
   return (
@@ -56,7 +57,7 @@ const Title = () => {
       <Route exact path="/QnA" component={QnA} />
 
       {/* <Route exact path="/Match/Gujang" component={Gujang} /> */}
-
+      <Route exact path="/MngRes" component={MngRes} />
       <Route exact path="/Match/Gujang/Reservation" component={Reservation} />
 
       <Route exact path="/Login" component={LoginForm} />

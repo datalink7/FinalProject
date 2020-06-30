@@ -3,6 +3,7 @@ import Axios from "axios";
 import MyResItem from "./MyResItem";
 import pageNext from "../image/pageNext.png";
 import { NavLink } from "react-router-dom";
+import MyPageSidebar from "./MyPageSidebar";
 
 class MyRes extends Component {
   state = {
@@ -165,149 +166,16 @@ class MyRes extends Component {
     }
     return (
       <div>
+        <MyPageSidebar></MyPageSidebar>
         <div
+          align="center"
           style={{
+            paddingTop: "20px",
             position: "absolute",
-            width: "230px",
-            height: "683px",
-            backgroundColor: "#503396",
-            border: "3px",
+            top: "220px",
+            left: "600px",
           }}
         >
-          <table
-            style={{
-              width: "300px",
-              height: "550px",
-              fontSize: "20pt",
-              border: "2px",
-              marginTop: "62px",
-              marginLeft: "20px",
-            }}
-            className="TemaMenu"
-          >
-            <tbody>
-              <tr>
-                <td align="center" width="200px">
-                  <NavLink
-                    exact
-                    to="/Mypage"
-                    style={{ textDecoration: "none", color: "white" }}
-                  >
-                    <button
-                      type="button"
-                      name="Hover"
-                      className="button-container-2"
-                      style={{
-                        width: "250px",
-                        height: "80px",
-                        backgroundColor: "black",
-                        border: "2px solid white",
-                        borderRadius: "20px",
-                        boxShadow: "3px 3px 3px 0px gray",
-                      }}
-                    >
-                      MyPage Main
-                    </button>
-                  </NavLink>
-                </td>
-              </tr>
-              <tr>
-                <td align="center">
-                  <NavLink
-                    exact
-                    to="/Mypage/Account"
-                    style={{ textDecoration: "none", color: "white" }}
-                  >
-                    <button
-                      type="button"
-                      style={{
-                        width: "250px",
-                        height: "80px",
-                        backgroundColor: "black",
-                        border: "2px solid white",
-                        borderRadius: "20px",
-                        boxShadow: "3px 3px 3px 0px gray",
-                      }}
-                    >
-                      Account
-                    </button>
-                  </NavLink>
-                </td>
-              </tr>
-              <tr>
-                <td align="center">
-                  <NavLink
-                    exact
-                    to="/Mypage/ReservationHistory"
-                    style={{ textDecoration: "none", color: "white" }}
-                  >
-                    <button
-                      type="button"
-                      style={{
-                        width: "250px",
-                        height: "80px",
-                        backgroundColor: "black",
-                        border: "2px solid white",
-                        borderRadius: "20px",
-                        boxShadow: "3px 3px 3px 0px gray",
-                      }}
-                    >
-                      Reservation
-                    </button>
-                  </NavLink>
-                </td>
-              </tr>
-              <tr>
-                <td align="center">
-                  <NavLink
-                    exact
-                    to="/Mypage/MyMatchHistory"
-                    style={{ textDecoration: "none", color: "white" }}
-                  >
-                    <button
-                      type="button"
-                      style={{
-                        width: "250px",
-                        height: "80px",
-                        backgroundColor: "black",
-                        border: "2px solid white",
-                        borderRadius: "20px",
-                        boxShadow: "3px 3px 3px 0px gray",
-                      }}
-                    >
-                      Match
-                    </button>
-                  </NavLink>
-                </td>
-              </tr>
-              <tr>
-                <td align="center">
-                  <NavLink
-                    exact
-                    to="/Mypage/PointHistory"
-                    style={{ textDecoration: "none", color: "white" }}
-                  >
-                    <button
-                      type="button"
-                      style={{
-                        width: "250px",
-                        height: "80px",
-                        backgroundColor: "black",
-                        border: "2px solid white",
-                        borderRadius: "20px",
-                        boxShadow: "3px 3px 3px 0px gray",
-                      }}
-                    >
-                      Point
-                    </button>
-                  </NavLink>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div align="center" style={{ paddingTop: "20px" }}>
           <div
             style={{
               fontSize: "15pt",
@@ -325,7 +193,7 @@ class MyRes extends Component {
             <b style={{ fontSize: "20pt" }}>
               {window.sessionStorage.getItem("id")}
             </b>
-            님의 경기 내역
+            님의 예약 내역
             <select
               onChange={this.onChange.bind(this)}
               name="searchType"
@@ -378,8 +246,8 @@ class MyRes extends Component {
               style={{
                 // float: "right",
                 position: "absolute",
-                right: "33%",
-                top: "24%",
+                right: "23%",
+                top: "30px",
                 border: "none",
                 backgroundColor: "#503396",
                 color: "white",
@@ -387,11 +255,37 @@ class MyRes extends Component {
                 borderRadius: "5px",
                 height: "30px",
                 lineHeight: "30px",
+                outline: "none",
               }}
               onClick={this.reload.bind(this)}
             >
               전체일정
             </button>
+            <div
+              style={{
+                position: "absolute",
+                right: "10%",
+                top: "30px",
+                height: "30px",
+                lineHeight: "30px",
+              }}
+            >
+              <NavLink to={"/MngRes"}>
+                <button
+                  style={{
+                    border: "none",
+                    backgroundColor: "white",
+                    color: "#503396",
+                    fontSize: "11pt",
+                    borderRadius: "5px",
+                    height: "30px",
+                    lineHeight: "30px",
+                  }}
+                >
+                  경기 관리
+                </button>
+              </NavLink>
+            </div>
           </div>
           <table style={{ width: "1000px" }}>
             <thead>
@@ -424,9 +318,23 @@ class MyRes extends Component {
                 fontSize: "11pt",
               }}
             >
-              {this.state.myRes.map((row, idx) => (
-                <MyResItem row={row}></MyResItem>
-              ))}
+              {this.state.myRes.length === 0 ? (
+                <tr
+                  style={{
+                    padding: "200px",
+                    fontSize: "13pt",
+                    fontWeight: "bold",
+                  }}
+                >
+                  <td colSpan="8" style={{ height: "200px" }}>
+                    경기 내역이 없습니다.
+                  </td>
+                </tr>
+              ) : (
+                this.state.myRes.map((row, idx) => (
+                  <MyResItem row={row}></MyResItem>
+                ))
+              )}
               <tr>
                 <td colSpan="8">
                   <div

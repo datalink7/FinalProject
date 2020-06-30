@@ -2,16 +2,6 @@ import React, { Component } from "react";
 
 class MyResItem extends Component {
   render() {
-    let team = "";
-    if (
-      this.props.row.home_member_id.includes(
-        window.sessionStorage.getItem("id")
-      )
-    ) {
-      team = "Home";
-    } else {
-      team = "Away";
-    }
     let resStatus = "";
     if (
       ((this.props.row.place_max -
@@ -59,9 +49,7 @@ class MyResItem extends Component {
 
     return (
       <tr style={{ borderBottom: "1px solid gray", height: "45px" }}>
-        <td>
-          {this.props.row.res_etc != null ? "리그" : "친선"}({team})
-        </td>
+        <td>{this.props.row.res_etc != null ? "리그" : "친선"}</td>
         <td>{this.props.row.res_type === "0" ? "개인" : "팀"}</td>
         <td>{this.props.row.res_time}</td>
         <td>

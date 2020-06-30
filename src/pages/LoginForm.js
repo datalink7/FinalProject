@@ -55,7 +55,6 @@ function LoginForm() {
 
   const checkId = (e) => {
     let url = "http://localhost:9000/matchplay/login/selId?id=" + id;
-    // let url = "http://192.168.0.108:9000/matchplay/login/selId?id=" + id;
 
     axios
       .get(url)
@@ -78,7 +77,6 @@ function LoginForm() {
 
   const checkName = (e) => {
     let url = "http://localhost:9000/matchplay/member/selName?name=" + name;
-    // let url = "http://192.168.0.108:9000/matchplay/member/selName?name=" + name;
 
     axios
       .get(url)
@@ -100,7 +98,6 @@ function LoginForm() {
   const checkName1 = (e) => {
     let url =
       "http://localhost:9000/matchplay/member/searchName?id=" +
-      // "http://192.168.0.108:9000/matchplay/member/searchName?id=" +
       id +
       "&name=" +
       name;
@@ -127,7 +124,6 @@ function LoginForm() {
   const checkBirth = (e) => {
     let url =
       "http://localhost:9000/matchplay/member/selBirth?name=" +
-      // "http://192.168.0.108:9000/matchplay/member/selBirth?name=" +
       name +
       "&birth=" +
       birth;
@@ -152,7 +148,6 @@ function LoginForm() {
   const checkEmail = (e) => {
     let url =
       "http://localhost:9000/matchplay/member/searchEmail?name=" +
-      // "http://192.168.0.108:9000/matchplay/member/searchEmail?name=" +
       name +
       "&email=" +
       email;
@@ -177,8 +172,6 @@ function LoginForm() {
 
   const findId = (e) => {
     let url = "http://localhost:9000/matchplay/member/findId?email=" + email;
-    // let url =
-    //   "http://192.168.0.108:9000/matchplay/member/findId?email=" + email;
 
     axios
       .get(url)
@@ -199,11 +192,7 @@ function LoginForm() {
 
   const checkLpwd = (e) => {
     let url =
-      "http://localhost:9000/matchplay/login/selPwd?id=" +
-      // "http://192.168.0.108:9000/matchplay/login/selPwd?id=" +
-      Lid +
-      "&pwd=" +
-      Lpwd;
+      "http://localhost:9000/matchplay/login/selPwd?id=" + Lid + "&pwd=" + Lpwd;
 
     axios
       .get(url)
@@ -222,39 +211,38 @@ function LoginForm() {
       });
   };
 
-  const _changeName = function() {
+  const _changeName = function () {
     const name_v = document.getElementsByName("name")[0].value;
     setName(name_v);
   };
 
-  const _changeBirth = function() {
+  const _changeBirth = function () {
     const birth_v = document.getElementsByName("birth")[0].value;
     setBirth(birth_v);
   };
 
-  const _changeEmail = function() {
+  const _changeEmail = function () {
     const email_v = document.getElementsByName("email")[0].value;
     setEmail(email_v);
   };
 
-  const _changeId = function() {
+  const _changeId = function () {
     const id_v = document.getElementsByName("id")[0].value;
     setId(id_v);
   };
 
-  const _changeLid = function() {
+  const _changeLid = function () {
     const Lid_v = document.getElementById("Id").value;
     setLid(Lid_v);
   };
 
-  const _changeLpassword = function() {
+  const _changeLpassword = function () {
     const Lpassword_v = document.getElementById("Password").value;
     setLpwd(Lpassword_v);
   };
 
   const findPwd = (e) => {
     let url = "http://localhost:9000/matchplay/member/findPwd?id=" + id;
-    // let url = "http://192.168.0.108:9000/matchplay/member/findPwd?id=" + id;
 
     axios
       .get(url)
@@ -294,8 +282,7 @@ function LoginForm() {
       return 0;
     }
   };
-
-  const LoginEvent = function() {
+  const LoginEvent = function () {
     if (Lchk_pwd === 0) {
       alert("비밀번호가 일치하지 않습니다.");
       return 0;
@@ -435,36 +422,28 @@ function LoginForm() {
   );
 
   return (
-    <div className="Login-Modal" style={{ width: "100%" }}>
+    <div className="Login-Modal">
       {logged ? (
-        <div align="right">
-          <span style={{ fontSize: "10pt" }}>
-            {window.sessionStorage.getItem("id") + "님 접속중"}
-          </span>{" "}
-          <button
-            class="loginbtn"
-            onClick={() => {
-              onLogout();
-            }}
-            style={{ fontWeight: "bolder" }}
-          >
-            Logout
-          </button>
-        </div>
+        <button
+          class="loginbtn"
+          onClick={() => {
+            onLogout();
+          }}
+        >
+          Logout
+        </button>
       ) : (
-        <div align="right">
-          <button
-            class="loginbtn"
-            onClick={() => {
-              setModalIsOpen(true);
-              setIdx(0);
-            }}
-            style={{ fontWeight: "bolder" }}
-          >
-            Login
-          </button>
-        </div>
+        <button
+          class="loginbtn"
+          onClick={() => {
+            setModalIsOpen(true);
+            setIdx(0);
+          }}
+        >
+          Login
+        </button>
       )}
+
       <Modal isOpen={modalIsOpen}>
         <div>
           <h3 className="Head">로그인</h3>
@@ -496,7 +475,7 @@ function LoginForm() {
                 <label htmlFor="SaveID">아이디 저장</label> */}
           <br />
 
-          <button type="button" onClick={LoginEvent} className="btn btn-dark">
+          <button type="button" onClick={LoginEvent} className="btn btn-dark4">
             Login
           </button>
           <div

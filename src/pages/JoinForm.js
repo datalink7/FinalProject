@@ -1,25 +1,30 @@
 import React, { Component } from "react";
 import { NavLink, Route, Link } from "react-router-dom";
-import "../Css/JoinForm.css";
+import css from "../Css/JoinForm.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 // import Title from './Title.js';
 import axios from "axios";
+import zxcvbn from "zxcvbn";
 
 class joinForm extends Component {
   state = {
     chk_num: "",
     chk_email: "",
+    address: "",
+    assword: "",
+    confirmPassword: "",
+    passwordScore: "",
   };
   constructor(props) {
     super(props);
     this.state = {
       memberData: [],
+      address: "",
     };
   }
 
   onMemberInsert = (d) => {
     let url = "http://localhost:9000/matchplay/member/add";
-    // let url = "http://192.168.0.108:9000/matchplay/member/add";
     axios
       .post(url, {
         name: d.name.value,
@@ -40,7 +45,6 @@ class joinForm extends Component {
   checkId = (e) => {
     let url =
       "http://localhost:9000/matchplay/member/select?id=" + e.target.value;
-    // "http://192.168.0.108:9000/matchplay/member/select?id=" + e.target.value;
 
     axios
       .get(url)
@@ -63,9 +67,7 @@ class joinForm extends Component {
 
   checkEmail = (e) => {
     let url =
-      "http://localhost:9000/matchplay/member/selEmail?email=" +
-      // "http://192.168.0.108:9000/matchplay/member/selEmail?email=" +
-      e.target.value;
+      "http://localhost:9000/matchplay/member/selEmail?email=" + e.target.value;
 
     axios
       .get(url)
@@ -90,13 +92,111 @@ class joinForm extends Component {
 
   componentDidUpdate = (prevProps, prevState) => {};
 
+  componentDidMount() {
+    const script = document.createElement("script");
+
+    script.src =
+      "https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js";
+    script.async = true;
+
+    document.body.appendChild(script);
+  }
+
+  post = () => {
+    new window.daum.Postcode({
+      oncomplete: function (data) {
+        const zonecode = data.zonecode;
+        const roadAddr = data.address;
+        //const str = "(" + zonecode + ")" + roadAddr;
+        const str = roadAddr;
+        document.getElementById("address").value = str;
+        console.log(str);
+      },
+    }).open();
+  };
+
+  handleOnPasswordInput(passwordInput) {
+    const { score } = zxcvbn(passwordInput);
+    this.setState({ passwordScore: score });
+    this.setState({ password: passwordInput });
+  }
+
+  handleOnConfirmPasswordInput(confirmPasswordInput) {
+    this.setState({ confirmPassword: confirmPasswordInput });
+  }
+
+  //새패스워드 일치여부확인
+  doesPasswordMatch() {
+    const { password, confirmPassword } = this.state;
+    return password === confirmPassword;
+  }
+
+  //클래스명 반환
+  confirmPasswordClassName() {
+    const { confirmPassword } = this.state;
+
+    if (confirmPassword) {
+      return this.doesPasswordMatch() ? "is-valid" : "is-invalid";
+    }
+  }
+
+  //일치하지 않을때 메세지
+  renderFeedbackMessage() {
+    const { confirmPassword } = this.state;
+
+    if (confirmPassword) {
+      if (!this.doesPasswordMatch()) {
+        return (
+          <div className="invalid-feedback">패스워드가 일치하지 않습니다</div>
+        );
+      }
+    }
+  }
+
+  //안전성 확인
+  renderFeedbackMessage2() {
+    const { passwordScore } = this.state;
+    let message, className;
+
+    switch (passwordScore) {
+      case 0:
+        message = "위험!!!";
+        className = "text-danger";
+        break;
+      case 1:
+        message = "위험!!!";
+        className = "text-danger";
+        break;
+      case 2:
+        message = "보통";
+        className = "text-warning";
+        break;
+      case 3:
+        message = "안전";
+        className = "text-success";
+        break;
+      case 4:
+        message = "매우 안전";
+        className = "text-primary";
+        break;
+      default:
+        message = "";
+        break;
+    }
+
+    return (
+      <b id="passwordHelp" className={`form-text mt-2 ${className}`}>
+        {`${message}`}
+      </b>
+    );
+  }
+
   onSubmit = (e) => {
     e.preventDefault();
     console.log("onSubmit");
-
-    var regExp_pwd = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,10}$/; //  8 ~ 10자 영문, 숫자 조합
+    var regExp_pwd = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
     var chk_pwd = false;
-    chk_pwd = regExp_pwd.test(this.refs.pwd.value); // 형식에 맞는 경우 true 리턴
+    chk_pwd = regExp_pwd.test(this.refs.re_pwd.value); // 형식에 맞는 경우 true 리턴
 
     if (!this.refs.confirm.checked) {
       alert("약관동의 후 회원가입이 가능합니다.");
@@ -108,7 +208,9 @@ class joinForm extends Component {
       return 0;
     }
     if (!chk_pwd) {
-      alert("8~10자 영문, 숫자 조합 입력");
+      alert(
+        "8자 이상이어야 하고, 숫자/소문자/대문자/특수문자를 모두 포함해야 한다."
+      );
       return 0;
     }
     if (this.state.chk_num === 1) {
@@ -144,7 +246,7 @@ class joinForm extends Component {
 
   render() {
     return (
-      <div>
+      <div style={{ marginBottom: "200px" }}>
         <form onSubmit={this.onSubmit.bind(this)}>
           <table className="Join">
             <hr />
@@ -164,27 +266,34 @@ class joinForm extends Component {
             />
             {this.state.chk_num === 1 ? "사용할 수 없는 아이디입니다." : ""}
             <br />
-
             <strong>·비밀번호</strong>
             <br />
             <input
               type="password"
               className="Input"
               ref="pwd"
-              placeholder="영문+숫자 최소 8~10글자"
+              placeholder="8자 이상이어야 하고, 숫자/소문자/대문자/특수문자를 모두 포함해야 한다."
+              id="passwordInput"
+              onChange={(e) => this.handleOnPasswordInput(e.target.value)}
             />
+            <div className="pwd1">{this.renderFeedbackMessage2()}</div>
             <br />
-
             <strong>·비밀번호 확인</strong>
             <br />
+            {/* <input type="password" className="Input"  ref="re_pwd" placeholder="비밀번호 확인"   id="confirmpassword"
+                         onChange={e => this.handleOnConfirmPasswordInput(e.target.value)}/> */}
             <input
               type="password"
-              className="Input"
+              className={`Input ${this.confirmPasswordClassName()}`}
               ref="re_pwd"
               placeholder="비밀번호 확인"
+              id="confirmpassword"
+              onChange={(e) =>
+                this.handleOnConfirmPasswordInput(e.target.value)
+              }
             />
+            {this.renderFeedbackMessage()}
             <br />
-
             <strong>·이메일주소</strong>
             <br />
             <input
@@ -196,7 +305,6 @@ class joinForm extends Component {
             />
             {this.state.chk_email === 1 ? "사용할 수 없는 이메일입니다." : ""}
             <br />
-
             <strong>·이름</strong>
             <br />
             <input
@@ -206,7 +314,6 @@ class joinForm extends Component {
               placeholder="이름 입력"
             />
             <br />
-
             <strong>·생년월일</strong>
             <br />
             <input
@@ -216,7 +323,6 @@ class joinForm extends Component {
               placeholder="ex)1992년10월30일->19921030"
             ></input>
             <br />
-
             <strong>·성별</strong>
             <br />
             <div className="gender">
@@ -232,7 +338,6 @@ class joinForm extends Component {
                 </select>
               </label>
             </div>
-
             <strong>·주소</strong>
             <br />
             <input
@@ -240,9 +345,14 @@ class joinForm extends Component {
               ref="addr"
               className="addr"
               placeholder="서울시 용산구 한남동(이 예시대로 작성)"
+              name="address"
+              id="address"
               style={{ width: "400px" }}
             />
-
+            &nbsp;
+            <button type="button" className="addr_btn" onClick={this.post}>
+              주소검색
+            </button>
             <strong>·휴대폰번호</strong>
             <br />
             <input

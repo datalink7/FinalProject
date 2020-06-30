@@ -1,282 +1,425 @@
-import React,{Component} from 'react';
-import '../Css/MainStyle.css'
-import {NavLink} from 'react-router-dom';
-import { Scrollbars } from 'react-custom-scrollbars';
-import Tot from '../image/tottenham.png'
-import City from '../image/mancity.png'
-import Ever from '../image/everton.png'
-import Manu from '../image/manu.png'
-import Liver from '../image/liverpool.png'
-import Img from '../image/img.png'
+import React, { Component } from "react";
+import Axios from "axios";
+import MyMatchItem from "./MyMatchItem";
+import pageNext from "../image/pageNext.png";
+import { NavLink } from "react-router-dom";
+import Scrollbars from "react-custom-scrollbars";
+import MyPageSidebar from "./MyPageSidebar";
 
-const MyMatchHistory=()=>(
-    <div>
-        <div style={{position:'absolute',width:'230px',height:'683px',backgroundColor:'#503396',border:'3px'}}>
-            <table style={{width:'300px',height:'550px',fontSize:'20pt',border:'2px',marginTop:'62px',marginLeft:'20px'}} className="TemaMenu">
-                <tbody>
-                    <tr>
-                        <td align="center" width="200px">
-                            <NavLink exact to="/Mypage" 
-                            style={{ textDecoration: 'none',color:'white'}}>
-                                <button type="button" name="Hover" className="button-container-2"
-                                style={{width:'250px', height:'80px',backgroundColor:'black', border:'2px solid white',borderRadius:'20px',boxShadow:'3px 3px 3px 0px gray'}}>MyPage Main</button>
-                            </NavLink>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="center">
-                            <NavLink exact to="/Mypage/Account" style={{ textDecoration: 'none',color:'white'}}>
-                            <button type="button" 
-                                style={{width:'250px', height:'80px',backgroundColor:'black', border:'2px solid white',borderRadius:'20px',boxShadow:'3px 3px 3px 0px gray'}}>Account</button>
-                            </NavLink>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="center">
-                            <NavLink exact to="/Mypage/ReservationHistory" style={{ textDecoration: 'none',color:'white'}}>
-                            <button type="button" 
-                                style={{width:'250px', height:'80px',backgroundColor:'black', border:'2px solid white',borderRadius:'20px',boxShadow:'3px 3px 3px 0px gray'}}>Reservation</button>
-                            </NavLink>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="center">
-                            <NavLink exact to="/Mypage/MyMatchHistory" style={{ textDecoration: 'none',color:'white'}}>
-                            <button type="button" 
-                                style={{width:'250px', height:'80px',backgroundColor:'black', border:'2px solid white',borderRadius:'20px',boxShadow:'3px 3px 3px 0px gray'}}>Match</button>
-                            </NavLink>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="center">
-                            <NavLink exact to="/Mypage/PointHistory" style={{ textDecoration: 'none',color:'white'}}>
-                            <button type="button" 
-                                style={{width:'250px', height:'80px',backgroundColor:'black', border:'2px solid white',borderRadius:'20px',boxShadow:'3px 3px 3px 0px gray'}}>Point</button>
-                            </NavLink>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div style={{position:'absolute',left:'500px',top:'250px',width:'1200px',height:'100px'}} align="center">
-            <table style={{fontSize:'13pt'}}>
-                <tbody>
-                    <tr>
-                        <td align="center">
-                            <select>
-                                <option>전체경기</option>
-                                <option>친선경기</option>
-                                <option>리그경기</option>
-                            </select>
-                        </td>
-                        <td width="120px" align="center">
-                            <b style={{fontSize:'13pt'}}>날짜 선택</b>
-                        </td>
-                        <td>
-                            <input type="Date"/> ~ <input type="Date"/>
-                        </td>
-                        <td width="120px" align="center">
-                            <b style={{fontSize:'13pt'}}>상대 팀명</b>
-                        </td>
-                        <td>
-                            <input type="text"/>
-                        </td>
-                        <td width="110px" align="center">
-                            <b style={{fontSize:'13pt'}}>승/무/패</b>
-                        </td>
-                        <td width="120px" align="center">
-                            <select>
-                                <option>경기결과</option>
-                                <option>승</option>
-                                <option>무</option>
-                                <option>패</option>
-                            </select>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <Scrollbars className="ReScroll" style={{width:'1200px', height:'551px',position:'absolute',top:'330px',left:'500px'}}>
-        <div style={{boder:'3px solid yellow'}}>
-            <table style={{border:'2px solid rgba(0,0,0,.1)'}}>
-                <tbody>
-                    <tr style={{borderBottom:'1px solid rgba(0,0,0,.1)',height:'40px',backgroundColor:'#b3e5fc'}}>
-                        <td align="center" style={{border:'1px solid gray'}}>
-                            <b style={{fontSize:'15pt'}}>20.06.01(목)</b>
-                        </td>
-                        <td align="center" style={{border:'1px solid gray',width:'400px'}}>
-                            <b style={{fontSize:'15pt'}}>Friendly Match</b>
-                        </td>
-                        <td align="center" style={{border:'1px solid gray'}}>
-                            <b style={{fontSize:'15pt'}}>상대팀 : (개인전)</b>
-                        </td>
-                        <td style={{border:'1px solid gray'}}>
-                            <b style={{fontSize:'15pt',float:'left',color:'blue',float:'right',marginRight:'50px'}}>승리</b>
-                        </td>
-                    </tr>
-                    <tr style={{borderBottom:'1px solid rgba(0,0,0,.1)',backgroundColor:'LightSkyBlue'}}>
-                        <td align="center" style={{border:'1px solid gray', width:'200px'}}>
-                            <img src={Img} alt="" style={{width:'100px',paddingTop:'10px',paddingBottom:'10px',border:'1px'}}/>
-                        </td>
-                        <td align="center" style={{width:'300px',border:'1px solid gray'}}>
-                            <b style={{fontSize:'60pt'}}>2 : 0</b>
-                        </td>
-                        <td style={{border:'1px solid gray', width:'200px'}} align="center">
-                            <img src={Img} alt="" style={{width:'100px',marginLeft:'0px',paddingTop:'10px',paddingBottom:'10px',border:'1px'}}/>
-                        </td>
-                        <td width="400px" style={{border:'1px solid gray'}}>
-                            <b style={{fontSize:'15pt',marginLeft:'50px'}}>경기 장소 :</b>
-                            <b style={{fontSize:'15pt'}}>도봉 루다 풋살장 A</b>
-                            <br/>
-                            <b style={{fontSize:'15pt',marginLeft:'50px'}}>주소 :</b>
-                            <b style={{fontSize:'15pt'}}>서울 도봉구 방학동 271-2</b>    
-                        </td>
-                    </tr>
-                    <tr style={{borderBottom:'1px solid rgba(0,0,0,.1)',height:'40px',backgroundColor:'#b3e5fc'}}>
-                        <td align="center" style={{border:'1px solid gray'}}>
-                            <b style={{fontSize:'15pt'}}>20.06.02(금)</b>
-                        </td>
-                        <td align="center" style={{border:'1px solid gray',width:'400px'}}>
-                            <b style={{fontSize:'15pt'}}>League Match</b>
-                        </td>
-                        <td align="center" style={{border:'1px solid gray'}}>
-                            <b style={{fontSize:'15pt'}}>상대팀 : 맨시티</b>
-                        </td>
-                        <td style={{border:'1px solid gray'}}>
-                            <b style={{fontSize:'15pt',float:'left',color:'blue',float:'right',marginRight:'50px'}}>승리</b>
-                        </td>
-                    </tr>
-                    <tr style={{borderBottom:'1px solid rgba(0,0,0,.1)',backgroundColor:'LightSkyBlue'}}>
-                        <td align="center" style={{border:'1px solid gray', width:'200px'}}>
-                            <img src={Tot} alt="" style={{width:'100px',paddingTop:'10px',paddingBottom:'10px',border:'1px'}}/>
-                        </td>
-                        <td align="center" style={{width:'300px',border:'1px solid gray'}}>
-                            <b style={{fontSize:'60pt'}}>2 : 0</b>
-                        </td>
-                        <td style={{border:'1px solid gray', width:'200px'}} align="center">
-                            <img src={City} alt="" style={{width:'100px',marginLeft:'0px',paddingTop:'10px',paddingBottom:'10px',border:'1px'}}/>
-                        </td>
-                        <td width="400px" style={{border:'1px solid gray'}}>
-                            <b style={{fontSize:'15pt',marginLeft:'50px'}}>경기 장소 :</b>
-                            <b style={{fontSize:'15pt'}}>도봉 루다 풋살장 A</b>
-                            <br/>
-                            <b style={{fontSize:'15pt',marginLeft:'50px'}}>주소 :</b>
-                            <b style={{fontSize:'15pt'}}>서울 도봉구 방학동 271-2</b>    
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <table style={{border:'2px solid rgba(0,0,0,.1)'}}>
-                <tbody>
-                    <tr style={{borderBottom:'1px solid rgba(0,0,0,.1)',height:'40px',backgroundColor:'#b3e5fc'}}>
-                        <td align="center" style={{border:'1px solid gray'}}>
-                            <b style={{fontSize:'15pt'}}>20.06.03(토)</b>
-                        </td>
-                        <td align="center" style={{border:'1px solid gray',width:'400px'}}>
-                            <b style={{fontSize:'15pt'}}>Friendly Match</b>
-                        </td>
-                        <td align="center" style={{border:'1px solid gray'}}>
-                            <b style={{fontSize:'15pt'}}>상대팀 : 에버턴</b>
-                        </td>
-                        <td style={{border:'1px solid gray'}}>
-                            <b style={{fontSize:'15pt',float:'left',color:'blue',float:'right',marginRight:'50px'}}>승리</b>
-                        </td>
-                    </tr>
-                    <tr style={{borderBottom:'1px solid rgba(0,0,0,.1)',backgroundColor:'LightSkyBlue'}}>
-                        <td align="center" style={{width:'200px',border:'1px solid gray'}}>
-                            <img src={Tot} alt="" style={{width:'100px',paddingTop:'10px',paddingBottom:'10px',border:'1px'}}/>
-                        </td>
-                        <td align="center" style={{width:'300px',border:'1px solid gray'}}>
-                            <b style={{fontSize:'60pt'}}>6 : 2</b>
-                        </td>
-                        <td style={{border:'1px solid gray', width:'200px'}} align="center">
-                            <img src={Ever} alt="" style={{width:'100px',marginLeft:'0px',paddingTop:'10px',paddingBottom:'10px',border:'1px'}}/>
-                        </td>
-                        <td width="400px" style={{border:'1px solid gray'}}>
-                            <b style={{fontSize:'15pt',marginLeft:'50px'}}>경기 장소 :</b>
-                            <b style={{fontSize:'15pt'}}>도봉 루다 풋살장 A</b>
-                            <br/>
-                            <b style={{fontSize:'15pt',marginLeft:'50px'}}>주소 :</b>
-                            <b style={{fontSize:'15pt'}}>서울 도봉구 방학동 271-2</b>    
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <table style={{border:'2px solid rgba(0,0,0,.1)'}}>
-                <tbody>
-                    <tr style={{borderBottom:'1px solid rgba(0,0,0,.1)',height:'40px',backgroundColor:'tomato'}}>
-                        <td align="center" style={{border:'1px solid gray'}}>
-                            <b style={{fontSize:'15pt'}}>20.06.04(일)</b>
-                        </td>
-                        <td align="center" style={{border:'1px solid gray',width:'400px'}}>
-                            <b style={{fontSize:'15pt'}}>Friendly Match</b>
-                        </td>
-                        <td align="center" style={{border:'1px solid gray'}}>
-                            <b style={{fontSize:'15pt'}}>상대팀 : 리버풀</b>
-                        </td>
-                        <td style={{border:'1px solid gray'}}>
-                            <b style={{fontSize:'15pt',float:'left',color:'blue',float:'right',marginRight:'50px'}}>패배</b>
-                        </td>
-                    </tr>
-                    <tr style={{borderBottom:'1px solid rgba(0,0,0,.1)',backgroundColor:'Salmon'}}>
-                        <td align="center" style={{width:'200px',border:'1px solid gray'}}>
-                            <img src={Tot} alt="" style={{width:'100px',paddingTop:'10px',paddingBottom:'10px',border:'1px'}}/>
-                        </td>
-                        <td align="center" style={{width:'300px',border:'1px solid gray'}}>
-                            <b style={{fontSize:'60pt'}}>1 : 2</b>
-                        </td>
-                        <td style={{border:'1px solid gray', width:'200px'}} align="center">
-                            <img src={Liver} alt="" style={{width:'100px',marginLeft:'0px',paddingTop:'10px',paddingBottom:'10px',border:'1px'}}/>
-                        </td>
-                        <td width="400px" style={{border:'1px solid gray'}}>
-                            <b style={{fontSize:'15pt',marginLeft:'50px'}}>경기 장소 :</b>
-                            <b style={{fontSize:'15pt'}}>도봉 루다 풋살장 A</b>
-                            <br/>
-                            <b style={{fontSize:'15pt',marginLeft:'50px'}}>주소 :</b>
-                            <b style={{fontSize:'15pt'}}>서울 도봉구 방학동 271-2</b>    
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <table style={{border:'2px solid rgba(0,0,0,.1)'}}>
-                <tbody>
-                    <tr style={{borderBottom:'1px solid rgba(0,0,0,.1)',height:'40px',backgroundColor:'rgb(220,220,220)'}}>
-                        <td align="center" style={{border:'1px solid gray'}}>
-                            <b style={{fontSize:'15pt'}}>20.06.06(월)</b>
-                        </td>
-                        <td align="center" style={{border:'1px solid gray',width:'400px'}}>
-                            <b style={{fontSize:'15pt'}}>League Match</b>
-                        </td>
-                        <td align="center" style={{border:'1px solid gray'}}>
-                            <b style={{fontSize:'15pt'}}>상대팀 : 맨유</b>
-                        </td>
-                        <td style={{border:'1px solid gray'}}>
-                            <b style={{fontSize:'15pt',float:'left',color:'blue',float:'right',marginRight:'50px'}}>무승부</b>
-                        </td>
-                    </tr>
-                    <tr style={{borderBottom:'1px solid rgba(0,0,0,.1)',backgroundColor:'rgb(192,192,192)'}}>
-                        <td align="center" style={{width:'200px',border:'1px solid gray'}}>
-                            <img src={Tot} alt="" style={{width:'100px',paddingTop:'10px',paddingBottom:'10px',border:'1px'}}/>
-                        </td>
-                        <td align="center" style={{width:'300px',border:'1px solid gray'}}>
-                            <b style={{fontSize:'60pt'}}>1 : 1</b>
-                        </td>
-                        <td style={{border:'1px solid gray', width:'200px'}} align="center">
-                            <img src={Manu} alt="" style={{width:'100px',marginLeft:'0px',paddingTop:'10px',paddingBottom:'10px',border:'1px'}}/>
-                        </td>
-                        <td width="400px" style={{border:'1px solid gray'}}>
-                            <b style={{fontSize:'15pt',marginLeft:'50px'}}>경기 장소 :</b>
-                            <b style={{fontSize:'15pt'}}>도봉 루다 풋살장 A</b>
-                            <br/>
-                            <b style={{fontSize:'15pt',marginLeft:'50px'}}>주소 :</b>
-                            <b style={{fontSize:'15pt'}}>서울 도봉구 방학동 271-2</b>    
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        </Scrollbars>
-    </div>
-)
+class MyMatchHistory extends Component {
+  state = {
+    myRes: [],
+    pageNum: 1,
+    startNum: 1,
+    totalRes: 0,
+    searchType: "",
+    fromDate: "",
+    untilDate: "",
+    memberData: [],
+  };
+  getMemberData = () => {
+    // const url = "http://192.168.0.108:9000/matchplay/memberdata?id=";
+    const url = "http://localhost:9000/matchplay/memberdata?id=";
 
-export default MyMatchHistory
+    Axios.get(url + window.sessionStorage.getItem("id"))
+      .then((res) => {
+        this.setState(
+          {
+            memberData: res.data,
+          },
+          () => console.log(this.state.memberData)
+        );
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  nextPage = (e) => {
+    this.setState(
+      {
+        pageNum:
+          this.state.totalRes / 10 + 1 > 5
+            ? this.state.pageNum + 5
+            : this.state.pageNum,
+        startNum:
+          this.state.totalRes / 10 + 1 > 5
+            ? this.state.startNum + 5
+            : this.state.startNum,
+      },
+      () => this.getMyRes()
+    );
+  };
+  prevPage = (e) => {
+    this.setState(
+      {
+        pageNum:
+          this.state.pageNum <= 5 ? this.state.pageNum : this.state.pageNum - 5,
+        startNum:
+          this.state.startNum <= 5
+            ? this.state.startNum
+            : this.state.startNum - 5,
+      },
+      () => this.getMyRes()
+    );
+  };
+
+  getTotalOfMyRes = () => {
+    const url = "http://localhost:9000/matchplay/totalmyres?member_id=";
+    // const url = "http://192.168.0.108:9000/matchplay/totalmyres?member_id=";
+
+    Axios.get(
+      url +
+        window.sessionStorage.getItem("id") +
+        "&res_type=" +
+        this.state.searchType +
+        "&fromDate=" +
+        this.state.fromDate +
+        "&untilDate=" +
+        this.state.untilDate +
+        "&resStatus=N"
+    )
+      .then((res) => {
+        this.setState({
+          totalRes: res.data,
+        });
+        console.log(this.state.myRes);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  onChange = (e) => {
+    this.setState(
+      {
+        [e.target.name]: e.target.value,
+        pageNum: 1,
+      },
+      () => {
+        this.getTotalOfMyRes();
+        this.getMyRes();
+      }
+    );
+  };
+  reload = () => {
+    window.location.reload();
+  };
+
+  getMyRes = () => {
+    const url = "http://localhost:9000/matchplay/myres?member_id=";
+    // const url = "http://192.168.0.108:9000/matchplay/myres?member_id=";
+
+    Axios.get(
+      url +
+        window.sessionStorage.getItem("id") +
+        "&pageNum=" +
+        this.state.pageNum +
+        "&res_type=" +
+        this.state.searchType +
+        "&fromDate=" +
+        this.state.fromDate +
+        "&untilDate=" +
+        this.state.untilDate +
+        "&resStatus=N"
+    )
+      .then((res) => {
+        this.setState({
+          myRes: res.data,
+        });
+        console.log(this.state.myRes);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  clickPage = (e) => {
+    this.setState(
+      {
+        pageNum: e.currentTarget.textContent,
+      },
+      () => this.getMyRes()
+    );
+    for (
+      let index = 0;
+      index < document.querySelectorAll(".selected").length;
+      index++
+    ) {
+      document.querySelector(".selected").style.color = "gray";
+      document.querySelector(".selected").classList.remove("selected");
+    }
+    // console.log(document.querySelectorAll(".selected"));
+    e.currentTarget.classList.add("selected");
+    e.currentTarget.style.color = "white";
+  };
+  componentDidMount() {
+    this.getMemberData();
+    this.getMyRes();
+    this.getTotalOfMyRes();
+  }
+  render() {
+    const page = [];
+    for (
+      let i = this.state.startNum;
+      i <
+      (this.state.totalRes / 10 + 1 > this.state.startNum + 4
+        ? this.state.startNum + 4
+        : this.state.totalRes / 10 + 1);
+      i++
+    ) {
+      page.push(
+        <div
+          className="page"
+          style={{
+            display: "inline-block",
+            // border: "1px solid #503396",
+            height: "30px",
+            width: "30px",
+            lineHeight: "30px",
+            fontSize: "12pt",
+            fontWeight: "bold",
+            cursor: "pointer",
+            color: "gray",
+          }}
+          onClick={this.clickPage.bind(this)}
+        >
+          {i}
+        </div>
+      );
+    }
+    return (
+      <div>
+        <MyPageSidebar></MyPageSidebar>
+        <div align="center">
+          <div
+            style={{
+              fontSize: "15pt",
+              // width: "1000px",
+              backgroundColor: "#503396",
+              color: "white",
+              paddingLeft: "30px",
+              height: "40px",
+              lineHeight: "40px",
+              borderTopLeftRadius: "10px",
+              borderTopRightRadius: "10px",
+              width: "1200px",
+              position: "absolute",
+              top: "240px",
+              left: "500px",
+            }}
+            align="left"
+          >
+            <b style={{ fontSize: "20pt" }}>
+              {window.sessionStorage.getItem("id")}
+            </b>
+            님의 경기 내역
+            <select
+              onChange={this.onChange.bind(this)}
+              name="searchType"
+              style={{
+                backgroundColor: "#503396",
+                fontSize: "11pt",
+                marginLeft: "50px",
+                border: "none",
+                cursor: "pointer",
+              }}
+            >
+              <option value="">전체</option>
+              <option value="0">개인</option>
+              <option value="1">팀</option>
+              <option value="2">리그</option>
+            </select>
+            <input
+              type="date"
+              name="fromDate"
+              onChange={this.onChange.bind(this)}
+              style={{
+                backgroundColor: "#503396",
+                fontSize: "11pt",
+                marginLeft: "20px",
+                height: "25px",
+                width: "150px",
+                outline: "none",
+                textAlign: "right",
+                border: "none",
+                borderBottom: "1px solid white",
+              }}
+            ></input>
+            ~
+            <input
+              type="date"
+              name="untilDate"
+              onChange={this.onChange.bind(this)}
+              style={{
+                backgroundColor: "#503396",
+                fontSize: "11pt",
+                height: "25px",
+                width: "150px",
+                outline: "none",
+                textAlign: "right",
+                border: "none",
+                borderBottom: "1px solid white",
+              }}
+            ></input>
+            <button
+              style={{
+                // float: "right",
+                position: "absolute",
+                right: "25%",
+                top: "24%",
+                border: "none",
+                backgroundColor: "#503396",
+                color: "white",
+                fontSize: "11pt",
+                borderRadius: "5px",
+                height: "30px",
+                lineHeight: "30px",
+              }}
+              onClick={this.reload.bind(this)}
+            >
+              전체일정
+            </button>
+          </div>
+          <Scrollbars
+            className="ReScroll"
+            style={{
+              width: "1200px",
+              height: "551px",
+              position: "absolute",
+              top: "280px",
+              left: "500px",
+            }}
+          >
+            <table style={{ width: "1200px" }}>
+              {/* <thead>
+              <tr
+                align="center"
+                style={{
+                  backgroundColor: "#503396",
+                  color: "white",
+                  height: "50px",
+                  // fontWeight: "bold",
+                  fontSize: "13pt",
+                }}
+              >
+                <th style={{ width: "100px" }}>경기종류</th>
+                <th style={{ width: "100px" }}>분류</th>
+                <th style={{ width: "100px" }}>날짜</th>
+                <th style={{ width: "100px" }}>예약 시간</th>
+                <th style={{ width: "150px" }}>구장</th>
+                <th>위치</th>
+                <th style={{ width: "100px" }}>예약 현황</th>
+                <th style={{ width: "100px" }}>경기 결과</th>
+              </tr>
+            </thead> */}
+              <tbody
+                align="center"
+                style={{
+                  height: "50px",
+                  // fontWeight: "bold",
+                  fontSize: "11pt",
+                }}
+              >
+                {this.state.myRes.length === 0 ? (
+                  <div
+                    style={{
+                      padding: "200px",
+                      fontSize: "13pt",
+                      fontWeight: "bold",
+                    }}
+                  >
+                    경기 내역이 없습니다.
+                  </div>
+                ) : (
+                  this.state.myRes.map((row, idx) => (
+                    <MyMatchItem
+                      row={row}
+                      memberData={this.state.memberData}
+                    ></MyMatchItem>
+                  ))
+                )}
+              </tbody>
+            </table>
+          </Scrollbars>
+          <div>
+            <tr>
+              <td colSpan="8">
+                <div
+                  style={{
+                    fontSize: "15pt",
+                    // width: "1000px",
+                    backgroundColor: "#503396",
+                    color: "white",
+                    paddingLeft: "30px",
+                    height: "40px",
+                    lineHeight: "40px",
+                    borderBottomRightRadius: "15px",
+                    borderBottomLeftRadius: "15px",
+                    width: "1200px",
+                    position: "absolute",
+                    top: "831px",
+                    left: "500px",
+                  }}
+                  // style={{
+                  //   paddingTop: "15px",
+                  //   paddingBottom: "15px",
+                  //   backgroundColor: "#503396",
+                  //   width: "1000px",
+                  // }}
+                >
+                  <div
+                    style={{
+                      display: "inline-block",
+                      height: "30px",
+                      width: "30px",
+                      lineHeight: "30px",
+                      border: "1px solid #503396",
+                      verticalAlign: "top",
+                      cursor: "pointer",
+                    }}
+                    onClick={this.nextPage.bind(this)}
+                  >
+                    <img
+                      src={pageNext}
+                      style={{
+                        height: "15px",
+                        transform: "rotate(180deg)",
+                        filter: "invert(100%)",
+                        marginTop: "5px",
+                      }}
+                      alt=""
+                    ></img>
+                  </div>
+                  {page}
+                  <div
+                    style={{
+                      display: "inline-block",
+                      height: "30px",
+                      width: "30px",
+                      lineHeight: "30px",
+                      border: "1px solid #503396",
+                      verticalAlign: "top",
+                      cursor: "pointer",
+                    }}
+                    onClick={this.nextPage.bind(this)}
+                  >
+                    <img
+                      src={pageNext}
+                      style={{
+                        height: "15px",
+                        filter: "invert(100%)",
+                        marginTop: "5px",
+                      }}
+                      alt=""
+                    ></img>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </div>
+        </div>
+      </div>
+    );
+  }
+}
+
+export default MyMatchHistory;
