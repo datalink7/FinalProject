@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import LeagueRankRow from "./LeagueRankRow";
 import LeagueName from "./LeagueName";
+import Scrollbars from "react-custom-scrollbars";
 
 class LeagueRanking extends Component {
   constructor(props) {
@@ -123,39 +124,53 @@ class LeagueRanking extends Component {
             name={this.state.leagueName}
           ></LeagueName>
         </div>
-        <table className="rankingTable txt8">
-          <thead>
-            <tr>
-              <th
-                width="80"
+        <div align="center">
+          <table className="rankingTable txt8">
+            <thead>
+              <tr>
+                <th
+                  width="80"
+                  style={{
+                    borderTopLeftRadius: "5px",
+                    borderBottomLeftRadius: "5px",
+                  }}
+                >
+                  순위
+                </th>
+                <th width="300">팀</th>
+                <th width="111">경기수</th>
+                <th width="100">승</th>
+                <th width="100">무</th>
+                <th width="100">패</th>
+                <th
+                  width="75"
+                  style={{
+                    borderTopRightRadius: "5px",
+                    borderBottomRightRadius: "5px",
+                  }}
+                >
+                  승점
+                </th>
+              </tr>
+            </thead>
+          </table>
+          <table className="rankingTable txt8" style={{}}>
+            <tbody>
+              <Scrollbars
+                className="ReScroll"
                 style={{
-                  borderTopLeftRadius: "5px",
-                  borderBottomLeftRadius: "5px",
+                  width: "900px",
+                  height: "250px",
                 }}
+                align="center"
               >
-                순위
-              </th>
-              <th width="300">팀</th>
-              <th>경기수</th>
-              <th width="100">승</th>
-              <th width="100">무</th>
-              <th width="100">패</th>
-              <th
-                style={{
-                  borderTopRightRadius: "5px",
-                  borderBottomRightRadius: "5px",
-                }}
-              >
-                승점
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {this.state.leagueDatas.map((item, idx) => {
-              return <LeagueRankRow row={item} idx={idx}></LeagueRankRow>;
-            })}
-          </tbody>
-        </table>
+                {this.state.leagueDatas.map((item, idx) => {
+                  return <LeagueRankRow row={item} idx={idx}></LeagueRankRow>;
+                })}
+              </Scrollbars>
+            </tbody>
+          </table>
+        </div>
       </div>
     );
   }

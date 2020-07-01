@@ -2,6 +2,13 @@ import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 
 class MyPageSidebar extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      // memberData: this.props.memberData,
+    };
+  }
+
   render() {
     return (
       <div
@@ -77,7 +84,10 @@ class MyPageSidebar extends Component {
               <td align="center">
                 <NavLink
                   exact
-                  to="/Mypage/ReservationHistory"
+                  to={{
+                    pathname: "/Mypage/ReservationHistory",
+                    // state: { name: this.state.memberData.name },
+                  }}
                   style={{ textDecoration: "none", color: "white" }}
                 >
                   <button

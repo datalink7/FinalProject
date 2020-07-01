@@ -29,6 +29,9 @@ class MyResItem extends Component {
       res_id: this.props.row.res_id,
       res_team1goal: this.state.res_team1goal,
       res_team2goal: this.state.res_team2goal,
+      res_type: this.props.row.res_type,
+      home_member_id: this.props.row.home_member_id,
+      away_member_id: this.props.row.away_member_id,
     })
       .then(() => {})
       .catch((err) => {
@@ -111,22 +114,24 @@ class MyResItem extends Component {
         <td>{resResult}</td>
         <td>
           {/* <NavLink to={"/MngRes"}> */}
-          <button
-            style={{
-              border: "none",
-              backgroundColor: "#503396",
-              color: "white",
-              fontSize: "11pt",
-              borderRadius: "5px",
-              height: "30px",
-              lineHeight: "30px",
-            }}
-            onClick={
-              resResult === "정산중" ? this.setModalIsOpen.bind(this) : ""
-            }
-          >
-            점수입력
-          </button>
+          {resResult === "정산중" && (
+            <button
+              style={{
+                border: "none",
+                backgroundColor: "#503396",
+                color: "white",
+                fontSize: "11pt",
+                borderRadius: "5px",
+                height: "30px",
+                lineHeight: "30px",
+              }}
+              onClick={
+                resResult === "정산중" ? this.setModalIsOpen.bind(this) : ""
+              }
+            >
+              점수입력
+            </button>
+          )}
           {/* </NavLink> */}
         </td>
         <Modal isOpen={this.state.modalIsOpen}>
@@ -163,6 +168,21 @@ class MyResItem extends Component {
                 type="hidden"
                 value={this.props.row.res_id}
                 name="res_id"
+              ></input>
+              <input
+                type="hidden"
+                value={this.props.row.res_etc}
+                name="res_etc"
+              ></input>
+              <input
+                type="hidden"
+                value={this.props.row.home_member_id}
+                name="home_member_id"
+              ></input>
+              <input
+                type="hidden"
+                value={this.props.row.away_member_id}
+                name="away_member_id"
               ></input>
               <span>Home Score</span>
               <input

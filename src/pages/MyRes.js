@@ -8,6 +8,7 @@ import MyPageSidebar from "./MyPageSidebar";
 class MyRes extends Component {
   state = {
     myRes: [],
+    memberData: [],
     pageNum: 1,
     startNum: 1,
     totalRes: 0,
@@ -130,9 +131,28 @@ class MyRes extends Component {
     e.currentTarget.classList.add("selected");
     e.currentTarget.style.color = "white";
   };
+  getMemberData = () => {
+    // const url = "http://192.168.0.108:9000/matchplay/memberdata?id=";
+    const url = "http://localhost:9000/matchplay/memberdata?id=";
+
+    Axios.get(url + window.sessionStorage.getItem("id"))
+      .then((res) => {
+        this.setState(
+          {
+            memberData: res.data,
+          },
+          () => console.log(this.state.memberData)
+        );
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   componentDidMount() {
     this.getMyRes();
     this.getTotalOfMyRes();
+    this.getMemberData();
   }
   render() {
     const page = [];
@@ -261,31 +281,33 @@ class MyRes extends Component {
             >
               전체일정
             </button>
-            <div
-              style={{
-                position: "absolute",
-                right: "10%",
-                top: "30px",
-                height: "30px",
-                lineHeight: "30px",
-              }}
-            >
-              <NavLink to={"/MngRes"}>
-                <button
-                  style={{
-                    border: "none",
-                    backgroundColor: "white",
-                    color: "#503396",
-                    fontSize: "11pt",
-                    borderRadius: "5px",
-                    height: "30px",
-                    lineHeight: "30px",
-                  }}
-                >
-                  경기 관리
-                </button>
-              </NavLink>
-            </div>
+            {this.state.memberData.grade !== 0 && (
+              <div
+                style={{
+                  position: "absolute",
+                  right: "10%",
+                  top: "30px",
+                  height: "30px",
+                  lineHeight: "30px",
+                }}
+              >
+                <NavLink to={"/MngRes"}>
+                  <button
+                    style={{
+                      border: "none",
+                      backgroundColor: "white",
+                      color: "#503396",
+                      fontSize: "11pt",
+                      borderRadius: "5px",
+                      height: "30px",
+                      lineHeight: "30px",
+                    }}
+                  >
+                    경기 관리
+                  </button>
+                </NavLink>
+              </div>
+            )}
           </div>
           <table style={{ width: "1000px" }}>
             <thead>

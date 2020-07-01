@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Axios from "axios";
 import LeaguePlanItem from "./LeaguePlanItem";
 import LeagueDate from "./LeagueDate";
+import Scrollbars from "react-custom-scrollbars";
 
 class LeaguePlan extends Component {
   state = {
@@ -83,17 +84,25 @@ class LeaguePlan extends Component {
           ></LeagueDate>
         </div>
         <hr></hr>
-        {this.state.leaguePlan.map((item, idx) =>
-          item.round_date == this.state.leagueDate ? (
-            <LeaguePlanItem
-              searchDate={this.state.leagueDate}
-              item={item}
-              key={idx}
-            ></LeaguePlanItem>
-          ) : (
-            ""
-          )
-        )}
+        <Scrollbars
+          className="ReScroll"
+          style={{
+            width: "100%",
+            height: "250px",
+          }}
+        >
+          {this.state.leaguePlan.map((item, idx) =>
+            item.round_date == this.state.leagueDate ? (
+              <LeaguePlanItem
+                searchDate={this.state.leagueDate}
+                item={item}
+                key={idx}
+              ></LeaguePlanItem>
+            ) : (
+              ""
+            )
+          )}
+        </Scrollbars>
       </div>
     );
   }

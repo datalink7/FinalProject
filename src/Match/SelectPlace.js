@@ -305,7 +305,7 @@ class SelectPlace extends Component {
                   >
                     구장 검색
                   </td>
-                  <td style={{ width: "330px" }}>
+                  <td style={{ width: "350px" }}>
                     <div>
                       <form onSubmit={this.searchPlace.bind(this)}>
                         <div style={{ display: "inline-block" }}>
@@ -318,6 +318,7 @@ class SelectPlace extends Component {
                             placeholder="명칭"
                             style={{
                               fontSize: "13pt",
+                              width: "220px",
                             }}
                           ></input>
                         </div>

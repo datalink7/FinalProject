@@ -3,8 +3,7 @@ import LeaguePlan from "./LeaguePlan";
 import LeagueRanking from "./LeagueRanking";
 import LeagueJoin from "./LeagueJoin";
 import "../Css/League.css";
-import '../Css/MainStyle.css'
-
+import "../Css/MainStyle.css";
 
 class LeagueMain extends Component {
   render() {

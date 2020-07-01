@@ -21,6 +21,19 @@ const modalstyles = {
     textAlign: "center",
   },
 };
+function MakeLeaguePlan() {
+  // const url = "http://192.168.0.108:9000/matchplay/makeLeaguePlan";
+  const url = "http://localhost:9000/matchplay/makeLeaguePlan";
+
+  Axios.post(url)
+    .then((res) => {
+      alert("리그 일정 생성 완료");
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
 function LeagueJoin() {
   var subtitle;
   const [modalIsOpen, setIsOpen] = React.useState(false);
@@ -65,6 +78,27 @@ function LeagueJoin() {
   function closeModal() {
     setIsOpen(false);
   }
+  const [memberData, setMemberData] = useState([]);
+
+  function GetMemberData() {
+    // const url = "http://192.168.0.108:9000/matchplay/memberdata?id=";
+    const url = "http://localhost:9000/matchplay/memberdata?id=";
+
+    Axios.get(url + window.sessionStorage.getItem("id"))
+      .then((res) => {
+        setMemberData(res.data);
+        console.log(memberData);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  useEffect(() => {
+    console.log("Asdasd");
+    GetMemberData();
+  }, []);
+
   return (
     <div>
       <div className="information">
@@ -93,6 +127,22 @@ function LeagueJoin() {
           >
             참가 신청
           </button>
+          {window.sessionStorage.getItem("id") != null &&
+            memberData.grade !== 0 && (
+              <button
+                onClick={MakeLeaguePlan.bind(this)}
+                style={{
+                  float: "right",
+                  position: "relative",
+                  top: "50px",
+                  right: "20px",
+                  backgroundColor: "#aa3f68",
+                }}
+                className="leaguejoin"
+              >
+                일정 생성
+              </button>
+            )}
         </div>
         <Modal
           isOpen={modalIsOpen}

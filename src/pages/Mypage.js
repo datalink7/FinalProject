@@ -54,17 +54,19 @@ class Mypage extends Component {
 
     Axios.get(url + window.sessionStorage.getItem("id"))
       .then((res) => {
-        this.setState({
-          memberData: res.data,
-        });
-        console.log(this.state.memberData);
+        this.setState(
+          {
+            memberData: res.data,
+          },
+          () => console.log(this.state.memberData)
+        );
       })
       .catch((err) => {
         console.log(err);
       });
   };
 
-  componentWillMount() {
+  componentDidMount() {
     this.getMemberData();
     this.getMyRes();
   }
