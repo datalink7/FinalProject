@@ -11,15 +11,17 @@ class TWrite extends Component {
 
     //match 객체로부터 받은 tboard_num을 멤버 변수에 저장
     this.tboard_num = match.params.tboard_num;
-    this.start = 0;
+
     this.state = {
-      member_id: "",
+      updateData: "",
+      tboard_num: this.tboard_num,
+      // member_id:"",
       tboard_title: "",
       tboard_content: "",
       tboard_photo: "",
-      tboard_public: "",
-      tboard_notice: "",
-      team_num: "",
+
+      select_photo: "",
+
       grade: "",
 
       //이미지 미리보기
@@ -27,54 +29,12 @@ class TWrite extends Component {
     };
   }
 
-  //소속된 팀 num 구하기
-  getMyTeamNum = () => {
-    const url =
-      "http://localhost:9000/matchplay/teammember/myteamnum?member_id=";
+  //시작하자마자 호출
+  componentWillMount() {
+    this.onSelctData(); //호출
 
-    axios
-      .get(url + window.sessionStorage.getItem("id"))
-      .then((res) => {
-        this.setState({
-          team_num: res.data,
-        });
-        console.log("내 팀넘버===" + this.state.team_num);
-        // this.props.Onlist();
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
-  //현재 접속자의 권한 구하기
-
-  getGrade = () => {
-    const url =
-      "http://localhost:9000/matchplay/teammember/teammaster?member_id=";
-
-    axios
-      .get(url + window.sessionStorage.getItem("id"))
-      .then((res) => {
-        this.setState({
-          grade: res.data,
-        });
-        console.log("현재 접속자 등급? ===" + this.state.grade);
-        // this.props.Onlist();
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
-  //공지사항 여부
-  onNotice = (e) => {
-    this.setState(
-      {
-        tboard_notice: e.target.value,
-      },
-      () => console.log(this.state.tboard_notice)
-    );
-  };
+    console.log("번호 잘 넘어오나 확인" + this.state.tboard_num);
+  }
 
   //공개 여부
   onPublic = (e) => {
@@ -84,6 +44,54 @@ class TWrite extends Component {
       },
       () => console.log(this.state.tboard_public)
     );
+  };
+
+  //tboard_num 을 통해 모든 데이터 출력
+  onSelctData = () => {
+    let url =
+      "http://localhost:9000/matchplay/tboard/select?tboard_num=" +
+      this.state.tboard_num;
+    axios
+      .get(url)
+      .then((res) => {
+        this.setState({
+          updateData: res.data,
+          tboard_title: res.data.tboard_title,
+          tboard_content: res.data.tboard_content,
+          member_id: res.data.member_id,
+          tboard_num: res.data.tboard_num,
+          select_photo: res.data.tboard_photo,
+        });
+      })
+      .catch((err) => {
+        console.log("select 에러:" + err);
+      });
+  };
+
+  //스프링으로 보내는 수정함수
+  onTboardUpdate = () => {
+    console.log("실제 수정할 onTboardUpdate 호출:");
+    var url = "http://localhost:9000/matchplay/tboard/update";
+
+    axios
+      .put(url, {
+        tboard_title: this.state.tboard_title,
+        tboard_content: this.state.tboard_content,
+        tboard_num: this.state.tboard_num,
+        tboard_photo: this.state.tboard_photo,
+      })
+      .then((responsedata) => {
+        this.props.history.goBack();
+      })
+      .catch((error) => {
+        console.log("onTboardUpdate 오류:" + error);
+      });
+  };
+
+  handleChange = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value, //text 창에 다시 입력할 수 있도록
+    });
   };
 
   //이미지 업로드
@@ -130,57 +138,25 @@ class TWrite extends Component {
       });
   };
 
-  //추가
-  onTboardInsert = () => {
-    // console.log("값 들어오는거 확인"+member_id,tboard_title,tboard_content)
-    let url = "http://localhost:9000/matchplay/tboard/add";
-    let uploadData = this.state;
-    axios
-      .post(url, {
-        tboard_title: this.refs.tboard_title.value,
-        tboard_content: uploadData.tboard_content,
-        tboard_photo: uploadData.tboard_photo,
-        tboard_notice: uploadData.tboard_notice,
-        tboard_public: uploadData.tboard_public,
-        member_id: window.sessionStorage.getItem("id"),
-      })
-      .then((res) => {
-        this.props.history.push(
-          "/Team/TeamHome/TeamBoard/list/" +
-            this.state.team_num +
-            "&start/" +
-            this.start
-        );
-      })
-      .catch((error) => {
-        console.log("추가부분 에러" + error);
-      });
-  };
-
-  //서브밋시 호출되는 함수 (onTboardInsert 호출)
-  onSubmit = (e) => {
+  //부모컴포넌트의 이벤트 호출하기 위한 함수
+  onUpdate = (e) => {
     e.preventDefault();
-    console.log("content=" + this.state.tboard_content);
-
-    console.log("refs확인" + this.refs.tboard_title.value);
-
-    this.onTboardInsert();
+    this.onTboardUpdate();
   };
-
-  componentWillMount() {
-    this.getMyTeamNum();
-    this.getGrade();
-  }
 
   render() {
-    // let {previewurl} =this.state;
+    let udata = this.state.updateData;
+    let { previewurl } = this.state;
+    const url = "http://localhost:9000/matchplay/image/"; //저장된 이미지 출력 위함
 
     return (
       <div className="TWR" align="center">
         <img src={typing} className="typing" alt="" />
         <div>
           {/* <img src={previewurl} alt="" style={{maxWidth:"300px", maxHeight:"300px",float:"right",marginTop:"120px",marginRight:"150px"}}></img>  */}
-          <div align="center">
+          {/* <img src={previewurl} alt="" style={{maxWidth:"300px", maxHeight:"300px",float:"right",marginTop:"120px",marginRight:"150px"}}></img>  */}
+          <div align="right" style={{ float: "right", marginRight: "200px" }}>
+            <span>새로올릴 이미지</span>
             <div style={{ width: "420px" }}>
               {this.state.tboard_photo.split("/").map((item, i) =>
                 i != 0 && i % 4 == 0 ? (
@@ -202,53 +178,66 @@ class TWrite extends Component {
               )}
             </div>
           </div>
+          {/* 저장된 이미지 */}
+
+          {/* <img src={url + udata.tboard_photo} alt="" style={{maxWidth:"500px",maxHeight:"500px",float:"right",marginRight:"300px"}}/> */}
+
+          <div align="left" style={{ marginLeft: "200px" }}>
+            <span>현재 저장되어 있는 이미지</span>
+            <div style={{ width: "420px" }}>
+              {this.state.select_photo.split("/").map((item, i) =>
+                i != 0 && i % 4 == 0 ? (
+                  <div>
+                    <img
+                      style={{ width: "200px" }}
+                      src={"http://localhost:9000/matchplay/image/" + item}
+                      alt=""
+                    ></img>
+                  </div>
+                ) : (
+                  <img
+                    style={{ width: "200px" }}
+                    src={"http://localhost:9000/matchplay/image/" + item}
+                    alt=""
+                  ></img>
+                )
+              )}
+            </div>
+          </div>
         </div>
-        <form onSubmit={this.onSubmit.bind(this)}>
+        <form onSubmit={this.onUpdate.bind(this)}>
+          <input type="hidden" value={udata.tboard_num} name="tboard_num" />
           <div className="twtable">
             <table class="table table-bordered">
               <tr>
                 <td className="twnick">
                   <b style={{ fontSize: "13pt" }}>{this.state.member_id}</b>
                 </td>
-                <td>
-                  <select
-                    value={this.state.tboard_public}
-                    className="twsel"
-                    style={{ fontSize: "13pt", width: "111px" }}
-                    onChange={this.onPublic.bind(this)}
-                  >
-                    <option value="all">전체공개</option>
-                    <option value={this.state.team_num}>멤버공개</option>
-                  </select>
-                  <br></br> <br></br>
-                  {this.state.grade == "master" ? (
-                    <select
-                      value={this.state.tboard_notice}
-                      style={{ fontSize: "13pt" }}
-                      onChange={this.onNotice.bind(this)}
-                    >
-                      <option value="">일반게시물</option>
-                      <option value="notice">공지사항</option>
-                    </select>
-                  ) : (
-                    ""
-                  )}
-                </td>
+                {/* <td>
+                                <select value={this.state.tboard_public} className="twsel" style={{fontSize:'13pt'}} onChange={this.onPublic.bind(this)}>
+                                    <option value="">공개여부   </option>
+                                    <option value="all">전체공개</option>
+                                    <option value={this.state.team_num}>멤버공개</option>    
+                                </select> 
+                                <br></br> <br></br>
+                     
+                             </td> */}
               </tr>
               <tr>
                 <td colSpan="2" style={{ fontSize: "13pt" }}>
                   글제목&nbsp;&nbsp;&nbsp;&nbsp;
                   <input
                     type="Text"
-                    ref="tboard_title"
+                    name="tboard_title"
+                    value={this.state.tboard_title}
                     className="twtitle"
+                    onChange={this.handleChange}
                   ></input>
                 </td>
               </tr>
               <tr>
                 <td colSpan="2">
-                  {/* <textarea  ref="tboard_content" placeholder="※멤버들에게 남기고싶은 말을 작성하세요." className="twtext" required></textarea>
-                   */}
+                  {/* <textarea  ref="tboard_content" placeholder="※멤버들에게 남기고싶은 말을 작성하세요." className="twtext" required></textarea> */}
                   <CKEditor
                     ref="tboard_content"
                     editor={ClassicEditor}
@@ -270,7 +259,7 @@ class TWrite extends Component {
                         },
                       },
                     }}
-                    data="내용"
+                    data={this.state.tboard_content}
                     //편집기가 초기화 될 때 호출되는 함수
                     onInit={(editor) => {
                       // You can store the "editor" and use when it is needed.

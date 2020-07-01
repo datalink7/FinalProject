@@ -24,6 +24,9 @@ import {
   PwdCheck,
   TCSuccess,
   PointCharge,
+  TContent,
+  TWriteUpdate,
+  TeamMatchHistory,
 } from "./pages"; //index.js 호출
 import { Drop, UpdPass } from "./User";
 import League from "./League/LeagueMain";
@@ -52,7 +55,7 @@ const Title = () => {
 
       <Route exact path="/League" component={League} />
 
-      <Route exact path="/Team" component={Team} />
+      <Route exact path="/Team/:team_num" component={Team} />
 
       <Route exact path="/QnA" component={QnA} />
 
@@ -71,9 +74,7 @@ const Title = () => {
         component={Payment}
       /> */}
 
-      <Route exact path="/Team/TeamHome" component={TeamHome} />
-
-      <Route exact path="/Team/TeamHome/TeamMember" component={TeamMember} />
+      <Route exact path="/Team/TeamHome/:team_num" component={TeamHome} />
 
       <Route
         exact
@@ -83,7 +84,11 @@ const Title = () => {
 
       <Route exact path="/Team/TeamHome/TeamBoard" component={TeamBoard} />
 
-      <Route exact path="/Team/TeamHome/TeamBoard/TWrite" component={TWrite} />
+      <Route
+        exact
+        path="/Team/TeamHome/TeamBoard/add/TWrite"
+        component={TWrite}
+      />
 
       <Route exact path="/Mypage" component={Mypage} />
 
@@ -97,7 +102,7 @@ const Title = () => {
 
       <Route exact path="/Account/UserInfo/UserDrop" component={Drop} />
 
-      <Route exact path="/Team/CreateTeam" component={CreateTeam} />
+      <Route exact path="/Team/Create/CreateTeam" component={CreateTeam} />
 
       <Route exact path="/Mypage/Account/PwdCheck" component={PwdCheck} />
 
@@ -112,6 +117,42 @@ const Title = () => {
       <Route exact path="/Mypage/ReservationHistory" component={MyRes} />
 
       <Route exact path="/Mypage/PointCharge" component={PointCharge} />
+
+      <Route
+        exact
+        path="/Team/TeamHome/TeamBoard/TContent/:tboard_num/:start"
+        component={TContent}
+      />
+
+      <Route
+        exact
+        path="/Team/TeamHome/TeamBoard/update/TWriteUpdate/:tboard_num"
+        component={TWriteUpdate}
+      />
+
+      <Route
+        exact
+        path="/Team/TeamHome/TeamBoard/:team_num"
+        component={TeamBoard}
+      />
+
+      <Route
+        path="/Team/TeamHome/TeamBoard/list/:team_num/:start"
+        component={TeamBoard}
+      />
+
+      <Route
+        exact
+        path="/Team/TeamHome/MatchHistory/:team_num"
+        component={TeamMatchHistory}
+      />
+
+      <Route
+        exact
+        path="/Team/TeamHome/TeamMember/:team_num"
+        component={TeamMember}
+      />
+
       <Footer />
     </div>
   );

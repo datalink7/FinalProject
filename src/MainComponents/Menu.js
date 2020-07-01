@@ -1,9 +1,41 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import "../Css/MainStyle.css";
 import LoginForm from "../pages/LoginForm";
+import Axios from "axios";
 
 const Menu = () => {
+  const [myteamnum, setMyteamnum] = useState(0);
+
+  //소속된 팀 num 구하기
+  const getMyTeamNum = (e) => {
+    const url =
+      "http://localhost:9000/matchplay/teammember/myteamnum?member_id=";
+
+    Axios.get(url + window.sessionStorage.getItem("id"))
+      .then((res) => {
+        setMyteamnum(res.data);
+
+        console.log("내 팀넘버===" + res.data);
+
+        // this.props.Onlist();
+      })
+      .catch((err) => {
+        console.log("팀 넘버 구하기 에러" + err);
+      });
+  };
+
+  useEffect(() => {
+    setTimeout(() => {
+      getMyTeamNum();
+    });
+  }, []);
+
+  const notTeam = () => {
+    alert("로그인을 해주세요");
+    return false;
+  };
+
   return (
     <div className="Menu5">
       <div className="Menu1">
@@ -24,9 +56,24 @@ const Menu = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink exact to="/Team" style={{ textDecoration: "none" }}>
+            {/* {sessionStorage.length === 1 ? ( */}
+            <NavLink
+              exact
+              to={"/Team/" + myteamnum}
+              style={{ textDecoration: "none" }}
+            >
               Team
             </NavLink>
+            {/* ) : ( */}
+            {/* <NavLink
+              exact
+              to="/"
+              style={{ textDecoration: "none" }}
+              onClick={() => notTeam()}
+            >
+              Team
+            </NavLink> */}
+            {/* )} */}
           </li>
           <li>
             <NavLink to="/QnA" style={{ textDecoration: "none" }}>

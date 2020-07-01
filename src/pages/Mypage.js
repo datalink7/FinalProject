@@ -217,7 +217,11 @@ class Mypage extends Component {
               <tbody align="center">
                 {this.state.myRes.map((item, idx) =>
                   idx < 4 ? (
-                    <MypageResItem row={item} key={idx}></MypageResItem>
+                    <MypageResItem
+                      row={item}
+                      memberData={this.state.memberData}
+                      key={idx}
+                    ></MypageResItem>
                   ) : (
                     ""
                   )

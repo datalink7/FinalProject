@@ -7,23 +7,25 @@ class MyMatchItem extends Component {
     this.state = {
       teamInfo: [],
       oppoTeamInfo: [],
-      teamnum: "",
-      memberData: [],
+      myteamnum: "",
     };
   }
 
-  getMemberData = () => {
-    // const url = "http://192.168.0.108:9000/matchplay/memberdata?id=";
-    const url = "http://localhost:9000/matchplay/memberdata?id=";
+  //소속된 팀 num 구하기
+  getMyTeamNum = () => {
+    const url =
+      "http://localhost:9000/matchplay/teammember/myteamnum?member_id=";
 
     Axios.get(url + window.sessionStorage.getItem("id"))
       .then((res) => {
         this.setState(
           {
-            memberData: res.data,
+            myteamnum: res.data,
           },
           () => this.getTeamInfo()
         );
+        console.log("내 팀넘버===" + this.state.myteamnum);
+        // this.props.Onlist();
       })
       .catch((err) => {
         console.log(err);
@@ -33,10 +35,10 @@ class MyMatchItem extends Component {
   getTeamInfo = () => {
     if (this.props.row.res_type !== "0") {
       const url =
-        "http://localhost:9000/matchplay/myhistory/teaminfo?team_num=";
-      // const url = "http://192.168.0.108:9000/matchplay/myhistory/teaminfo?member_id=";
-      // let teamnum = this.props.memberData.team_int;
-      let teamnum = this.state.memberData.team_int;
+        "http://localhost:9000/matchplay/team/myhistory/teaminfo?team_num=";
+      // const url = "http://192.168.0.108:9000/matchplay/team/myhistory/teaminfo?member_id=";
+      let teamnum = this.state.myteamnum;
+
       Axios.get(url + teamnum)
         .then((res) => {
           this.setState(
@@ -45,6 +47,7 @@ class MyMatchItem extends Component {
             },
             () => this.getOppoTeamInfo()
           );
+          console.log(this.state.teamInfo);
         })
         .catch((err) => {
           console.log(err);
@@ -54,39 +57,26 @@ class MyMatchItem extends Component {
   getOppoTeamInfo = () => {
     let team = "";
     if (
-      this.props.row.res_type === "0" &&
-      this.props.row.home_member_id.includes(
-        window.sessionStorage.getItem("id")
-      )
-    ) {
-      team = "Home";
-    } else if (
-      this.props.row.res_type === "0" &&
-      this.props.row.away_member_id.includes(
-        window.sessionStorage.getItem("id")
-      )
-    ) {
-      team = "Away";
-    } else if (
       this.props.row.res_type === "1" &&
-      this.props.row.home_member_id.includes(this.state.memberData.team_int)
+      this.props.row.home_member_id.includes(this.state.myteamnum) //팀넘버
     ) {
       team = "Home";
     } else if (
       this.props.row.res_type === "1" &&
-      this.props.row.away_member_id.includes(this.state.memberData.team_int)
+      this.props.row.away_member_id.includes(this.state.myteamnum) //팀넘버
     ) {
       team = "Away";
     }
+
     if (this.props.row.res_type !== "0") {
       const url =
-        "http://localhost:9000/matchplay/myhistory/teaminfo?team_num=";
-      // const url = "http://192.168.0.108:9000/matchplay/myhistory/teaminfo?member_id=";
-      let oppoteamnum =
+        "http://localhost:9000/matchplay/team/myhistory/teaminfo?team_num=";
+      // const url = "http://192.168.0.108:9000/matchplay/team/myhistory/teaminfo?member_id=";
+      let teamnum =
         team === "Home"
           ? this.props.row.away_member_id
           : this.props.row.home_member_id;
-      Axios.get(url + oppoteamnum)
+      Axios.get(url + teamnum)
         .then((res) => {
           this.setState({
             oppoTeamInfo: res.data,
@@ -98,10 +88,9 @@ class MyMatchItem extends Component {
         });
     }
   };
-  componentWillMount() {}
 
   componentDidMount() {
-    this.getMemberData();
+    this.getMyTeamNum();
     // this.getTeamInfo();
     // this.getOppoTeamInfo();
   }
@@ -123,12 +112,12 @@ class MyMatchItem extends Component {
       team = "Away";
     } else if (
       this.props.row.res_type === "1" &&
-      this.props.row.home_member_id.includes(this.props.memberData.team_int)
+      this.props.row.home_member_id.includes(this.state.myteamnum)
     ) {
       team = "Home";
     } else if (
       this.props.row.res_type === "1" &&
-      this.props.row.away_member_id.includes(this.props.memberData.team_int)
+      this.props.row.away_member_id.includes(this.state.myteamnum)
     ) {
       team = "Away";
     }
@@ -177,9 +166,11 @@ class MyMatchItem extends Component {
     //   }
     // }
     let result = "";
+    // let wincnt=0;
     if (team === "Home") {
       if (this.props.row.res_team1goal > this.props.row.res_team2goal) {
         result = "승리";
+        // wincnt++;
       } else if (
         this.props.row.res_team1goal === this.props.row.res_team2goal
       ) {
@@ -198,12 +189,8 @@ class MyMatchItem extends Component {
         result = "패배";
       }
     }
-    // "rgb(220,220,220)"
     return (
       <div>
-        {this.state.memberData.team_int}]{this.state.oppoTeamInfo.team_int}
-        {this.props.row.home_member_id}
-        {this.props.row.away_member_id}
         <tr
           style={{
             borderBottom: "1px solid rgba(0,0,0,.1)",
@@ -229,10 +216,7 @@ class MyMatchItem extends Component {
           </td>
           <td align="center" style={{ border: "1px solid gray" }}>
             <b style={{ fontSize: "15pt" }}>
-              상대팀 :{" "}
-              {this.props.row.res_type !== "0"
-                ? this.state.oppoTeamInfo.team_name
-                : "개인전"}
+              상대팀 : {this.state.oppoTeamInfo.team_name}
             </b>
           </td>
           <td style={{ border: "1px solid gray" }} align="right">

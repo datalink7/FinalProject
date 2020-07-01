@@ -19,12 +19,12 @@ class MypageResItem extends Component {
       team = "Away";
     } else if (
       this.props.row.res_type === "1" &&
-      this.props.row.home_member_id.includes("1")
+      this.props.row.home_member_id.includes(this.props.memberData.team_int)
     ) {
       team = "Home";
     } else if (
       this.props.row.res_type === "1" &&
-      this.props.row.away_member_id.includes("1")
+      this.props.row.away_member_id.includes(this.props.memberData.team_int)
     ) {
       team = "Away";
     }
